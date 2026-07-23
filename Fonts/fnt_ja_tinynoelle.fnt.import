@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://cm5al1agu6kek"
+path="res://.godot/imported/fnt_ja_tinynoelle.fnt-4bceab957aa3dc363823f6c90fa61f3a.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fnt_ja_tinynoelle.fnt"
+dest_files=["res://.godot/imported/fnt_ja_tinynoelle.fnt-4bceab957aa3dc363823f6c90fa61f3a.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2

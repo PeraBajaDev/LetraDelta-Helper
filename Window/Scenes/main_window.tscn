@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://3k875qfmo7iq"]
 
+[ext_resource type="Texture2D" uid="uid://bdggvk6javu1" path="res://Box/Sprites/Box1.png" id="1_ifh20"]
+[ext_resource type="FontFile" uid="uid://ckhgjfsxauh3j" path="res://Fonts/fnt_mainbig.fnt" id="2_qwv3i"]
+
 [node name="MainWindow" type="Control" unique_id=1469613726]
 layout_mode = 3
 anchors_preset = 15
@@ -213,17 +216,40 @@ allow_reselect = true
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 8
 
-[node name="DialogueEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=2074223561]
-custom_minimum_size = Vector2(200, 0)
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=296387573]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+texture = ExtResource("1_ifh20")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/TextureRect" unique_id=991760520]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(20, 20)
+theme_override_fonts/font = ExtResource("2_qwv3i")
+text = "Hola mundo ekisde anashe eeeeeeeeeeeeeeeeeeeeeeee eeeeeeeeeeeeeeeeeeeeeee"
+autowrap_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1721739519]
+layout_mode = 2
+
+[node name="DialogueEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer" unique_id=2074223561]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 8
 focus_mode = 1
 placeholder_text = "Put your Dialogue text here to try it out."
 
-[node name="EnablePortrait" type="CheckBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/DialogueEdit" unique_id=1752549447]
+[node name="EnablePortrait" type="CheckBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/DialogueEdit" unique_id=1752549447]
 layout_mode = 0
 offset_top = -39.0
 offset_right = 149.0
@@ -231,7 +257,7 @@ offset_bottom = -8.0
 focus_mode = 0
 text = "Enable portrait"
 
-[node name="ReplaceSimilar" type="CheckBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/DialogueEdit" unique_id=112251196]
+[node name="ReplaceSimilar" type="CheckBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/DialogueEdit" unique_id=112251196]
 layout_mode = 0
 offset_left = 661.0
 offset_top = -41.0
@@ -240,7 +266,7 @@ offset_bottom = -10.0
 focus_mode = 0
 text = "Replace all similar entries"
 
-[node name="AddEntry" type="Button" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/DialogueEdit" unique_id=1800994321]
+[node name="AddEntry" type="Button" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/DialogueEdit" unique_id=1800994321]
 layout_mode = 0
 offset_left = 5.0
 offset_top = -72.0
@@ -249,7 +275,7 @@ offset_bottom = -41.0
 focus_mode = 0
 text = "Add new Entry"
 
-[node name="AddString" type="Button" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/DialogueEdit" unique_id=1260630976]
+[node name="AddString" type="Button" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/DialogueEdit" unique_id=1260630976]
 layout_mode = 0
 offset_left = 757.0
 offset_top = -72.0
@@ -258,9 +284,10 @@ offset_bottom = -41.0
 focus_mode = 0
 text = "Add new String"
 
-[node name="OriginalDialogue" type="TextEdit" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=672609052]
+[node name="OriginalDialogue" type="TextEdit" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer" unique_id=672609052]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 8
 focus_mode = 1
 placeholder_text = "The original dialogue does here."
 editable = false

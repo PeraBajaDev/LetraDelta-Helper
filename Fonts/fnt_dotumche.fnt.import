@@ -1,0 +1,17 @@
+[remap]
+
+importer="font_data_bmfont"
+type="FontFile"
+uid="uid://e1q8evqikgcf"
+path="res://.godot/imported/fnt_dotumche.fnt-d6f0524cc2e04bf5ef29e79cf9828368.fontdata"
+
+[deps]
+
+source_file="res://Fonts/fnt_dotumche.fnt"
+dest_files=["res://.godot/imported/fnt_dotumche.fnt-d6f0524cc2e04bf5ef29e79cf9828368.fontdata"]
+
+[params]
+
+fallbacks=[]
+compress=true
+scaling_mode=2
