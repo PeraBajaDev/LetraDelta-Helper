@@ -7,3 +7,443 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1156820146]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer" unique_id=1286386011]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MenuBar" type="MenuBar" parent="VBoxContainer/Panel" unique_id=872812004]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="HBoxContainer" parent="VBoxContainer/Panel/MenuBar" unique_id=1770228923]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 324.0
+offset_bottom = 36.0
+
+[node name="File" type="MenuButton" parent="VBoxContainer/Panel/MenuBar/Container" unique_id=2039174747]
+layout_mode = 2
+text = "File"
+flat = false
+item_count = 17
+popup/item_0/text = "New File"
+popup/item_0/id = 6
+popup/item_1/text = "Open File"
+popup/item_1/id = 1
+popup/item_2/text = "Open Recent"
+popup/item_2/id = 11
+popup/item_3/text = "Save File"
+popup/item_3/id = 2
+popup/item_4/text = "Save File As..."
+popup/item_4/id = 8
+popup/item_5/text = "Export to JSON..."
+popup/item_5/id = 12
+popup/item_6/text = "Load Reference CSV..."
+popup/item_6/id = 13
+popup/item_7/text = "Clear Reference CSV"
+popup/item_7/id = 14
+popup/item_8/id = 4
+popup/item_8/separator = true
+popup/item_9/text = "Close File"
+popup/item_9/id = 7
+popup/item_10/id = 4
+popup/item_10/separator = true
+popup/item_11/text = "Delete Selected Entry"
+popup/item_11/id = 9
+popup/item_12/text = "Delete Selected String"
+popup/item_12/id = 10
+popup/item_13/id = 4
+popup/item_13/separator = true
+popup/item_14/text = "Settings"
+popup/item_14/id = 3
+popup/item_15/id = 4
+popup/item_15/separator = true
+popup/item_16/text = "Exit"
+popup/item_16/id = 5
+
+[node name="GoTo" type="Button" parent="VBoxContainer/Panel/MenuBar/Container" unique_id=544218320]
+layout_mode = 2
+focus_mode = 0
+text = "Go to"
+
+[node name="Search" type="Button" parent="VBoxContainer/Panel/MenuBar/Container" unique_id=603447879]
+layout_mode = 2
+focus_mode = 0
+text = "Search"
+
+[node name="About" type="MenuButton" parent="VBoxContainer/Panel/MenuBar/Container" unique_id=1954888689]
+layout_mode = 2
+text = "About"
+flat = false
+item_count = 4
+popup/item_0/text = "Show String Info"
+popup/item_0/id = 0
+popup/item_1/text = "Set Author Details"
+popup/item_1/id = 1
+popup/item_2/id = 2
+popup/item_2/separator = true
+popup/item_3/text = "About DH..."
+popup/item_3/id = 3
+
+[node name="ReloadStyle" type="Button" parent="VBoxContainer/Panel/MenuBar/Container" unique_id=188588084]
+layout_mode = 2
+focus_mode = 0
+text = "Reload Style"
+
+[node name="ProgressStats" type="Label" parent="VBoxContainer/Panel" unique_id=706575836]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -12.0
+offset_right = -10.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+tooltip_text = "Translated strings / Total strings (percentage). A string counts as translated when it has been edited (LastEdited)."
+mouse_filter = 1
+text = "0 / 0 strings"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TagValidatorLabel" type="Label" parent="VBoxContainer/Panel" unique_id=1432236261]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -560.0
+offset_top = -12.0
+offset_right = -270.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+tooltip_text = "Tag validator.
+Compares the count of \\E[x], \\F[x], %, /,
+etc. against the original."
+mouse_filter = 1
+text = "hola"
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true
+
+[node name="ClosedSignValidatorLabel" type="Label" parent="VBoxContainer/Panel" unique_id=1044623675]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -695.0
+offset_top = -12.0
+offset_right = -405.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+tooltip_text = "Tag validator.
+Compares the count of \\E[x], \\F[x], %, /,
+etc. against the original."
+mouse_filter = 1
+text = "hola"
+vertical_alignment = 1
+clip_text = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=144929518]
+layout_mode = 2
+
+[node name="EntrySearch" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=2130201513]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Search..."
+
+[node name="EntryFilter" type="OptionButton" parent="VBoxContainer/HBoxContainer" unique_id=1581718625]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+tooltip_text = "Filter entries by translation state."
+focus_mode = 0
+selected = 0
+fit_to_longest_item = false
+item_count = 6
+popup/item_0/text = "All"
+popup/item_0/id = 0
+popup/item_1/text = "Untranslated"
+popup/item_1/id = 1
+popup/item_2/text = "Translated"
+popup/item_2/id = 2
+popup/item_3/text = "Needs Review"
+popup/item_3/id = 3
+popup/item_4/text = "Tag Mismatch"
+popup/item_4/id = 4
+popup/item_5/text = "Unclosed Signs"
+popup/item_5/id = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=47656161]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EntryList" type="ItemList" parent="VBoxContainer/HBoxContainer2" unique_id=1695748978]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+size_flags_vertical = 3
+allow_reselect = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=524607657]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="DialogueEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=2074223561]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 1
+placeholder_text = "Put your Dialogue text here to try it out."
+
+[node name="EnablePortrait" type="CheckBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/DialogueEdit" unique_id=1752549447]
+layout_mode = 0
+offset_top = -39.0
+offset_right = 149.0
+offset_bottom = -8.0
+focus_mode = 0
+text = "Enable portrait"
+
+[node name="ReplaceSimilar" type="CheckBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/DialogueEdit" unique_id=112251196]
+layout_mode = 0
+offset_left = 661.0
+offset_top = -41.0
+offset_right = 893.0
+offset_bottom = -10.0
+focus_mode = 0
+text = "Replace all similar entries"
+
+[node name="AddEntry" type="Button" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/DialogueEdit" unique_id=1800994321]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -72.0
+offset_right = 126.0
+offset_bottom = -41.0
+focus_mode = 0
+text = "Add new Entry"
+
+[node name="AddString" type="Button" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/DialogueEdit" unique_id=1260630976]
+layout_mode = 0
+offset_left = 757.0
+offset_top = -72.0
+offset_right = 882.0
+offset_bottom = -41.0
+focus_mode = 0
+text = "Add new String"
+
+[node name="OriginalDialogue" type="TextEdit" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=672609052]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 1
+placeholder_text = "The original dialogue does here."
+editable = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=297930547]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="DisplaySettings" type="Control" parent="VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=477401397]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="CurrentLayer" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=1762017651]
+visible = false
+layout_mode = 0
+offset_top = 5.0
+offset_right = 88.0
+offset_bottom = 28.0
+text = "Text Layer:"
+
+[node name="Num" type="SpinBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentLayer" unique_id=617329579]
+layout_mode = 0
+offset_left = 134.0
+offset_top = -5.0
+offset_right = 217.063
+offset_bottom = 26.0
+focus_mode = 2
+min_value = 1.0
+value = 1.0
+rounded = true
+alignment = 2
+
+[node name="CurrentBox" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=721993116]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 48.0
+text = "Box:"
+
+[node name="Num" type="SpinBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentBox" unique_id=1672365458]
+layout_mode = 0
+offset_left = 75.0
+offset_top = -5.0
+offset_right = 161.5
+offset_bottom = 26.0
+focus_mode = 2
+min_value = 1.0
+value = 1.0
+rounded = true
+alignment = 2
+
+[node name="Info" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentBox" unique_id=1714093086]
+layout_mode = 0
+offset_left = 94.0
+offset_top = -18.0
+offset_right = 149.0
+offset_bottom = -3.0
+theme_override_font_sizes/font_size = 10
+text = "OW"
+horizontal_alignment = 2
+
+[node name="CurrentFont" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=1326160800]
+visible = false
+layout_mode = 0
+offset_top = 101.0
+offset_right = 40.0
+offset_bottom = 124.0
+focus_mode = 1
+text = "Font:"
+
+[node name="Num" type="SpinBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentFont" unique_id=1796757070]
+layout_mode = 0
+offset_left = 134.0
+offset_top = -2.0
+offset_right = 217.063
+offset_bottom = 29.0
+focus_mode = 2
+min_value = 1.0
+value = 1.0
+rounded = true
+alignment = 2
+
+[node name="Info" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentFont" unique_id=318335625]
+layout_mode = 0
+offset_left = -208.0
+offset_top = -19.0
+offset_right = 201.0
+offset_bottom = -4.0
+theme_override_font_sizes/font_size = 10
+text = "Speech"
+horizontal_alignment = 2
+
+[node name="CurrentScale" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=932110193]
+visible = false
+layout_mode = 0
+offset_top = 147.0
+offset_right = 45.0
+offset_bottom = 170.0
+text = "Scale:"
+
+[node name="Num" type="SpinBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentScale" unique_id=425502786]
+layout_mode = 0
+offset_left = 134.0
+offset_top = -5.0
+offset_right = 217.063
+offset_bottom = 26.0
+focus_mode = 2
+step = 0.01
+value = 1.0
+alignment = 2
+custom_arrow_step = 0.01
+
+[node name="CurrentColor" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=408829600]
+visible = false
+layout_mode = 0
+offset_top = 190.0
+offset_right = 93.0
+offset_bottom = 213.0
+text = "Layer Color:"
+
+[node name="Picker" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentColor" unique_id=806124962]
+layout_mode = 0
+offset_left = 169.0
+offset_top = -3.0
+offset_right = 201.0
+offset_bottom = 28.0
+focus_mode = 0
+color = Color(1, 1, 1, 1)
+edit_alpha = false
+
+[node name="NeedsReviewCheck" type="CheckBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=1608839312]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 58.0
+offset_right = 191.0
+offset_bottom = 90.0
+tooltip_text = "Flag this string to come back to it later.
+Marked strings get a ★ prefix in the list
+and can be filtered with the dropdown."
+focus_mode = 0
+text = "Mark for review"
+
+[node name="SimilarEntries" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1857358571]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Similar String entries:"
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer/HBoxContainer2/VBoxContainer/SimilarEntries" unique_id=960848248]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -63.0
+offset_right = 75.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StringSelector" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=2145179151]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Select a string:"
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer/HBoxContainer2/VBoxContainer/StringSelector" unique_id=1301701462]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -74.0
+offset_right = 75.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+allow_reselect = true
