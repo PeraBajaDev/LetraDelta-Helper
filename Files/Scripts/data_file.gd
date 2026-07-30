@@ -13,3 +13,7 @@ var _dialogues_entries: Array[DialogueEntry]
 func _init(new_style: StringName, dialogues_entries: Array[DialogueEntry] = []) -> void:
 	_style = new_style
 	_dialogues_entries = dialogues_entries
+
+
+func _to_string() -> String:
+	return "Style: %s \n dialogue_entries: %s" % [_style, _dialogues_entries]
