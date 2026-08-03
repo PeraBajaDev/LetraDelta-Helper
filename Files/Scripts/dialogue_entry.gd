@@ -1,13 +1,35 @@
 class_name DialogueEntry
 
+signal current_dialogue_changed()
 var _id: StringName
 
 var _dialogues: Array[Dialogue]
 
+var _current_dialogue: Dialogue
 
-func _init(id: StringName, dialogues: Array[Dialogue] = []) -> void:
-	_id = id
-	_dialogues = dialogues
+var current_dialogue: Dialogue:
+	get:
+		return _current_dialogue
+	set(value):
+		if value == null:
+			return
+		_current_dialogue = value
+		current_dialogue_changed.emit()
+
+var id: StringName:
+	get:
+		return _id
+
+var dialogues: Array[Dialogue]:
+	get:
+		return _dialogues
+
+
+func _init(new_id: StringName, new_dialogues: Array[Dialogue] = []) -> void:
+	_id = new_id
+	_dialogues = new_dialogues
+	for dialogue in _dialogues:
+		dialogue.content_changed.connect(current_dialogue_changed.emit)
 
 
 func _to_string() -> String:

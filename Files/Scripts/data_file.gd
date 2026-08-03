@@ -1,18 +1,34 @@
 extends RefCounted
 class_name DataFile
 
+signal entries_changed()
+signal current_entry_changed()
 var _style: StringName
 
 var style: StringName:
 	get:
 		return _style
+var _current_entry: DialogueEntry
+var current_entry: DialogueEntry:
+	get:
+		return _current_entry
+	set(value):
+		if value == null:
+			return
+		_current_entry = value
+		current_entry_changed.emit()
 
 var _dialogues_entries: Array[DialogueEntry]
+var dialogues_entries: Array[DialogueEntry]:
+	get:
+		return _dialogues_entries
+	set(value):
+		entries_changed.emit()
 
 
-func _init(new_style: StringName, dialogues_entries: Array[DialogueEntry] = []) -> void:
+func _init(new_style: StringName, new_dialogues_entries: Array[DialogueEntry] = []) -> void:
 	_style = new_style
-	_dialogues_entries = dialogues_entries
+	_dialogues_entries = new_dialogues_entries
 
 
 func _to_string() -> String:

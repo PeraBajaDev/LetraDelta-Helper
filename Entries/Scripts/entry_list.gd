@@ -1,0 +1,19 @@
+extends ItemList
+class_name EntryList
+
+var _data_file: DataFile
+var data_file: DataFile:
+	set(value):
+		if value != null:
+			_data_file = value
+		for entry in _data_file.dialogues_entries:
+			add_item(entry.id)
+
+
+func _ready() -> void:
+	item_selected.connect(_on_item_selected)
+
+
+func _on_item_selected(index: int):
+	var selected_entry = _data_file.dialogues_entries[index]
+	_data_file.current_entry = selected_entry

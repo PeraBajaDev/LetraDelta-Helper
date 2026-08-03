@@ -6,11 +6,31 @@ var _content: String
 var _original_content: String
 var _last_edited_by: StringName
 
+signal content_changed()
 
-func _init(key: StringName, content: String, original_content: String, last_edited_by) -> void:
+var content: String:
+	get:
+		return _content
+	set(value):
+		if value == null:
+			return
+		_content = value
+		content_changed.emit()
+
+var original_content: String:
+	get:
+		return _original_content
+
+
+func _init(
+	key: StringName,
+	new_content: String,
+	new_original_content: String,
+	last_edited_by: String,
+) -> void:
 	_key = key
-	_content = content
-	_original_content = original_content
+	_content = new_content
+	_original_content = new_original_content
 	_last_edited_by = last_edited_by
 
 
