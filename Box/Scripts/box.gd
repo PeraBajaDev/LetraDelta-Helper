@@ -1,4 +1,4 @@
-extends Label
+extends RichTextLabel
 class_name DialogueLabel
 
 var _data_file: DataFile
@@ -21,6 +21,4 @@ func _on_current_entry_changed() -> void:
 
 func _on_dialogue_changed() -> void:
 	text = _data_file.current_entry.current_dialogue.content
-	if text.begins_with("*"):
-		text = text.indent("    ")
-		print(text)
+	text = DialogueParser.parse(text)
