@@ -1,14 +1,15 @@
 [gd_scene format=3 uid="uid://3k875qfmo7iq"]
 
-[ext_resource type="Script" uid="uid://rko6njpmq4m4" path="res://Window/Scripts/main_window.gd" id="1_hhy2w"]
+[ext_resource type="Script" uid="uid://rko6njpmq4m4" path="res://Strings/Scripts/main_window.gd" id="1_hhy2w"]
 [ext_resource type="Texture2D" uid="uid://bdggvk6javu1" path="res://Box/Sprites/Box1.png" id="1_ifh20"]
 [ext_resource type="Script" uid="uid://byt8sngikc4is" path="res://Entries/Scripts/entry_list.gd" id="2_fg8dk"]
 [ext_resource type="Script" uid="uid://djle6enhwtl1f" path="res://Box/Scripts/box.gd" id="3_gey0d"]
 [ext_resource type="Texture2D" uid="uid://do71hc70q1tln" path="res://Portraits/Sprites/spr_face_n8.png" id="4_4iwp4"]
 [ext_resource type="FontFile" uid="uid://cm8vhnbpgnrpm" path="res://Fonts/fnt_main.fnt" id="5_4iwp4"]
-[ext_resource type="Script" uid="uid://pf2qv2vnl35g" path="res://Window/Scenes/dialogue_edit.gd" id="6_430op"]
+[ext_resource type="Script" uid="uid://dmnmncy4oo0n1" path="res://Window/Scripts/dialogue_edit.gd" id="6_430op"]
 [ext_resource type="Script" uid="uid://dkkdlyvsfnvb7" path="res://Strings/Scripts/original_dialogue.gd" id="6_lp5ky"]
 [ext_resource type="Script" uid="uid://v068fb6wp2lg" path="res://Strings/Scripts/dialogue_selector.gd" id="6_nfxux"]
+[ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
 
 [node name="MainWindow" type="Control" unique_id=1469613726]
 layout_mode = 3
@@ -219,6 +220,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 size_flags_vertical = 3
+scroll_hint_mode = 1
 script = ExtResource("2_fg8dk")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=524607657]
@@ -229,13 +231,14 @@ size_flags_horizontal = 3
 [node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1712469755]
 propagate_maximum_size = false
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 3
 
 [node name="SubViewport" type="SubViewport" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer" unique_id=109135706]
+handle_input_locally = false
 canvas_item_default_texture_filter = 0
 size = Vector2i(895, 333)
 size_2d_override = Vector2i(578, 152)
+render_target_update_mode = 4
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer/SubViewport" unique_id=243717850]
 anchors_preset = 8
@@ -505,7 +508,8 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Similar String entries:"
 
-[node name="ItemList" type="ItemList" parent="VBoxContainer/HBoxContainer2/VBoxContainer/SimilarEntries" unique_id=960848248]
+[node name="SimilarEntries" type="ItemList" parent="VBoxContainer/HBoxContainer2/VBoxContainer/SimilarEntries" unique_id=960848248]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 1
 anchors_preset = 8
@@ -519,6 +523,7 @@ offset_right = 75.0
 offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("9_mgc60")
 
 [node name="StringSelector" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=2145179151]
 custom_minimum_size = Vector2(0, 200)

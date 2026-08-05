@@ -17,12 +17,6 @@ func _ready() -> void:
 	item_selected.connect(_on_item_selected)
 
 
-func _on_current_entry_changed():
-	var index = _data_file.dialogues_entries.find(_data_file.current_entry)
-	select(index)
-	center_on_current(true, false)
-
-
 func _on_item_selected(index: int):
 	var selected_entry = _data_file.dialogues_entries[index]
 	_data_file.current_entry = selected_entry
