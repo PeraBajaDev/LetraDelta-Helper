@@ -8,6 +8,10 @@ var _last_edited_by: StringName
 
 signal content_changed()
 
+var key: String:
+	get:
+		return _key
+
 var content: String:
 	get:
 		return _content
@@ -23,12 +27,12 @@ var original_content: String:
 
 
 func _init(
-	key: StringName,
+	new_key: StringName,
 	new_content: String,
 	new_original_content: String,
 	last_edited_by: String,
 ) -> void:
-	_key = key
+	_key = new_key
 	_content = new_content
 	_original_content = new_original_content
 	_last_edited_by = last_edited_by
