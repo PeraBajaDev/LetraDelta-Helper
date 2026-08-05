@@ -6,6 +6,9 @@ var data_file: DataFile:
 	set(value):
 		if value != null:
 			_data_file = value
+		if not _data_file.current_entry_changed.is_connected(_on_current_entry_changed):
+			_data_file.current_entry_changed.connect(_on_current_entry_changed)
+		clear()
 		for entry in _data_file.dialogues_entries:
 			add_item(entry.id)
 

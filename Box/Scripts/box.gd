@@ -9,14 +9,15 @@ var data_file: DataFile:
 		if value == null:
 			return
 		_data_file = value
-		_data_file.current_entry_changed.connect(_on_current_entry_changed)
+		if not _data_file.current_entry_changed.is_connected(_on_current_entry_changed):
+			_data_file.current_entry_changed.connect(_on_current_entry_changed)
 
 
 func _on_current_entry_changed() -> void:
 	if _data_file.current_entry == null or _data_file.current_entry.current_dialogue == null:
 		text = ""
-
-	_data_file.current_entry.current_dialogue_changed.connect(_on_dialogue_changed)
+	if not _data_file.current_entry.current_dialogue_changed.is_connected(_on_dialogue_changed):
+		_data_file.current_entry.current_dialogue_changed.connect(_on_dialogue_changed)
 
 
 func _on_dialogue_changed() -> void:

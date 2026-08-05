@@ -24,8 +24,8 @@ func update_list():
 		var item_text: String = dialogue.content if not dialogue.content.is_empty() else dialogue.original_content
 		add_item(item_text)
 		var dialogue_index: int = current_entry.dialogues.find(dialogue)
-
-		dialogue.content_changed.connect(update_item.bind(dialogue_index))
+		if not dialogue.content_changed.is_connected(update_item):
+			dialogue.content_changed.connect(update_item.bind(dialogue_index))
 
 
 func update_item(index: int):

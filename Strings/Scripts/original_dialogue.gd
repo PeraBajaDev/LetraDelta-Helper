@@ -12,7 +12,8 @@ var data_file: DataFile:
 
 
 func _on_current_entry_changed() -> void:
-	_data_file.current_entry.current_dialogue_changed.connect(_on_dialogue_changed)
+	if not _data_file.current_entry.current_dialogue_changed.is_connected(_on_dialogue_changed):
+		_data_file.current_entry.current_dialogue_changed.connect(_on_dialogue_changed)
 
 
 func _on_dialogue_changed() -> void:
