@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://rko6njpmq4m4" path="res://Window/Scripts/main_window.gd" id="1_hhy2w"]
 [ext_resource type="Texture2D" uid="uid://bdggvk6javu1" path="res://Box/Sprites/Box1.png" id="1_ifh20"]
 [ext_resource type="Script" uid="uid://byt8sngikc4is" path="res://Entries/Scripts/entry_list.gd" id="2_fg8dk"]
-[ext_resource type="FontFile" uid="uid://ckhgjfsxauh3j" path="res://Fonts/fnt_mainbig.fnt" id="2_qwv3i"]
 [ext_resource type="Script" uid="uid://djle6enhwtl1f" path="res://Box/Scripts/box.gd" id="3_gey0d"]
+[ext_resource type="Texture2D" uid="uid://do71hc70q1tln" path="res://Portraits/Sprites/spr_face_n8.png" id="4_4iwp4"]
+[ext_resource type="FontFile" uid="uid://cm8vhnbpgnrpm" path="res://Fonts/fnt_main.fnt" id="5_4iwp4"]
 [ext_resource type="Script" uid="uid://pf2qv2vnl35g" path="res://Window/Scenes/dialogue_edit.gd" id="6_430op"]
 [ext_resource type="Script" uid="uid://dkkdlyvsfnvb7" path="res://Strings/Scripts/original_dialogue.gd" id="6_lp5ky"]
 [ext_resource type="Script" uid="uid://v068fb6wp2lg" path="res://Strings/Scripts/dialogue_selector.gd" id="6_nfxux"]
@@ -225,14 +226,35 @@ custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=296387573]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1712469755]
+propagate_maximum_size = false
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 2
-texture = ExtResource("1_ifh20")
-stretch_mode = 3
+size_flags_vertical = 6
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/TextureRect" unique_id=2082095037]
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer" unique_id=109135706]
+canvas_item_default_texture_filter = 0
+size = Vector2i(895, 333)
+size_2d_override = Vector2i(578, 152)
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer/SubViewport" unique_id=243717850]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -76.0
+offset_right = 289.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_ifh20")
+stretch_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer/SubViewport/TextureRect" unique_id=2082095037]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -244,14 +266,38 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="DialogueLabel" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/TextureRect/MarginContainer" unique_id=991760520]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer/SubViewport/TextureRect/MarginContainer" unique_id=1474365382]
 clip_contents = true
 layout_mode = 2
-size_flags_vertical = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer/SubViewport/TextureRect/MarginContainer/HBoxContainer" unique_id=576463355]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("4_4iwp4")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="DialogueLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer/SubViewport/TextureRect/MarginContainer/HBoxContainer" unique_id=664364993]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(430, 0)
+custom_maximum_size = Vector2(430, 500)
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
 offset_transform_position = Vector2(20, 20)
-theme_override_fonts/font = ExtResource("2_qwv3i")
+theme_override_fonts/normal_font = ExtResource("5_4iwp4")
+theme_override_fonts/bold_font = ExtResource("5_4iwp4")
+theme_override_fonts/bold_italics_font = ExtResource("5_4iwp4")
+theme_override_fonts/italics_font = ExtResource("5_4iwp4")
+theme_override_fonts/mono_font = ExtResource("5_4iwp4")
+theme_override_font_sizes/normal_font_size = 32
+text = "Hola mundo ekisde"
+fit_content = true
+scroll_active = false
 autowrap_mode = 2
+justification_flags = 160
 script = ExtResource("3_gey0d")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1721739519]
