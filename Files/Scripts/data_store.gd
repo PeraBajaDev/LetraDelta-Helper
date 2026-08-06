@@ -1,7 +1,6 @@
 extends Resource
 class_name DataStore
 
-signal entries_changed()
 signal current_entry_changed()
 var _style: StringName
 
