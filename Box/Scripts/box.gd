@@ -21,5 +21,9 @@ func _on_current_entry_changed() -> void:
 
 
 func _on_dialogue_changed() -> void:
+	if not _data_file.current_entry.current_dialogue.content_changed.is_connected(
+		_on_dialogue_changed
+	):
+		_data_file.current_entry.current_dialogue.content_changed.connect(_on_dialogue_changed)
 	text = _data_file.current_entry.current_dialogue.content
 	text = DialogueParser.parse(text)

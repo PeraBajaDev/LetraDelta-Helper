@@ -33,7 +33,6 @@ func _on_current_dialogue_changed():
 				continue
 			if dialogue.original_content == selected_dialogue.original_content:
 				add_item(dialogue.key)
-	print("similar entries")
 
 
 func _on_item_selected(index: int):

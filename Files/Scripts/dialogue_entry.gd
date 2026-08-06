@@ -28,8 +28,6 @@ var dialogues: Array[Dialogue]:
 func _init(new_id: StringName, new_dialogues: Array[Dialogue] = []) -> void:
 	_id = new_id
 	_dialogues = new_dialogues
-	for dialogue in _dialogues:
-		dialogue.content_changed.connect(current_dialogue_changed.emit)
 
 
 func _to_string() -> String:
