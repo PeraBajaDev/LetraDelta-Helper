@@ -417,7 +417,6 @@ offset_top = -18.0
 offset_right = 149.0
 offset_bottom = -3.0
 theme_override_font_sizes/font_size = 10
-text = "OW"
 horizontal_alignment = 2
 
 [node name="CurrentFont" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=1326160800]

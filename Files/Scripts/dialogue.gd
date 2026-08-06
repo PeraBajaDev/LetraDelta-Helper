@@ -45,3 +45,9 @@ func _to_string() -> String:
 		_original_content,
 		_last_edited_by,
 	]
+
+
+func set_content_without_signal_emission(value: String):
+	if value == null:
+		return
+	_content = value
