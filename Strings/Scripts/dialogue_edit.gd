@@ -9,7 +9,7 @@ var data_file: DataStore:
 		if value == null:
 			return
 		_data_file = value
-		_data_file.current_entry_changed.connect(_on_current_entry_changed)
+		_data_file.entry_selected.connect(_on_current_entry_changed)
 
 
 func _ready() -> void:

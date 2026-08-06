@@ -1,7 +1,7 @@
 extends Resource
 class_name DataStore
 
-signal current_entry_changed()
+signal entry_selected()
 var _style: StringName
 
 var style: StringName:
@@ -15,7 +15,7 @@ var current_entry: DialogueEntry:
 		if value == null or value == _current_entry:
 			return
 		_current_entry = value
-		current_entry_changed.emit()
+		entry_selected.emit()
 
 var _dialogues_entries: Array[DialogueEntry]
 var dialogues_entries: Array[DialogueEntry]:

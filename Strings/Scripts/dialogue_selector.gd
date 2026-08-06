@@ -10,7 +10,7 @@ var data_file: DataStore:
 		if value == null:
 			return
 		_data_file = value
-		_data_file.current_entry_changed.connect(update_list)
+		_data_file.entry_selected.connect(update_list)
 
 
 func _ready() -> void:

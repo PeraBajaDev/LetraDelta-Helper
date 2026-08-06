@@ -9,8 +9,8 @@ var data_file: DataStore:
 		if value == null:
 			return
 		_data_file = value
-		if not _data_file.current_entry_changed.is_connected(_on_current_entry_changed):
-			_data_file.current_entry_changed.connect(_on_current_entry_changed)
+		if not _data_file.entry_selected.is_connected(_on_current_entry_changed):
+			_data_file.entry_selected.connect(_on_current_entry_changed)
 
 
 func _on_current_entry_changed() -> void:
