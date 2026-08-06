@@ -12,7 +12,7 @@ var current_entry: DialogueEntry:
 	get:
 		return _current_entry
 	set(value):
-		if value == null:
+		if value == null or value == _current_entry:
 			return
 		_current_entry = value
 		current_entry_changed.emit()

@@ -16,7 +16,7 @@ var content: String:
 	get:
 		return _content
 	set(value):
-		if value == null:
+		if value == null or _content == value:
 			return
 		_content = value
 		content_changed.emit()

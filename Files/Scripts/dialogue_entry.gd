@@ -12,7 +12,7 @@ var current_dialogue: Dialogue:
 	get:
 		return _current_dialogue
 	set(value):
-		if value == null:
+		if value == null or value == _current_dialogue:
 			return
 		_current_dialogue = value
 		current_dialogue_changed.emit()
