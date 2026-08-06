@@ -1,7 +1,6 @@
 extends Resource
 class_name DataStore
 
-signal entries_changed()
 signal current_entry_changed()
 var _style: StringName
 
@@ -22,8 +21,6 @@ var _dialogues_entries: Array[DialogueEntry]
 var dialogues_entries: Array[DialogueEntry]:
 	get:
 		return _dialogues_entries
-	set(value):
-		entries_changed.emit()
 
 
 func _init(new_style: StringName, new_dialogues_entries: Array[DialogueEntry] = []) -> void:
