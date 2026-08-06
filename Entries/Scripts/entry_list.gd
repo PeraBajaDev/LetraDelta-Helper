@@ -1,8 +1,8 @@
 extends ItemList
 class_name EntryList
 
-var _data_file: DataFile
-var data_file: DataFile:
+var _data_file: DataStore
+var data_file: DataStore:
 	set(value):
 		if value != null:
 			_data_file = value

@@ -1,5 +1,5 @@
-extends RefCounted
-class_name DataFile
+extends Resource
+class_name DataStore
 
 signal entries_changed()
 signal current_entry_changed()

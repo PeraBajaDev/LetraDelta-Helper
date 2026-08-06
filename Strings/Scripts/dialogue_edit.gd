@@ -1,8 +1,8 @@
 extends TextEdit
 class_name DialogueEdit
-var _data_file: DataFile
+var _data_file: DataStore
 @onready var _replace_similar_entries_check: CheckBox = $ReplaceSimilar
-var data_file: DataFile:
+var data_file: DataStore:
 	get:
 		return data_file
 	set(value):

@@ -1,7 +1,7 @@
 extends TextEdit
 class_name OriginalDialogue
-var _data_file: DataFile
-var data_file: DataFile:
+var _data_file: DataStore
+var data_file: DataStore:
 	get:
 		return data_file
 	set(value):

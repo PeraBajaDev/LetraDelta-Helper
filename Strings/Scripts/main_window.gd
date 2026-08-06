@@ -1,6 +1,6 @@
 extends Control
 
-var data_file: DataFile
+var data_file: DataStore
 @onready var entry_list: EntryList = %EntryList
 @onready var dialogue_selector: DialogueSelector = %DialogueSelector
 @onready var original_dialogue: OriginalDialogue = %OriginalDialogue
