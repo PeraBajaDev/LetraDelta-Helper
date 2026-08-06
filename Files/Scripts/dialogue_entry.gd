@@ -1,3 +1,4 @@
+extends Resource
 class_name DialogueEntry
 
 signal current_dialogue_changed()
