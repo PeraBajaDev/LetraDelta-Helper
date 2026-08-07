@@ -1,25 +1,30 @@
 extends Control
 
-var data_file: DataStore
-@onready var entry_list: EntryList = %EntryList
-@onready var dialogue_selector: DialogueSelector = %DialogueSelector
-@onready var original_dialogue: OriginalDialogue = %OriginalDialogue
-@onready var dialogue_edit: DialogueEdit = %DialogueEdit
-@onready var dialogue_label: DialogueLabel = %DialogueLabel
-@onready var similar_entries: SimilarEntriesList = %SimilarEntries
+@export var _data_store: DataStore
 
 
 func _ready() -> void:
 	var full_path: String = OS.get_system_dir(OS.SYSTEM_DIR_DOCUMENTS).path_join(
 		r"PeraBajaDev/scripts varios/nuevo_archivo.json"
 	)
-	data_file = JSONHandler.get_data_file(full_path)
-	if data_file == null:
-		print("Error al cargar el archivo")
+	print("antes", _data_store.get_instance_id(), "contenido: ", _data_store.style)
+	var data_source_from_json := JSONHandler.get_data_store(full_path)
+	var error = _data_store.copy_from_resource(data_source_from_json)
+	print(
+		"data de get_data_store",
+		data_source_from_json.get_instance_id(),
+		" contenido:",
+		data_source_from_json.style,
+	)
+	print(
+		"después",
+		_data_store.get_instance_id(),
+		" contenido:",
+		_data_store.style,
+		" error: ",
+		error_string(error),
+	)
+	if _data_store == null:
+		push_error("Error al cargar el archivo")
 		return
-	entry_list.data_file = data_file
-	dialogue_selector.data_file = data_file
-	original_dialogue.data_file = data_file
-	dialogue_edit.data_file = data_file
-	dialogue_label.data_file = data_file
-	similar_entries.data_file = data_file
+	_data_store.notify_data_loaded.call_deferred()

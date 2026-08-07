@@ -1,10 +1,10 @@
 extends Resource
 class_name Dialogue
 
-var _key: StringName
-var _content: String
-var _original_content: String
-var _last_edited_by: StringName
+@export var _key: StringName
+@export var _content: String
+@export var _original_content: String
+@export var _last_edited_by: StringName
 
 signal content_changed()
 

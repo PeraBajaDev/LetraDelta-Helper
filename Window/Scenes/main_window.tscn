@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://rko6njpmq4m4" path="res://Window/Scripts/main_window.gd" id="1_hhy2w"]
 [ext_resource type="Texture2D" uid="uid://bdggvk6javu1" path="res://Box/Sprites/Box1.png" id="1_ifh20"]
+[ext_resource type="Resource" uid="uid://c4qiv66dtmsqu" path="res://Files/Resources/data_store.tres" id="2_4e30w"]
 [ext_resource type="Script" uid="uid://byt8sngikc4is" path="res://Entries/Scripts/entry_list.gd" id="2_fg8dk"]
 [ext_resource type="Script" uid="uid://djle6enhwtl1f" path="res://Box/Scripts/box.gd" id="3_gey0d"]
 [ext_resource type="Texture2D" uid="uid://do71hc70q1tln" path="res://Portraits/Sprites/spr_face_n8.png" id="4_4iwp4"]
@@ -21,6 +22,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_hhy2w")
+_data_store = ExtResource("2_4e30w")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1156820146]
 layout_mode = 1
@@ -222,6 +224,7 @@ layout_mode = 2
 size_flags_vertical = 3
 scroll_hint_mode = 1
 script = ExtResource("2_fg8dk")
+_data_store = ExtResource("2_4e30w")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=524607657]
 custom_minimum_size = Vector2(0, 250)
@@ -302,6 +305,7 @@ scroll_active = false
 autowrap_mode = 2
 justification_flags = 160
 script = ExtResource("3_gey0d")
+_data_store = ExtResource("2_4e30w")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1721739519]
 layout_mode = 2
@@ -316,6 +320,7 @@ focus_mode = 1
 placeholder_text = "Put your Dialogue text here to try it out."
 editable = false
 script = ExtResource("6_430op")
+_data_store = ExtResource("2_4e30w")
 
 [node name="EnablePortrait" type="CheckBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/DialogueEdit" unique_id=1752549447]
 layout_mode = 0
@@ -361,6 +366,7 @@ focus_mode = 1
 placeholder_text = "The original dialogue does here."
 editable = false
 script = ExtResource("6_lp5ky")
+_data_store = ExtResource("2_4e30w")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=297930547]
 layout_mode = 2
@@ -523,6 +529,7 @@ offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_mgc60")
+_data_store = ExtResource("2_4e30w")
 
 [node name="StringSelector" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=2145179151]
 custom_minimum_size = Vector2(0, 200)
@@ -547,3 +554,4 @@ grow_horizontal = 2
 grow_vertical = 2
 allow_reselect = true
 script = ExtResource("6_nfxux")
+_data_store = ExtResource("2_4e30w")

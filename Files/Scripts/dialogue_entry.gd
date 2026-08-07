@@ -2,9 +2,9 @@ extends Resource
 class_name DialogueEntry
 
 signal current_dialogue_changed(dialogue: Dialogue)
-var _id: StringName
+@export var _id: StringName
 
-var _dialogues: Array[Dialogue]
+@export var _dialogues: Array[Dialogue]
 
 var _current_dialogue: Dialogue
 

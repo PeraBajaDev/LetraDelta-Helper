@@ -1,15 +1,15 @@
 extends RichTextLabel
 class_name DialogueLabel
 
-var _data_file: DataStore
-var data_file: DataStore:
-	get:
-		return _data_file
-	set(value):
-		if value == null:
-			return
-		_data_file = value
-		UIWatcher.watch(self, _data_file.entry_selected, _on_current_entry_changed)
+@export var _data_store: DataStore
+
+
+func _ready() -> void:
+	_data_store.data_loaded.connect(_on_data_loaded)
+
+
+func _on_data_loaded():
+	UIWatcher.watch(self, _data_store.entry_selected, _on_current_entry_changed)
 
 
 func _on_current_entry_changed(entry: DialogueEntry) -> void:
@@ -19,6 +19,6 @@ func _on_current_entry_changed(entry: DialogueEntry) -> void:
 
 
 func _on_dialogue_changed(dialogue: Dialogue) -> void:
-	UIWatcher.watch(self, dialogue.content_changed, _on_dialogue_changed)
-	text = _data_file.current_entry.current_dialogue.content
+	UIWatcher.watch(self, dialogue.content_changed, _on_dialogue_changed.bind(dialogue))
+	text = _data_store.current_entry.current_dialogue.content
 	text = DialogueParser.parse(text)

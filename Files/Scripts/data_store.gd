@@ -3,8 +3,8 @@ class_name DataStore
 
 signal entry_selected(entry: DialogueEntry)
 signal dialogue_selected(dialogue: Dialogue)
-
-var _style: StringName
+signal data_loaded
+@export var _style: StringName
 var style: StringName:
 	get:
 		return _style
@@ -21,15 +21,19 @@ func select_entry(entry: DialogueEntry) -> void:
 	entry_selected.emit(_current_entry)
 
 
-var _dialogues_entries: Array[DialogueEntry]
+@export var _dialogues_entries: Array[DialogueEntry]
 var dialogues_entries: Array[DialogueEntry]:
 	get:
 		return _dialogues_entries
 
 
-func _init(new_style: StringName, new_dialogues_entries: Array[DialogueEntry] = []) -> void:
+func _init(new_style: StringName = "", new_dialogues_entries: Array[DialogueEntry] = []) -> void:
 	_style = new_style
 	_dialogues_entries = new_dialogues_entries
+
+
+func notify_data_loaded():
+	data_loaded.emit()
 
 
 func notify_dialogue_changed(dialogue: Dialogue) -> void:

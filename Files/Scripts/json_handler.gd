@@ -3,7 +3,7 @@ class_name JSONHandler
 
 
 ## Returns a DataStore instance if given path is found, else returns null
-static func get_data_file(json_file_path: String) -> DataStore:
+static func get_data_store(json_file_path: String) -> DataStore:
 	var text_data = FileAccess.get_file_as_string(json_file_path)
 	if text_data.is_empty():
 		if FileAccess.get_open_error() == Error.ERR_FILE_NOT_FOUND:
@@ -27,4 +27,6 @@ static func get_data_file(json_file_path: String) -> DataStore:
 				)
 			)
 		entries.append(DialogueEntry.new(id, dialogues))
-	return DataStore.new(style, entries)
+	var result := DataStore.new(style, entries)
+	print(result._style)
+	return result

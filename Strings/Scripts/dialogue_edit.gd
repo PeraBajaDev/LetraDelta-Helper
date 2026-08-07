@@ -1,19 +1,16 @@
 extends TextEdit
 class_name DialogueEdit
-var _data_file: DataStore
+@export var _data_store: DataStore
 @onready var _replace_similar_entries_check: CheckBox = $ReplaceSimilar
-var data_file: DataStore:
-	get:
-		return data_file
-	set(value):
-		if value == null:
-			return
-		_data_file = value
-		_data_file.entry_selected.connect(_on_current_entry_changed)
 
 
 func _ready() -> void:
 	text_changed.connect(_on_text_changed)
+	_data_store.data_loaded.connect(_on_data_loaded)
+
+
+func _on_data_loaded():
+	UIWatcher.watch(self, _data_store.entry_selected, _on_current_entry_changed)
 
 
 func _on_current_entry_changed(entry: DialogueEntry) -> void:
@@ -36,7 +33,7 @@ func _on_dialogue_changed(dialogue: Dialogue) -> void:
 
 func _on_text_changed() -> void:
 	print("texto cambiado")
-	var current_dialogue := _data_file.current_entry.current_dialogue
+	var current_dialogue := _data_store.current_entry.current_dialogue
 	if _replace_similar_entries_check.button_pressed:
 		current_dialogue.content = text
 		_replace_similar_entries()
@@ -45,9 +42,9 @@ func _on_text_changed() -> void:
 
 
 func _replace_similar_entries():
-	var current_dialogue := _data_file.current_entry.current_dialogue
+	var current_dialogue := _data_store.current_entry.current_dialogue
 	var all_dialogues: Array[Dialogue] = []
-	for entry in _data_file.dialogues_entries:
+	for entry in _data_store.dialogues_entries:
 		all_dialogues.append_array(entry.dialogues)
 	for dialogue in all_dialogues:
 		if current_dialogue.original_content == dialogue.original_content:
