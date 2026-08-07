@@ -10,35 +10,30 @@ var data_file: DataStore:
 		if value == null:
 			return
 		_data_file = value
-		_data_file.entry_selected.connect(update_list)
+		UIWatcher.watch(self, _data_file.entry_selected, update_list)
 
 
 func _ready() -> void:
 	item_selected.connect(_on_item_selected)
 
 
-func update_list():
+func update_list(entry: DialogueEntry):
 	clear()
-	var current_entry: DialogueEntry = _data_file.current_entry
-	if not current_entry.current_dialogue_changed.is_connected(_on_current_dialogue_changed):
-		current_entry.current_dialogue_changed.connect(_on_current_dialogue_changed)
-	for dialogue in current_entry.dialogues:
+	UIWatcher.watch(self, entry.current_dialogue_changed, _on_current_dialogue_changed)
+	for dialogue in entry.dialogues:
 		var item_text: String = dialogue.content if not dialogue.content.is_empty() else dialogue.original_content
 		add_item(item_text)
-		var dialogue_index: int = current_entry.dialogues.find(dialogue)
-		if not dialogue.content_changed.is_connected(_update_item):
-			dialogue.content_changed.connect(_update_item.bind(dialogue_index))
+		var dialogue_index: int = entry.dialogues.find(dialogue)
+		UIWatcher.watch(self, dialogue.content_changed, _update_item.bind(dialogue_index))
 
 
-func _update_item(index: int):
-	var current_entry: DialogueEntry = _data_file.current_entry
-	var dialogue := current_entry.dialogues[index]
+func _update_item(dialogue: Dialogue, index: int):
 	var item_text: String = dialogue.content if not dialogue.content.is_empty() else dialogue.original_content
 	set_item_text(index, item_text)
 
 
-func _on_current_dialogue_changed():
-	var index := _data_file.current_entry.dialogues.find(_data_file.current_entry.current_dialogue)
+func _on_current_dialogue_changed(dialogue: Dialogue):
+	var index := _data_file.current_entry.dialogues.find(dialogue)
 	select(index)
 	ensure_current_is_visible.call_deferred()
 

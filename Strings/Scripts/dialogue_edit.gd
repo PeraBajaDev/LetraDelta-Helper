@@ -16,22 +16,20 @@ func _ready() -> void:
 	text_changed.connect(_on_text_changed)
 
 
-func _on_current_entry_changed() -> void:
-	if _data_file.current_entry == null or _data_file.current_entry.current_dialogue == null:
+func _on_current_entry_changed(entry: DialogueEntry) -> void:
+	if entry == null or entry.current_dialogue == null:
 		text = ""
 		editable = false
-	if not _data_file.current_entry.current_dialogue_changed.is_connected(_on_dialogue_changed):
-		_data_file.current_entry.current_dialogue_changed.connect(_on_dialogue_changed)
+	UIWatcher.watch(self, entry.current_dialogue_changed, _on_dialogue_changed)
 
 
-func _on_dialogue_changed() -> void:
-	var current_dialogue := _data_file.current_entry.current_dialogue
-	if current_dialogue == null:
+func _on_dialogue_changed(dialogue: Dialogue) -> void:
+	if dialogue == null:
 		return
 	editable = true
 	var caret_column := get_caret_column()
 	var caret_line := get_caret_line()
-	text = current_dialogue.content
+	text = dialogue.content
 	set_caret_line(caret_line)
 	set_caret_column(caret_column)
 

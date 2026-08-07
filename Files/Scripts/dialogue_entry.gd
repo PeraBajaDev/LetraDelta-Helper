@@ -1,7 +1,7 @@
 extends Resource
 class_name DialogueEntry
 
-signal current_dialogue_changed()
+signal current_dialogue_changed(dialogue: Dialogue)
 var _id: StringName
 
 var _dialogues: Array[Dialogue]
@@ -15,7 +15,7 @@ var current_dialogue: Dialogue:
 		if value == null or value == _current_dialogue:
 			return
 		_current_dialogue = value
-		current_dialogue_changed.emit()
+		current_dialogue_changed.emit(value)
 
 var id: StringName:
 	get:
@@ -29,6 +29,10 @@ var dialogues: Array[Dialogue]:
 func _init(new_id: StringName, new_dialogues: Array[Dialogue] = []) -> void:
 	_id = new_id
 	_dialogues = new_dialogues
+
+
+func set_current_dialogue_by_key(_key: String):
+	pass
 
 
 func _to_string() -> String:
