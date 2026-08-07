@@ -3,30 +3,24 @@ class_name SimilarEntriesList
 var _data_file: DataStore
 var data_file: DataStore:
 	get:
-		return data_file
+		return _data_file
 	set(value):
 		if value == null:
 			return
 		_data_file = value
-		_data_file.entry_selected.connect(_on_current_entry_changed)
+		UIWatcher.watch(self, _data_file.entry_selected, _on_current_entry_changed)
 
 
 func _ready() -> void:
 	item_selected.connect(_on_item_selected)
 
 
-func _on_current_entry_changed():
-	if not _data_file.current_entry.current_dialogue_changed.is_connected(
-		_on_current_dialogue_changed
-	):
-		_data_file.current_entry.current_dialogue_changed.connect(_on_current_dialogue_changed)
+func _on_current_entry_changed(entry: DialogueEntry):
+	UIWatcher.watch(self, entry.current_dialogue_changed, _on_current_dialogue_changed)
 
 
-func _on_current_dialogue_changed():
+func _on_current_dialogue_changed(selected_dialogue: Dialogue):
 	clear()
-	var selected_dialogue := _data_file \
-			.current_entry \
-			.current_dialogue
 	for entry in _data_file.dialogues_entries:
 		for dialogue: Dialogue in entry.dialogues:
 			if dialogue.key == selected_dialogue.key:
@@ -39,7 +33,7 @@ func _on_item_selected(index: int):
 	var similar_dialogue_key = get_item_text(index)
 	for entry in _data_file.dialogues_entries:
 		if entry.id in similar_dialogue_key:
-			_data_file.current_entry = entry
+			_data_file.select_entry(entry)
 			entry.current_dialogue = entry.dialogues.filter(
 				func(dialogue: Dialogue):
 					return (dialogue.key == similar_dialogue_key),

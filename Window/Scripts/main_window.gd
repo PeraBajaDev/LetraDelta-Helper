@@ -6,6 +6,7 @@ var data_file: DataStore
 @onready var original_dialogue: OriginalDialogue = %OriginalDialogue
 @onready var dialogue_edit: DialogueEdit = %DialogueEdit
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
+@onready var similar_entries: SimilarEntriesList = %SimilarEntries
 
 
 func _ready() -> void:
@@ -21,3 +22,4 @@ func _ready() -> void:
 	original_dialogue.data_file = data_file
 	dialogue_edit.data_file = data_file
 	dialogue_label.data_file = data_file
+	similar_entries.data_file = data_file
