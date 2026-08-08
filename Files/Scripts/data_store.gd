@@ -4,7 +4,9 @@ class_name DataStore
 signal entry_selected(entry: DialogueEntry)
 signal dialogue_selected(dialogue: Dialogue)
 signal data_loaded
+
 @export var _style: StringName
+@export var load_error: Error = Error.OK
 var style: StringName:
 	get:
 		return _style
@@ -42,3 +44,9 @@ func notify_dialogue_changed(dialogue: Dialogue) -> void:
 
 func _to_string() -> String:
 	return "Style: %s \n dialogue_entries: %s" % [_style, _dialogues_entries]
+
+
+static func create_with_given_error(error: Error):
+	var data_store = DataStore.new()
+	data_store.load_error = error
+	return data_store

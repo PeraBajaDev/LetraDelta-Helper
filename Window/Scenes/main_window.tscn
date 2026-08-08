@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bdggvk6javu1" path="res://Box/Sprites/Box1.png" id="1_ifh20"]
 [ext_resource type="Resource" uid="uid://c4qiv66dtmsqu" path="res://Files/Resources/data_store.tres" id="2_4e30w"]
 [ext_resource type="Script" uid="uid://byt8sngikc4is" path="res://Entries/Scripts/entry_list.gd" id="2_fg8dk"]
+[ext_resource type="Script" uid="uid://ccle6cpidldhu" path="res://UI/Scripts/file_menu_button.gd" id="2_pwu08"]
 [ext_resource type="Script" uid="uid://djle6enhwtl1f" path="res://Box/Scripts/box.gd" id="3_gey0d"]
 [ext_resource type="Texture2D" uid="uid://do71hc70q1tln" path="res://Portraits/Sprites/spr_face_n8.png" id="4_4iwp4"]
 [ext_resource type="FontFile" uid="uid://cm8vhnbpgnrpm" path="res://Fonts/fnt_main.fnt" id="5_4iwp4"]
@@ -22,7 +23,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_hhy2w")
-_data_store = ExtResource("2_4e30w")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1156820146]
 layout_mode = 1
@@ -57,40 +57,49 @@ layout_mode = 2
 text = "File"
 flat = false
 item_count = 17
-popup/item_0/text = "New File"
-popup/item_0/id = 6
-popup/item_1/text = "Open File"
-popup/item_1/id = 1
-popup/item_2/text = "Open Recent"
-popup/item_2/id = 11
-popup/item_3/text = "Save File"
-popup/item_3/id = 2
-popup/item_4/text = "Save File As..."
-popup/item_4/id = 8
+popup/item_0/text = "Open File"
+popup/item_0/id = 1
+popup/item_1/text = "Settings"
+popup/item_1/id = 2
+popup/item_2/text = "Save File"
+popup/item_2/id = 3
+popup/item_3/text = "New File"
+popup/item_3/id = 6
+popup/item_4/text = "Open Recent"
+popup/item_4/id = 11
 popup/item_5/text = "Export to JSON..."
 popup/item_5/id = 12
-popup/item_6/text = "Load Reference CSV..."
-popup/item_6/id = 13
-popup/item_7/text = "Clear Reference CSV"
-popup/item_7/id = 14
-popup/item_8/id = 4
-popup/item_8/separator = true
+popup/item_6/text = "Save File As..."
+popup/item_6/id = 8
+popup/item_7/id = 4
+popup/item_7/separator = true
+popup/item_8/text = "Load Reference CSV..."
+popup/item_8/id = 13
 popup/item_9/text = "Close File"
 popup/item_9/id = 7
 popup/item_10/id = 4
 popup/item_10/separator = true
-popup/item_11/text = "Delete Selected Entry"
-popup/item_11/id = 9
-popup/item_12/text = "Delete Selected String"
-popup/item_12/id = 10
+popup/item_11/text = "Clear Reference CSV"
+popup/item_11/id = 14
+popup/item_12/text = "Delete Selected Entry"
+popup/item_12/id = 9
 popup/item_13/id = 4
 popup/item_13/separator = true
-popup/item_14/text = "Settings"
-popup/item_14/id = 3
+popup/item_14/text = "Delete Selected String"
+popup/item_14/id = 10
 popup/item_15/id = 4
 popup/item_15/separator = true
 popup/item_16/text = "Exit"
 popup/item_16/id = 5
+script = ExtResource("2_pwu08")
+_data_store = ExtResource("2_4e30w")
+
+[node name="OpenFileDialog" type="FileDialog" parent="VBoxContainer/Panel/MenuBar/Container/File" unique_id=986615352]
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json")
+use_native_dialog = true
 
 [node name="GoTo" type="Button" parent="VBoxContainer/Panel/MenuBar/Container" unique_id=544218320]
 layout_mode = 2
