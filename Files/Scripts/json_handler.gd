@@ -27,6 +27,4 @@ static func get_data_store(json_file_path: String) -> DataStore:
 				)
 			)
 		entries.append(DialogueEntry.new(id, dialogues))
-	var result := DataStore.new(style, entries)
-	print(result._style)
-	return result
+	return DataStore.new(style, entries)

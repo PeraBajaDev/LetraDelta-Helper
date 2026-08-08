@@ -32,10 +32,8 @@ func _on_dialogue_changed(dialogue: Dialogue) -> void:
 
 
 func _on_text_changed() -> void:
-	print("texto cambiado")
 	var current_dialogue := _data_store.current_entry.current_dialogue
 	if _replace_similar_entries_check.button_pressed:
-		current_dialogue.content = text
 		_replace_similar_entries()
 	else:
 		current_dialogue.content = text
@@ -47,5 +45,13 @@ func _replace_similar_entries():
 	for entry in _data_store.dialogues_entries:
 		all_dialogues.append_array(entry.dialogues)
 	for dialogue in all_dialogues:
-		if current_dialogue.original_content == dialogue.original_content:
+		if (
+			current_dialogue.original_content == dialogue.original_content
+			and not _data_store.current_entry.dialogues.any(
+				func(d):
+					return dialogue == d,
+			)
+		):
 			dialogue.set_content_without_signal_emission(text)
+		elif current_dialogue.original_content == dialogue.original_content:
+			current_dialogue.content = text

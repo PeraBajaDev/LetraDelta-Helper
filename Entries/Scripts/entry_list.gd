@@ -13,15 +13,22 @@ func _on_data_loaded():
 	clear()
 	UIWatcher.watch(self, _data_store.entry_selected, _on_current_entry_changed)
 	for entry in _data_store.dialogues_entries:
-		add_item(entry.id)
+		var item_index = add_item(entry.id)
+		set_item_metadata(item_index, entry)
 
 
 func _on_current_entry_changed(entry: DialogueEntry):
-	var index = _data_store.dialogues_entries.find(entry)
-	select(index)
+	select(_get_item_index_with_entry(entry))
 	center_on_current()
 
 
+func _get_item_index_with_entry(entry: DialogueEntry) -> int:
+	for i in range(item_count):
+		if get_item_metadata(i) == entry:
+			return i
+	return -1
+
+
 func _on_item_selected(index: int):
-	var selected_entry := _data_store.dialogues_entries[index]
+	var selected_entry: DialogueEntry = get_item_metadata(index)
 	_data_store.select_entry(selected_entry)

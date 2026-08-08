@@ -15,12 +15,12 @@ func _on_data_loaded():
 
 func update_list(entry: DialogueEntry):
 	clear()
-	UIWatcher.watch(self, entry.current_dialogue_changed, _on_current_dialogue_changed)
+	UIWatcher.watch(self, _data_store.dialogue_selected, _on_current_dialogue_changed)
 	for dialogue in entry.dialogues:
 		var item_text: String = dialogue.content if not dialogue.content.is_empty() else dialogue.original_content
-		add_item(item_text)
-		var dialogue_index: int = entry.dialogues.find(dialogue)
-		UIWatcher.watch(self, dialogue.content_changed, _update_item.bind(dialogue, dialogue_index))
+		var item_index: int = add_item(item_text)
+		set_item_metadata(item_index, dialogue)
+		UIWatcher.watch(self, dialogue.content_changed, _update_item.bind(dialogue, item_index))
 
 
 func _update_item(dialogue: Dialogue, index: int):
@@ -29,11 +29,18 @@ func _update_item(dialogue: Dialogue, index: int):
 
 
 func _on_current_dialogue_changed(dialogue: Dialogue):
-	var index := _data_store.current_entry.dialogues.find(dialogue)
-	select(index)
+	select(_get_item_index_with_dialogue(dialogue))
 	ensure_current_is_visible.call_deferred()
 
 
+func _get_item_index_with_dialogue(dialogue: Dialogue) -> int:
+	for i in range(item_count):
+		if get_item_metadata(i) == dialogue:
+			return i
+	return -1
+
+
 func _on_item_selected(index: int):
-	_data_store.current_entry.current_dialogue = _data_store.current_entry.dialogues[index]
-	_data_store.notify_dialogue_changed(_data_store.current_entry.current_dialogue)
+	var dialogue: Dialogue = get_item_metadata(index)
+	_data_store.current_entry.current_dialogue = dialogue
+	_data_store.notify_dialogue_changed(dialogue)
