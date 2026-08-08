@@ -20,10 +20,13 @@ func update_list(entry: DialogueEntry):
 		var item_text: String = dialogue.content if not dialogue.content.is_empty() else dialogue.original_content
 		var item_index: int = add_item(item_text)
 		set_item_metadata(item_index, dialogue)
-		UIWatcher.watch(self, dialogue.content_changed, _update_item.bind(dialogue, item_index))
+		UIWatcher.watch(self, dialogue.content_changed, _update_item.bind(dialogue))
 
 
-func _update_item(dialogue: Dialogue, index: int):
+func _update_item(dialogue: Dialogue):
+	var index: int = _get_item_index_with_dialogue(dialogue)
+	if index <= -1:
+		return
 	var item_text: String = dialogue.content if not dialogue.content.is_empty() else dialogue.original_content
 	set_item_text(index, item_text)
 

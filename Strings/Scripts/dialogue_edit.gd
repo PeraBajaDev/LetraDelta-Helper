@@ -45,13 +45,5 @@ func _replace_similar_entries():
 	for entry in _data_store.dialogues_entries:
 		all_dialogues.append_array(entry.dialogues)
 	for dialogue in all_dialogues:
-		if (
-			current_dialogue.original_content == dialogue.original_content
-			and not _data_store.current_entry.dialogues.any(
-				func(d):
-					return dialogue == d,
-			)
-		):
-			dialogue.set_content_without_signal_emission(text)
-		elif current_dialogue.original_content == dialogue.original_content:
-			current_dialogue.content = text
+		if current_dialogue.original_content == dialogue.original_content:
+			dialogue.content = text
