@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://b57arje145ojq"]
+
+[ext_resource type="Script" uid="uid://dhuog0uxcppj" path="res://Window/Scripts/recent_files_submenu.gd" id="1_ybqmk"]
+
+[node name="RecentFilesSubmenu" type="PopupMenu" unique_id=1508726965]
+oversampling_override = 1.0
+size = Vector2i(300, 100)
+visible = true
+script = ExtResource("1_ybqmk")
