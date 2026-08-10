@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://dmnmncy4oo0n1" path="res://Strings/Scripts/dialogue_edit.gd" id="6_430op"]
 [ext_resource type="Script" uid="uid://dkkdlyvsfnvb7" path="res://Strings/Scripts/original_dialogue.gd" id="6_lp5ky"]
 [ext_resource type="Script" uid="uid://v068fb6wp2lg" path="res://Strings/Scripts/dialogue_selector.gd" id="6_nfxux"]
-[ext_resource type="Script" uid="uid://vdxnfnycj68s" path="res://Window/Scenes/portrait.gd" id="7_pwu08"]
+[ext_resource type="Script" uid="uid://vdxnfnycj68s" path="res://Portraits/Scripts/portrait.gd" id="7_pwu08"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
 
 [node name="MainWindow" type="Control" unique_id=1469613726]
@@ -317,6 +317,7 @@ offset_top = -39.0
 offset_right = 165.0
 offset_bottom = -8.0
 focus_mode = 0
+button_pressed = true
 text = "Enable portrait"
 
 [node name="ReplaceSimilar" type="CheckBox" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit" unique_id=112251196]
