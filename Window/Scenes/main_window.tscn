@@ -1,24 +1,18 @@
 [gd_scene format=3 uid="uid://3k875qfmo7iq"]
 
 [ext_resource type="Script" uid="uid://rko6njpmq4m4" path="res://Window/Scripts/main_window.gd" id="1_hhy2w"]
-[ext_resource type="Texture2D" uid="uid://bdggvk6javu1" path="res://Box/Sprites/Box1.png" id="1_ifh20"]
 [ext_resource type="Resource" uid="uid://c4qiv66dtmsqu" path="res://Files/Resources/data_store.tres" id="2_4e30w"]
 [ext_resource type="Script" uid="uid://byt8sngikc4is" path="res://Entries/Scripts/entry_list.gd" id="2_fg8dk"]
 [ext_resource type="Script" uid="uid://ccle6cpidldhu" path="res://UI/Scripts/file_menu_button.gd" id="2_pwu08"]
 [ext_resource type="Script" uid="uid://djle6enhwtl1f" path="res://Box/Scripts/box.gd" id="3_gey0d"]
 [ext_resource type="Texture2D" uid="uid://do71hc70q1tln" path="res://Portraits/Sprites/spr_face_n8.png" id="4_4iwp4"]
+[ext_resource type="Texture2D" uid="uid://rf056ebnh2vg" path="res://Box/Sprites/Box2.png" id="5_4e30w"]
 [ext_resource type="FontFile" uid="uid://cm8vhnbpgnrpm" path="res://Fonts/fnt_main.fnt" id="5_4iwp4"]
 [ext_resource type="Script" uid="uid://dmnmncy4oo0n1" path="res://Strings/Scripts/dialogue_edit.gd" id="6_430op"]
 [ext_resource type="Script" uid="uid://dkkdlyvsfnvb7" path="res://Strings/Scripts/original_dialogue.gd" id="6_lp5ky"]
 [ext_resource type="Script" uid="uid://v068fb6wp2lg" path="res://Strings/Scripts/dialogue_selector.gd" id="6_nfxux"]
+[ext_resource type="Script" uid="uid://vdxnfnycj68s" path="res://Window/Scenes/portrait.gd" id="7_pwu08"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5b4dt"]
-content_margin_left = 20.0
-content_margin_top = 20.0
-content_margin_right = 20.0
-content_margin_bottom = 20.0
-texture = ExtResource("1_ifh20")
 
 [node name="MainWindow" type="Control" unique_id=1469613726]
 layout_mode = 3
@@ -258,26 +252,31 @@ size = Vector2i(895, 333)
 size_2d_override = Vector2i(578, 152)
 render_target_update_mode = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport" unique_id=2027683563]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_5b4dt")
+[node name="BoxTexture" type="TextureRect" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport" unique_id=857174985]
+offset_left = 110.0
+offset_top = 7.0
+offset_right = 690.0
+offset_bottom = 247.0
+texture = ExtResource("5_4e30w")
+stretch_mode = 2
 
-[node name="DialogueContainer" type="HBoxContainer" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/PanelContainer" unique_id=1474365382]
+[node name="DialogueContainer" type="HBoxContainer" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/BoxTexture" unique_id=1474365382]
 propagate_maximum_size = false
-layout_mode = 2
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 558.0
+offset_bottom = 132.0
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/PanelContainer/DialogueContainer" unique_id=576463355]
+[node name="Portrait" type="TextureRect" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/BoxTexture/DialogueContainer" unique_id=576463355]
 custom_minimum_size = Vector2(100, 0)
 clip_contents = true
 layout_mode = 2
 texture = ExtResource("4_4iwp4")
 stretch_mode = 6
+script = ExtResource("7_pwu08")
 
-[node name="DialogueLabel" type="RichTextLabel" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/PanelContainer/DialogueContainer" unique_id=664364993]
+[node name="DialogueLabel" type="RichTextLabel" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/BoxTexture/DialogueContainer" unique_id=664364993]
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -287,10 +286,12 @@ theme_override_fonts/bold_font = ExtResource("5_4iwp4")
 theme_override_fonts/bold_italics_font = ExtResource("5_4iwp4")
 theme_override_fonts/italics_font = ExtResource("5_4iwp4")
 theme_override_fonts/mono_font = ExtResource("5_4iwp4")
-theme_override_font_sizes/normal_font_size = 32
-text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+theme_override_font_sizes/normal_font_size = 33
+text = "*AAAAAAAAAAAAAAAAAAAAAAAAA
+  AAAAAAAAAAAAAAAAAAAAAAAA
+  AAAAAAAAAAAAAAAAAAAAAAAA"
 scroll_active = false
-autowrap_mode = 2
+autowrap_trim_flags = 0
 justification_flags = 160
 script = ExtResource("3_gey0d")
 _data_store = ExtResource("2_4e30w")
@@ -309,10 +310,11 @@ editable = false
 script = ExtResource("6_430op")
 _data_store = ExtResource("2_4e30w")
 
-[node name="EnablePortrait" type="CheckBox" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit" unique_id=1752549447]
+[node name="EnablePortrait" type="CheckButton" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit" unique_id=1770475927]
+unique_name_in_owner = true
 layout_mode = 0
 offset_top = -39.0
-offset_right = 149.0
+offset_right = 165.0
 offset_bottom = -8.0
 focus_mode = 0
 text = "Enable portrait"
