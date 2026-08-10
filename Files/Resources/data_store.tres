@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="DataStore" format=3 uid="uid://c4qiv66dtmsqu"]
 
 [ext_resource type="Script" uid="uid://dm34bhj1sn51y" path="res://Files/Scripts/data_store.gd" id="1_66kp2"]
+[ext_resource type="Script" uid="uid://7stjsaqqbmk4" path="res://Files/Scripts/dialogue_entry.gd" id="1_qfipa"]
 
 [resource]
 script = ExtResource("1_66kp2")

@@ -13,6 +13,13 @@
 [ext_resource type="Script" uid="uid://v068fb6wp2lg" path="res://Strings/Scripts/dialogue_selector.gd" id="6_nfxux"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5b4dt"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("1_ifh20")
+
 [node name="MainWindow" type="Control" unique_id=1469613726]
 layout_mode = 3
 anchors_preset = 15
@@ -32,12 +39,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="VBoxContainer" unique_id=1286386011]
+[node name="TopPanel" type="Panel" parent="VBoxContainer" unique_id=1286386011]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MenuBar" type="MenuBar" parent="VBoxContainer/Panel" unique_id=872812004]
+[node name="MenuBar" type="MenuBar" parent="VBoxContainer/TopPanel" unique_id=872812004]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,14 +52,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Container" type="HBoxContainer" parent="VBoxContainer/Panel/MenuBar" unique_id=1770228923]
+[node name="Container" type="HBoxContainer" parent="VBoxContainer/TopPanel/MenuBar" unique_id=1770228923]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 324.0
 offset_bottom = 36.0
 
-[node name="File" type="MenuButton" parent="VBoxContainer/Panel/MenuBar/Container" unique_id=2039174747]
+[node name="File" type="MenuButton" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=2039174747]
 layout_mode = 2
 text = "File"
 flat = false
@@ -94,24 +101,24 @@ popup/item_16/id = 5
 script = ExtResource("2_pwu08")
 _data_store = ExtResource("2_4e30w")
 
-[node name="OpenFileDialog" type="FileDialog" parent="VBoxContainer/Panel/MenuBar/Container/File" unique_id=986615352]
+[node name="OpenFileDialog" type="FileDialog" parent="VBoxContainer/TopPanel/MenuBar/Container/File" unique_id=986615352]
 title = "Open a File"
 file_mode = 0
 access = 2
 filters = PackedStringArray("*.json")
 use_native_dialog = true
 
-[node name="GoTo" type="Button" parent="VBoxContainer/Panel/MenuBar/Container" unique_id=544218320]
+[node name="GoTo" type="Button" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=544218320]
 layout_mode = 2
 focus_mode = 0
 text = "Go to"
 
-[node name="Search" type="Button" parent="VBoxContainer/Panel/MenuBar/Container" unique_id=603447879]
+[node name="Search" type="Button" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=603447879]
 layout_mode = 2
 focus_mode = 0
 text = "Search"
 
-[node name="About" type="MenuButton" parent="VBoxContainer/Panel/MenuBar/Container" unique_id=1954888689]
+[node name="About" type="MenuButton" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=1954888689]
 layout_mode = 2
 text = "About"
 flat = false
@@ -125,12 +132,12 @@ popup/item_2/separator = true
 popup/item_3/text = "About DH..."
 popup/item_3/id = 3
 
-[node name="ReloadStyle" type="Button" parent="VBoxContainer/Panel/MenuBar/Container" unique_id=188588084]
+[node name="ReloadStyle" type="Button" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=188588084]
 layout_mode = 2
 focus_mode = 0
 text = "Reload Style"
 
-[node name="ProgressStats" type="Label" parent="VBoxContainer/Panel" unique_id=706575836]
+[node name="ProgressStats" type="Label" parent="VBoxContainer/TopPanel" unique_id=706575836]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -149,7 +156,7 @@ text = "0 / 0 strings"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TagValidatorLabel" type="Label" parent="VBoxContainer/Panel" unique_id=1432236261]
+[node name="TagValidatorLabel" type="Label" parent="VBoxContainer/TopPanel" unique_id=1432236261]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -171,7 +178,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 clip_text = true
 
-[node name="ClosedSignValidatorLabel" type="Label" parent="VBoxContainer/Panel" unique_id=1044623675]
+[node name="ClosedSignValidatorLabel" type="Label" parent="VBoxContainer/TopPanel" unique_id=1044623675]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -192,16 +199,16 @@ text = "hola"
 vertical_alignment = 1
 clip_text = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=144929518]
+[node name="FiltersContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=144929518]
 layout_mode = 2
 
-[node name="EntrySearch" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=2130201513]
+[node name="EntrySearch" type="LineEdit" parent="VBoxContainer/FiltersContainer" unique_id=2130201513]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 placeholder_text = "Search..."
 
-[node name="EntryFilter" type="OptionButton" parent="VBoxContainer/HBoxContainer" unique_id=1581718625]
+[node name="EntryFilter" type="OptionButton" parent="VBoxContainer/FiltersContainer" unique_id=1581718625]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 tooltip_text = "Filter entries by translation state."
@@ -222,12 +229,11 @@ popup/item_4/id = 4
 popup/item_5/text = "Unclosed Signs"
 popup/item_5/id = 5
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=47656161]
+[node name="MainContentContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=47656161]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="EntryList" type="ItemList" parent="VBoxContainer/HBoxContainer2" unique_id=1695748978]
-unique_name_in_owner = true
+[node name="EntryList" type="ItemList" parent="VBoxContainer/MainContentContainer" unique_id=1695748978]
 custom_minimum_size = Vector2(210, 0)
 layout_mode = 2
 size_flags_vertical = 3
@@ -235,69 +241,43 @@ scroll_hint_mode = 1
 script = ExtResource("2_fg8dk")
 _data_store = ExtResource("2_4e30w")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=524607657]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MainContentContainer" unique_id=524607657]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1712469755]
+[node name="DialogueBoxContainer" type="SubViewportContainer" parent="VBoxContainer/MainContentContainer/VBoxContainer2" unique_id=1712469755]
 propagate_maximum_size = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SubViewport" type="SubViewport" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer" unique_id=109135706]
+[node name="SubViewport" type="SubViewport" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer" unique_id=109135706]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
 size = Vector2i(895, 333)
 size_2d_override = Vector2i(578, 152)
 render_target_update_mode = 4
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer/SubViewport" unique_id=243717850]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -289.0
-offset_top = -76.0
-offset_right = 289.0
-offset_bottom = 76.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("1_ifh20")
-stretch_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer/SubViewport/TextureRect" unique_id=2082095037]
-layout_mode = 1
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport" unique_id=2027683563]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_styles/panel = SubResource("StyleBoxTexture_5b4dt")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer/SubViewport/TextureRect/MarginContainer" unique_id=1474365382]
-clip_contents = true
+[node name="DialogueContainer" type="HBoxContainer" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/PanelContainer" unique_id=1474365382]
+propagate_maximum_size = false
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer/SubViewport/TextureRect/MarginContainer/HBoxContainer" unique_id=576463355]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/PanelContainer/DialogueContainer" unique_id=576463355]
+custom_minimum_size = Vector2(100, 0)
 clip_contents = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
 texture = ExtResource("4_4iwp4")
-expand_mode = 4
-stretch_mode = 5
+stretch_mode = 6
 
-[node name="DialogueLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/SubViewportContainer/SubViewport/TextureRect/MarginContainer/HBoxContainer" unique_id=664364993]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(430, 0)
-custom_maximum_size = Vector2(430, 500)
+[node name="DialogueLabel" type="RichTextLabel" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/PanelContainer/DialogueContainer" unique_id=664364993]
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -308,19 +288,17 @@ theme_override_fonts/bold_italics_font = ExtResource("5_4iwp4")
 theme_override_fonts/italics_font = ExtResource("5_4iwp4")
 theme_override_fonts/mono_font = ExtResource("5_4iwp4")
 theme_override_font_sizes/normal_font_size = 32
-text = "Hola mundo ekisde"
-fit_content = true
+text = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 scroll_active = false
 autowrap_mode = 2
 justification_flags = 160
 script = ExtResource("3_gey0d")
 _data_store = ExtResource("2_4e30w")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/VBoxContainer2" unique_id=1721739519]
+[node name="TextEditContainer" type="VBoxContainer" parent="VBoxContainer/MainContentContainer/VBoxContainer2" unique_id=1721739519]
 layout_mode = 2
 
-[node name="DialogueEdit" type="TextEdit" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer" unique_id=2074223561]
-unique_name_in_owner = true
+[node name="DialogueEdit" type="TextEdit" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer" unique_id=2074223561]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -331,7 +309,7 @@ editable = false
 script = ExtResource("6_430op")
 _data_store = ExtResource("2_4e30w")
 
-[node name="EnablePortrait" type="CheckBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/DialogueEdit" unique_id=1752549447]
+[node name="EnablePortrait" type="CheckBox" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit" unique_id=1752549447]
 layout_mode = 0
 offset_top = -39.0
 offset_right = 149.0
@@ -339,7 +317,7 @@ offset_bottom = -8.0
 focus_mode = 0
 text = "Enable portrait"
 
-[node name="ReplaceSimilar" type="CheckBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/DialogueEdit" unique_id=112251196]
+[node name="ReplaceSimilar" type="CheckBox" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit" unique_id=112251196]
 layout_mode = 0
 offset_left = 661.0
 offset_top = -41.0
@@ -348,7 +326,7 @@ offset_bottom = -10.0
 focus_mode = 0
 text = "Replace all similar entries"
 
-[node name="AddEntry" type="Button" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/DialogueEdit" unique_id=1800994321]
+[node name="AddEntry" type="Button" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit" unique_id=1800994321]
 layout_mode = 0
 offset_left = 5.0
 offset_top = -72.0
@@ -357,7 +335,7 @@ offset_bottom = -41.0
 focus_mode = 0
 text = "Add new Entry"
 
-[node name="AddString" type="Button" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer/DialogueEdit" unique_id=1260630976]
+[node name="AddString" type="Button" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit" unique_id=1260630976]
 layout_mode = 0
 offset_left = 757.0
 offset_top = -72.0
@@ -366,7 +344,7 @@ offset_bottom = -41.0
 focus_mode = 0
 text = "Add new String"
 
-[node name="OriginalDialogue" type="TextEdit" parent="VBoxContainer/HBoxContainer2/VBoxContainer2/VBoxContainer" unique_id=672609052]
+[node name="OriginalDialogue" type="TextEdit" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer" unique_id=672609052]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
@@ -377,15 +355,15 @@ editable = false
 script = ExtResource("6_lp5ky")
 _data_store = ExtResource("2_4e30w")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2" unique_id=297930547]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MainContentContainer" unique_id=297930547]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="DisplaySettings" type="Control" parent="VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=477401397]
+[node name="DisplaySettings" type="Control" parent="VBoxContainer/MainContentContainer/VBoxContainer" unique_id=477401397]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="CurrentLayer" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=1762017651]
+[node name="CurrentLayer" type="Label" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings" unique_id=1762017651]
 visible = false
 layout_mode = 0
 offset_top = 5.0
@@ -393,7 +371,7 @@ offset_right = 88.0
 offset_bottom = 28.0
 text = "Text Layer:"
 
-[node name="Num" type="SpinBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentLayer" unique_id=617329579]
+[node name="Num" type="SpinBox" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings/CurrentLayer" unique_id=617329579]
 layout_mode = 0
 offset_left = 134.0
 offset_top = -5.0
@@ -405,7 +383,7 @@ value = 1.0
 rounded = true
 alignment = 2
 
-[node name="CurrentBox" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=721993116]
+[node name="CurrentBox" type="Label" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings" unique_id=721993116]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 25.0
@@ -413,7 +391,7 @@ offset_right = 40.0
 offset_bottom = 48.0
 text = "Box:"
 
-[node name="Num" type="SpinBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentBox" unique_id=1672365458]
+[node name="Num" type="SpinBox" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings/CurrentBox" unique_id=1672365458]
 layout_mode = 0
 offset_left = 75.0
 offset_top = -5.0
@@ -425,7 +403,7 @@ value = 1.0
 rounded = true
 alignment = 2
 
-[node name="Info" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentBox" unique_id=1714093086]
+[node name="Info" type="Label" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings/CurrentBox" unique_id=1714093086]
 layout_mode = 0
 offset_left = 94.0
 offset_top = -18.0
@@ -434,7 +412,7 @@ offset_bottom = -3.0
 theme_override_font_sizes/font_size = 10
 horizontal_alignment = 2
 
-[node name="CurrentFont" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=1326160800]
+[node name="CurrentFont" type="Label" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings" unique_id=1326160800]
 visible = false
 layout_mode = 0
 offset_top = 101.0
@@ -443,7 +421,7 @@ offset_bottom = 124.0
 focus_mode = 1
 text = "Font:"
 
-[node name="Num" type="SpinBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentFont" unique_id=1796757070]
+[node name="Num" type="SpinBox" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings/CurrentFont" unique_id=1796757070]
 layout_mode = 0
 offset_left = 134.0
 offset_top = -2.0
@@ -455,7 +433,7 @@ value = 1.0
 rounded = true
 alignment = 2
 
-[node name="Info" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentFont" unique_id=318335625]
+[node name="Info" type="Label" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings/CurrentFont" unique_id=318335625]
 layout_mode = 0
 offset_left = -208.0
 offset_top = -19.0
@@ -465,7 +443,7 @@ theme_override_font_sizes/font_size = 10
 text = "Speech"
 horizontal_alignment = 2
 
-[node name="CurrentScale" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=932110193]
+[node name="CurrentScale" type="Label" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings" unique_id=932110193]
 visible = false
 layout_mode = 0
 offset_top = 147.0
@@ -473,7 +451,7 @@ offset_right = 45.0
 offset_bottom = 170.0
 text = "Scale:"
 
-[node name="Num" type="SpinBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentScale" unique_id=425502786]
+[node name="Num" type="SpinBox" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings/CurrentScale" unique_id=425502786]
 layout_mode = 0
 offset_left = 134.0
 offset_top = -5.0
@@ -485,7 +463,7 @@ value = 1.0
 alignment = 2
 custom_arrow_step = 0.01
 
-[node name="CurrentColor" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=408829600]
+[node name="CurrentColor" type="Label" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings" unique_id=408829600]
 visible = false
 layout_mode = 0
 offset_top = 190.0
@@ -493,7 +471,7 @@ offset_right = 93.0
 offset_bottom = 213.0
 text = "Layer Color:"
 
-[node name="Picker" type="ColorPickerButton" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings/CurrentColor" unique_id=806124962]
+[node name="Picker" type="ColorPickerButton" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings/CurrentColor" unique_id=806124962]
 layout_mode = 0
 offset_left = 169.0
 offset_top = -3.0
@@ -503,7 +481,7 @@ focus_mode = 0
 color = Color(1, 1, 1, 1)
 edit_alpha = false
 
-[node name="NeedsReviewCheck" type="CheckBox" parent="VBoxContainer/HBoxContainer2/VBoxContainer/DisplaySettings" unique_id=1608839312]
+[node name="NeedsReviewCheck" type="CheckBox" parent="VBoxContainer/MainContentContainer/VBoxContainer/DisplaySettings" unique_id=1608839312]
 layout_mode = 0
 offset_left = -6.0
 offset_top = 58.0
@@ -515,14 +493,14 @@ and can be filtered with the dropdown."
 focus_mode = 0
 text = "Mark for review"
 
-[node name="SimilarEntries" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1857358571]
+[node name="SimilarEntries" type="Label" parent="VBoxContainer/MainContentContainer/VBoxContainer" unique_id=1857358571]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Similar String entries:"
 
-[node name="SimilarEntries" type="ItemList" parent="VBoxContainer/HBoxContainer2/VBoxContainer/SimilarEntries" unique_id=960848248]
+[node name="SimilarEntries" type="ItemList" parent="VBoxContainer/MainContentContainer/VBoxContainer/SimilarEntries" unique_id=960848248]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 1
@@ -540,13 +518,13 @@ grow_vertical = 2
 script = ExtResource("9_mgc60")
 _data_store = ExtResource("2_4e30w")
 
-[node name="StringSelector" type="Label" parent="VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=2145179151]
+[node name="StringSelector" type="Label" parent="VBoxContainer/MainContentContainer/VBoxContainer" unique_id=2145179151]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 8
 text = "Select a string:"
 
-[node name="DialogueSelector" type="ItemList" parent="VBoxContainer/HBoxContainer2/VBoxContainer/StringSelector" unique_id=1301701462]
+[node name="DialogueSelector" type="ItemList" parent="VBoxContainer/MainContentContainer/VBoxContainer/StringSelector" unique_id=1301701462]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 200)
 layout_mode = 1
