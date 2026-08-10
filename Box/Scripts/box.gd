@@ -20,5 +20,18 @@ func _on_current_entry_changed(entry: DialogueEntry) -> void:
 
 func _on_dialogue_changed(dialogue: Dialogue) -> void:
 	UIWatcher.watch(self, dialogue.content_changed, _on_dialogue_changed.bind(dialogue))
-	text = _data_store.current_entry.current_dialogue.content
-	text = DialogueParser.parse(text)
+	var parsed_text = DialogueParser.parse(dialogue.content)
+	if parsed_text.begins_with("*"):
+		var lines: PackedStringArray = []
+		for line in parsed_text.split("\n"):
+			if line.begins_with("*"):
+				var first_char = line.trim_prefix("*")[0]
+				var result = "[table=2][cell]*%s[/cell][cell]%s[/cell][/table]" % [
+					first_char,
+					line.trim_prefix("*%s" % first_char),
+				]
+				lines.append(result)
+
+		text = "\n".join(lines)
+	else:
+		text = parsed_text

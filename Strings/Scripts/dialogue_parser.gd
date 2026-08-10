@@ -24,4 +24,5 @@ static func parse(text: String) -> String:
 		var re := RegEx.create_from_string(pattern)
 		var replaced_text := re.sub(text, "", true)
 		text = replaced_text
-	return text.replace("#", "\n").replace("&", "\n").replace("/", "")
+	text = text.replace("/", "")
+	return text.replace("#", "\n").replace("&", "\n")

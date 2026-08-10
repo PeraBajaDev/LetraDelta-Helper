@@ -287,9 +287,8 @@ theme_override_fonts/bold_italics_font = ExtResource("5_4iwp4")
 theme_override_fonts/italics_font = ExtResource("5_4iwp4")
 theme_override_fonts/mono_font = ExtResource("5_4iwp4")
 theme_override_font_sizes/normal_font_size = 33
-text = "*AAAAAAAAAAAAAAAAAAAAAAAAA
-  AAAAAAAAAAAAAAAAAAAAAAAA
-  AAAAAAAAAAAAAAAAAAAAAAAA"
+bbcode_enabled = true
+text = "[table=2][cell]*[/cell][cell]Texto largo que al quedarse alineado sin tocar el número.[/cell][cell]1[/cell][/table]"
 scroll_active = false
 autowrap_trim_flags = 0
 justification_flags = 160
