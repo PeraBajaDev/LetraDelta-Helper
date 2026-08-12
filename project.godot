@@ -23,6 +23,10 @@ window/size/mode=2
 window/size/resizable=false
 window/stretch/mode="viewport"
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Localization.en.translation", "res://Localization.es.translation")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

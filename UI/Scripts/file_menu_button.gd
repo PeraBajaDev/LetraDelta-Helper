@@ -48,8 +48,7 @@ func _save_file():
 		func():
 			var error := JSONHandler.save_data_store(_data_store)
 			if error != OK:
-				var main_window = owner as Control
-				main_window.modulate = Color.RED,
+				error_window.dialog_text = tr(""),
 	)
 	var main_window = owner as Control
 	main_window.modulate = Color.GREEN
@@ -62,7 +61,9 @@ func _save_file_as():
 		func():
 			var error := JSONHandler.save_data_store(_data_store, save_as_path)
 			if error != OK:
-				error_window.dialog_text = tr(),
+				error_window.dialog_text = tr("DATA_STORE_FILE_ERROR%d" % int(error)).format(
+					{ "file_path": save_as_path }
+				),
 	)
 	var main_window = owner as Control
 	main_window.modulate = Color.GREEN
@@ -76,7 +77,10 @@ func _close_waiting_window() -> void:
 func create_data_store(path: StringName):
 	var data_source_from_json := JSONHandler.get_data_store(path)
 	if data_source_from_json.load_error != OK:
-		push_error("Error al cargar el archivo")
+		error_window.dialog_text = tr(
+			"DATA_STORE_FILE_ERROR%d" % int(data_source_from_json.load_error)
+		).format({ "file_path": path, "dir": path.get_base_dir() })
+		error_window.show.call_deferred()
 		return
 	RecentFilesHandler.add_to_recent_files(path)
 	_data_store.copy_from_resource(data_source_from_json)

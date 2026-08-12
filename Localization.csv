@@ -1,0 +1,3 @@
+clave;en;es
+DATA_STORE_FILE_ERROR7;File {file_path} was not found in {dir} directory;El archivo {file_path} no se encontró en el directorio {file_path}
+DATA_STORE_FILE_ERROR16;File {file_path} cannot be read due to be an invalid json format;El archivo {file_path} no se pudo leer debido a tener un formato json invalido
