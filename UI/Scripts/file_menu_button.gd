@@ -15,6 +15,7 @@ enum ActionsIDs {
 	EXPORT_TO_GAME_FORMAT = 12,
 	OPEN_RECENT_FILES = 11,
 	OPEN_FILE = 1,
+	CLOSE_FILE = 7,
 }
 
 
@@ -35,6 +36,10 @@ func _do_action(id: int):
 			_save_file()
 		ActionsIDs.EXPORT_TO_GAME_FORMAT:
 			_export_to_game_format()
+		ActionsIDs.CLOSE_FILE:
+			print("cerrando")
+			_data_store.copy_from_resource(DataStore.new())
+			_data_store.notify_data_loaded()
 
 
 func _open_file():
