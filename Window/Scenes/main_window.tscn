@@ -14,6 +14,15 @@
 [ext_resource type="Script" uid="uid://vdxnfnycj68s" path="res://Portraits/Scripts/portrait.gd" id="7_pwu08"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qhrn"]
+bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.29803923, 0.29803923, 0.29803923, 1)
+border_blend = true
+
 [node name="MainWindow" type="Control" unique_id=1469613726]
 layout_mode = 3
 anchors_preset = 15
@@ -100,6 +109,12 @@ _data_store = ExtResource("2_4e30w")
 title = "Open a File"
 file_mode = 0
 access = 2
+filters = PackedStringArray("*.json")
+use_native_dialog = true
+
+[node name="SaveFileDialog" type="FileDialog" parent="VBoxContainer/TopPanel/MenuBar/Container/File" unique_id=1838556660]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
 filters = PackedStringArray("*.json")
 use_native_dialog = true
 
@@ -348,7 +363,6 @@ focus_mode = 0
 text = "Add new String"
 
 [node name="OriginalDialogue" type="TextEdit" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer" unique_id=672609052]
-unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 8
@@ -545,3 +559,13 @@ grow_vertical = 2
 allow_reselect = true
 script = ExtResource("6_nfxux")
 _data_store = ExtResource("2_4e30w")
+
+[node name="ErrorDialogWindow" type="AcceptDialog" parent="." unique_id=1408692665]
+unique_name_in_owner = true
+oversampling_override = 1.0
+mode = 2
+title = "An error ocurred"
+initial_position = 1
+size = Vector2i(561, 210)
+theme_override_styles/panel = SubResource("StyleBoxFlat_8qhrn")
+dialog_autowrap = true

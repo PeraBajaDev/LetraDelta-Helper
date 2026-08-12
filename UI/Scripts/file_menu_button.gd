@@ -3,12 +3,14 @@ class_name FileMenuButton
 @export var _data_store: DataStore
 
 @onready var _open_file_dialogue: FileDialog = $OpenFileDialog
+@onready var _save_file_dialogue: FileDialog = $SaveFileDialog
 @onready var _popup: PopupMenu = get_popup()
+@onready var error_window: AcceptDialog = %ErrorDialogWindow
 const RECENT_FILES_SUBMENU: PackedScene = preload("uid://b57arje145ojq")
 enum ActionsIDs {
 	NEW_FILE = 2,
 	SAVE_FILE = 3,
-	SAVE_FILE_AS = 4,
+	SAVE_FILE_AS = 8,
 	EXPORT_TO_GAME_FORMAT,
 	OPEN_RECENT_FILES = 11,
 	OPEN_FILE = 1,
@@ -26,6 +28,10 @@ func _do_action(id: int):
 	match id:
 		ActionsIDs.OPEN_FILE:
 			_open_file()
+		ActionsIDs.SAVE_FILE_AS:
+			_save_file_as()
+		ActionsIDs.SAVE_FILE:
+			_save_file()
 
 
 func _open_file():
@@ -33,6 +39,31 @@ func _open_file():
 	var path = await _open_file_dialogue.file_selected
 	WorkerThreadPool.add_task(create_data_store.bind(path))
 
+	var main_window = owner as Control
+	main_window.modulate = Color.GREEN
+
+
+func _save_file():
+	WorkerThreadPool.add_task(
+		func():
+			var error := JSONHandler.save_data_store(_data_store)
+			if error != OK:
+				var main_window = owner as Control
+				main_window.modulate = Color.RED,
+	)
+	var main_window = owner as Control
+	main_window.modulate = Color.GREEN
+
+
+func _save_file_as():
+	_save_file_dialogue.show()
+	var save_as_path = await _save_file_dialogue.file_selected
+	WorkerThreadPool.add_task(
+		func():
+			var error := JSONHandler.save_data_store(_data_store, save_as_path)
+			if error != OK:
+				error_window.dialog_text = tr(),
+	)
 	var main_window = owner as Control
 	main_window.modulate = Color.GREEN
 

@@ -1,6 +1,9 @@
 extends RefCounted
 class_name JSONHandler
 
+const STYLE_KEY = &"Style"
+const DIALOGUES_KEY = &"Dialogues"
+
 
 ## Returns a DataStore instance if given path is found
 ## If an error occurs, return an empty DataStore with an error attached
@@ -11,14 +14,14 @@ static func get_data_store(json_file_path: String) -> DataStore:
 	var json_data: Dictionary = JSON.parse_string(text_data)
 	if json_data == null:
 		return DataStore.create_with_given_error(Error.ERR_FILE_CORRUPT)
-	if not json_data.has_all([&"Style", &"Dialogues"]):
+	if not json_data.has_all([STYLE_KEY, DIALOGUES_KEY]):
 		return DataStore.create_with_given_error(Error.ERR_FILE_CORRUPT)
 
-	var style: StringName = json_data[&"Style"]
+	var style: StringName = json_data[STYLE_KEY]
 	var entries: Array[DialogueEntry] = []
-	for id in json_data[&"Dialogues"]:
+	for id in json_data[DIALOGUES_KEY]:
 		var dialogues: Array[Dialogue] = []
-		for dialogue: Dictionary in json_data[&"Dialogues"][id]:
+		for dialogue: Dictionary in json_data[DIALOGUES_KEY][id]:
 			dialogues.append(
 				Dialogue.new(
 					dialogue[&"Key"],
@@ -28,4 +31,28 @@ static func get_data_store(json_file_path: String) -> DataStore:
 				)
 			)
 		entries.append(DialogueEntry.new(id, dialogues))
-	return DataStore.new(style, entries)
+	return DataStore.new(style, entries, json_file_path)
+
+
+## Save data_store information in the path from data_store.path
+## If save_as_path is given, it will use that path to save.
+static func save_data_store(data_store: DataStore, save_as_path: StringName = &"") -> Error:
+	var serialized_dict := { STYLE_KEY: data_store.style, DIALOGUES_KEY: { } }
+	for entry in data_store.dialogues_entries:
+		serialized_dict[DIALOGUES_KEY][entry.id] = []
+		for dialogue in entry.dialogues:
+			serialized_dict[DIALOGUES_KEY][entry.id].append(
+				{
+					&"Key": dialogue.key,
+					&"Content": dialogue.content,
+					&"OriginalContent": dialogue.original_content,
+					&"LastEdited": dialogue.last_edited_by,
+				}
+			)
+
+	var save_path = save_as_path if not save_as_path.is_empty() else data_store.path
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	if file.get_error() != OK:
+		return file.get_error()
+	file.store_string(JSON.stringify(serialized_dict))
+	return OK
