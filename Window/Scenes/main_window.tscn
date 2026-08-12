@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ccle6cpidldhu" path="res://UI/Scripts/file_menu_button.gd" id="2_pwu08"]
 [ext_resource type="Script" uid="uid://djle6enhwtl1f" path="res://Box/Scripts/box.gd" id="3_gey0d"]
 [ext_resource type="Texture2D" uid="uid://do71hc70q1tln" path="res://Portraits/Sprites/spr_face_n8.png" id="4_4iwp4"]
+[ext_resource type="Script" uid="uid://c8u6145dklmip" path="res://UI/Scripts/progress_stats.gd" id="4_rgpx8"]
 [ext_resource type="Texture2D" uid="uid://rf056ebnh2vg" path="res://Box/Sprites/Box2.png" id="5_4e30w"]
 [ext_resource type="FontFile" uid="uid://cm8vhnbpgnrpm" path="res://Fonts/fnt_main.fnt" id="5_4iwp4"]
 [ext_resource type="Script" uid="uid://dmnmncy4oo0n1" path="res://Strings/Scripts/dialogue_edit.gd" id="6_430op"]
@@ -166,6 +167,8 @@ mouse_filter = 1
 text = "0 / 0 strings"
 horizontal_alignment = 2
 vertical_alignment = 1
+script = ExtResource("4_rgpx8")
+_data_store = ExtResource("2_4e30w")
 
 [node name="TagValidatorLabel" type="Label" parent="VBoxContainer/TopPanel" unique_id=1432236261]
 layout_mode = 1
