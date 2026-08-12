@@ -54,7 +54,8 @@ func _save_file():
 		func():
 			var error := JSONHandler.save_data_store(_data_store)
 			if error:
-				show_error.call_deferred(error, _data_store.path),
+				show_error.call_deferred(error, _data_store.path)
+			_close_waiting_window.call_deferred(),
 	)
 	loading_window.show()
 
@@ -66,7 +67,8 @@ func _save_file_as():
 		func():
 			var error := JSONHandler.save_data_store(_data_store, save_as_path)
 			if error:
-				show_error.call_deferred(error, save_as_path),
+				show_error.call_deferred(error, save_as_path)
+			_close_waiting_window.call_deferred(),
 	)
 	loading_window.show()
 
