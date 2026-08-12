@@ -56,3 +56,16 @@ static func save_data_store(data_store: DataStore, save_as_path: StringName = &"
 		return file.get_error()
 	file.store_string(JSON.stringify(serialized_dict))
 	return OK
+
+
+static func export_to_game_format(data_store: DataStore, save_path: StringName) -> Error:
+	var serialized_dict := { }
+	for entry in data_store.dialogues_entries:
+		for dialogue in entry.dialogues:
+			serialized_dict[dialogue.key] = dialogue.content if not dialogue.content.is_empty() else dialogue.original_content
+
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
+	if file.get_error() != OK:
+		return file.get_error()
+	file.store_string(JSON.stringify(serialized_dict))
+	return OK
