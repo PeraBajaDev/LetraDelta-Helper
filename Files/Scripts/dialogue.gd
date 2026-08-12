@@ -25,6 +25,10 @@ var original_content: String:
 	get:
 		return _original_content
 
+var last_edited_by:
+	get:
+		return _last_edited_by
+
 
 func _init(
 	new_key: StringName,

@@ -28,10 +28,20 @@ var dialogues_entries: Array[DialogueEntry]:
 	get:
 		return _dialogues_entries
 
+@export var _path: StringName
+var path: StringName:
+	get:
+		return _path
 
-func _init(new_style: StringName = "", new_dialogues_entries: Array[DialogueEntry] = []) -> void:
+
+func _init(
+	new_style: StringName = "",
+	new_dialogues_entries: Array[DialogueEntry] = [],
+	new_path: StringName = "",
+) -> void:
 	_style = new_style
 	_dialogues_entries = new_dialogues_entries
+	_path = new_path
 
 
 func notify_data_loaded():
