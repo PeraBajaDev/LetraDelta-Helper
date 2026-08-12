@@ -7,6 +7,7 @@ class_name DialogueEdit
 func _ready() -> void:
 	text_changed.connect(_on_text_changed)
 	_data_store.data_loaded.connect(_on_data_loaded)
+	_data_store.data_freed.connect(clear)
 
 
 func _on_data_loaded():

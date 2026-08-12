@@ -4,7 +4,7 @@ class_name DataStore
 signal entry_selected(entry: DialogueEntry)
 signal dialogue_selected(dialogue: Dialogue)
 signal data_loaded
-
+signal data_freed
 @export var _style: StringName
 @export var load_error: Error = Error.OK
 var style: StringName:
@@ -50,6 +50,10 @@ func notify_data_loaded():
 
 func notify_dialogue_changed(dialogue: Dialogue) -> void:
 	dialogue_selected.emit(dialogue)
+
+
+func notify_data_freed():
+	data_freed.emit()
 
 
 func _to_string() -> String:

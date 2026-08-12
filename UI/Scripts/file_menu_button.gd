@@ -21,9 +21,12 @@ enum ActionsIDs {
 
 func _ready() -> void:
 	_popup.id_pressed.connect(_do_action)
-	var item_index = _popup.get_item_index(ActionsIDs.OPEN_RECENT_FILES)
+	var open_recent_item_index = _popup.get_item_index(ActionsIDs.OPEN_RECENT_FILES)
 	var recent_files_submenu = RECENT_FILES_SUBMENU.instantiate()
-	_popup.set_item_submenu_node(item_index, recent_files_submenu)
+	_popup.set_item_submenu_node(open_recent_item_index, recent_files_submenu)
+	var save_file_index = _popup.get_item_index(ActionsIDs.SAVE_FILE)
+	_data_store.data_loaded.connect(_popup.set_item_disabled.bind(save_file_index, false))
+	_data_store.data_freed.connect(_popup.set_item_disabled.bind(save_file_index, true))
 
 
 func _do_action(id: int):
@@ -39,7 +42,7 @@ func _do_action(id: int):
 		ActionsIDs.CLOSE_FILE:
 			print("cerrando")
 			_data_store.copy_from_resource(DataStore.new())
-			_data_store.notify_data_loaded()
+			_data_store.notify_data_freed()
 
 
 func _open_file():

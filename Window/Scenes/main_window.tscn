@@ -74,6 +74,7 @@ popup/item_1/text = "Settings"
 popup/item_1/id = 2
 popup/item_2/text = "Save File"
 popup/item_2/id = 3
+popup/item_2/disabled = true
 popup/item_3/text = "New File"
 popup/item_3/id = 6
 popup/item_4/text = "Open Recent"

@@ -7,6 +7,7 @@ class_name EntryList
 func _ready() -> void:
 	item_selected.connect(_on_item_selected)
 	_data_store.data_loaded.connect(_on_data_loaded)
+	_data_store.data_freed.connect(clear)
 
 
 func _on_data_loaded():
