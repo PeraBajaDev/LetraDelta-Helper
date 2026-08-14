@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://v068fb6wp2lg" path="res://Strings/Scripts/dialogue_selector.gd" id="6_nfxux"]
 [ext_resource type="Script" uid="uid://vdxnfnycj68s" path="res://Portraits/Scripts/portrait.gd" id="7_pwu08"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
+[ext_resource type="Script" uid="uid://ck55q8e2yicgk" path="res://Window/Scenes/unsaved_changes_window.gd" id="15_b30n8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qhrn"]
 bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
@@ -591,3 +592,15 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="LoadingWindow/CenterContainer" unique_id=1207806179]
 layout_mode = 2
 text = "LOADING_FILE_DIALOGUE"
+
+[node name="UnsavedChangesWindow" type="ConfirmationDialog" parent="." unique_id=673071473]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "UNSAVED_CHANGES_DIALOGUE_TITLE"
+initial_position = 2
+size = Vector2i(685, 184)
+ok_button_text = "UNSAVED_CHANGES_DIALOGUE_CONFIRM"
+dialog_text = "UNSAVED_CHANGES_DIALOGUE"
+cancel_button_text = "UNSAVED_CHANGES_DIALOGUE_CANCEL"
+script = ExtResource("15_b30n8")
+_data_store = ExtResource("2_4e30w")

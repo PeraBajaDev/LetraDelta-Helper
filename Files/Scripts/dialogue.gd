@@ -34,12 +34,12 @@ func _init(
 	new_key: StringName,
 	new_content: String,
 	new_original_content: String,
-	last_edited_by: String,
+	new_last_edited_by: String,
 ) -> void:
 	_key = new_key
 	_content = new_content
 	_original_content = new_original_content
-	_last_edited_by = last_edited_by
+	_last_edited_by = new_last_edited_by
 
 
 func _to_string() -> String:

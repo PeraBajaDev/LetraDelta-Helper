@@ -15,6 +15,11 @@ var current_entry: DialogueEntry:
 	get:
 		return _current_entry
 
+@export var _file_hash_sha256: StringName
+var file_hash_sha256: StringName:
+	get:
+		return _file_hash_sha256
+
 
 func select_entry(entry: DialogueEntry) -> void:
 	if _current_entry == entry:
@@ -38,10 +43,12 @@ func _init(
 	new_style: StringName = "",
 	new_dialogues_entries: Array[DialogueEntry] = [],
 	new_path: StringName = "",
+	new_file_hash_sha256: StringName = "",
 ) -> void:
 	_style = new_style
 	_dialogues_entries = new_dialogues_entries
 	_path = new_path
+	_file_hash_sha256 = new_file_hash_sha256
 
 
 func notify_data_loaded():
@@ -54,6 +61,12 @@ func notify_dialogue_changed(dialogue: Dialogue) -> void:
 
 func notify_data_freed():
 	data_freed.emit()
+
+
+func save_new_hash(value: StringName):
+	if value.is_empty():
+		return
+	_file_hash_sha256 = value
 
 
 func _to_string() -> String:

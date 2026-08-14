@@ -2,3 +2,14 @@ clave;en;es
 DATA_STORE_FILE_ERROR7;File {file_path} was not found in {dir} directory;El archivo {file_path} no se encontró en el directorio {dir}
 DATA_STORE_FILE_ERROR16;File {file_path} cannot be read due to be an invalid json format;El archivo {file_path} no se pudo leer debido a tener un formato json invalido
 LOADING_FILE_DIALOGUE;Loading file…;Cargando archivo…
+UNSAVED_CHANGES_DIALOGUE;"Do you really want to close the file?
+This may lead to losing information
+made during the usage of LetraDelta Helper.
+Things such as outdated strings,
+unfinished dialogues may occur.";"¿Realmente quieres cerrar este archivo?
+Esto puede provocar la perdida de su progreso
+hecho recientemente en DH.
+Si acepta, los diálogos traducidos hasta el momento no se guardaran."
+UNSAVED_CHANGES_DIALOGUE_TITLE;Do you really want to close the file?;¿Realmente quieres cerrar este archivo?
+UNSAVED_CHANGES_DIALOGUE_CONFIRM;Yes, I am aware of the consequences.;Sí, soy consiente de las consecuencias.
+UNSAVED_CHANGES_DIALOGUE_CANCEL;No, I want to go back.;No, quiero volver al programa.

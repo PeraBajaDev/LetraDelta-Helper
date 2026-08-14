@@ -7,6 +7,7 @@ class_name FileMenuButton
 @onready var _popup: PopupMenu = get_popup()
 @onready var error_window: AcceptDialog = %ErrorDialogWindow
 @onready var loading_window: Window = %LoadingWindow
+@onready var unsaved_changes_window: UnsavedChangesWindow = %UnsavedChangesWindow
 const RECENT_FILES_SUBMENU: PackedScene = preload("uid://b57arje145ojq")
 enum ActionsIDs {
 	NEW_FILE = 2,
@@ -32,7 +33,7 @@ func _ready() -> void:
 func _do_action(id: int):
 	match id:
 		ActionsIDs.OPEN_FILE:
-			_open_file()
+			unsaved_changes_window.handle_destructive_action(_open_file)
 		ActionsIDs.SAVE_FILE_AS:
 			_save_file_as()
 		ActionsIDs.SAVE_FILE:
@@ -40,9 +41,12 @@ func _do_action(id: int):
 		ActionsIDs.EXPORT_TO_GAME_FORMAT:
 			_export_to_game_format()
 		ActionsIDs.CLOSE_FILE:
-			print("cerrando")
-			_data_store.copy_from_resource(DataStore.new())
-			_data_store.notify_data_freed()
+			unsaved_changes_window.handle_destructive_action(_close_file)
+
+
+func _close_file():
+	_data_store.copy_from_resource(DataStore.new())
+	_data_store.notify_data_freed()
 
 
 func _open_file():
