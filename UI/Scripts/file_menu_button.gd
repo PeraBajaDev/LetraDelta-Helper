@@ -112,6 +112,7 @@ func load_data_store(data_store_from_json: DataStore):
 		_recover_progress_window.confirmed.connect(
 			func():
 				var tmp_data_store = JSONHandler.get_data_store(tmp_path)
+				# Save new hash with new tmp_content
 				tmp_data_store.save_new_hash(JSONHandler.stringify_data_store(tmp_data_store))
 				_data_store.replace_data(tmp_data_store)
 				_data_store.notify_data_loaded(),
