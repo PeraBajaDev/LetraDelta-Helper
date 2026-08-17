@@ -3,6 +3,7 @@ class_name JSONHandler
 
 const STYLE_KEY = &"Style"
 const DIALOGUES_KEY = &"Dialogues"
+const USER_PATH := "user://"
 
 
 ## Returns a DataStore instance if given path is found
@@ -43,7 +44,7 @@ static func save_data_store(data_store: DataStore, save_as_path: StringName = &"
 	var open_error = FileAccess.get_open_error()
 	if open_error:
 		return open_error
-	var stringified_data_store: String = JSONHandler.stringify_data_store(data_store)
+	var stringified_data_store: String = stringify_data_store(data_store)
 	data_store.save_new_hash(stringified_data_store.sha256_text())
 	file.store_string(stringified_data_store)
 	return OK
@@ -76,4 +77,17 @@ static func export_to_game_format(data_store: DataStore, save_path: StringName) 
 	if open_error:
 		return open_error
 	file.store_string(JSON.stringify(serialized_dict))
+	return OK
+
+
+static func write_data_store_tmp_file(data_store: DataStore) -> Error:
+	print(data_store.path + ".tmp")
+	var tmp_save = FileAccess.open(
+		data_store.path + ".tmp",
+		FileAccess.WRITE,
+	)
+	var error := FileAccess.get_open_error()
+	if error:
+		return error
+	tmp_save.store_string(stringify_data_store(data_store))
 	return OK

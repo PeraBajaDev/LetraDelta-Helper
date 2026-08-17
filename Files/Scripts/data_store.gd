@@ -47,7 +47,7 @@ func _init(
 ) -> void:
 	_style = new_style
 	_dialogues_entries = new_dialogues_entries
-	_path = new_path
+	_path = new_path.trim_suffix(".tmp")
 	_file_hash_sha256 = new_file_hash_sha256
 
 
@@ -71,6 +71,13 @@ func save_new_hash(value: StringName):
 
 func _to_string() -> String:
 	return "Style: %s \n dialogue_entries: %s" % [_style, _dialogues_entries]
+
+
+## Copies the data from the data_store into this data_store. Removes tmp file in the process.
+func replace_data(resource: DataStore) -> int:
+	if path:
+		DirAccess.remove_absolute(path + ".tmp")
+	return copy_from_resource(resource)
 
 
 static func create_with_given_error(error: Error):

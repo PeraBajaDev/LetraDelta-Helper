@@ -2,6 +2,7 @@ extends Control
 
 @export var _data_store: DataStore
 @onready var _unsaved_changes_window: UnsavedChangesWindow = %UnsavedChangesWindow
+var _opened_data_store_path
 
 
 func _ready() -> void:
@@ -10,8 +11,14 @@ func _ready() -> void:
 	var tree = get_tree()
 	tree.auto_accept_quit = false
 	tree.root.close_requested.connect(_unsaved_changes_window.handle_destructive_action.bind(
-			tree.quit
+			_on_window_closed
 		))
+
+
+func _on_window_closed():
+	if _data_store.path:
+		DirAccess.remove_absolute(_data_store.path + ".tmp")
+	get_tree().quit()
 
 
 func _on_data_loaded():

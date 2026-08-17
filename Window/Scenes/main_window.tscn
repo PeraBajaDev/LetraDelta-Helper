@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://vdxnfnycj68s" path="res://Portraits/Scripts/portrait.gd" id="7_pwu08"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
 [ext_resource type="Script" uid="uid://ck55q8e2yicgk" path="res://Window/Scenes/unsaved_changes_window.gd" id="15_b30n8"]
+[ext_resource type="Script" uid="uid://qjjarstyjd8y" path="res://Window/Scenes/tmp_auto_save_timer.gd" id="16_jvqyy"]
+[ext_resource type="Script" uid="uid://bv50tqvtefuu6" path="res://Window/Scenes/recover_progress_window.gd" id="17_km3he"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qhrn"]
 bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
@@ -604,3 +606,20 @@ dialog_text = "UNSAVED_CHANGES_DIALOGUE"
 cancel_button_text = "UNSAVED_CHANGES_DIALOGUE_CANCEL"
 script = ExtResource("15_b30n8")
 _data_store = ExtResource("2_4e30w")
+
+[node name="TmpAutoSaveTimer" type="Timer" parent="." unique_id=1079707070]
+wait_time = 3.0
+autostart = true
+script = ExtResource("16_jvqyy")
+_data_store = ExtResource("2_4e30w")
+
+[node name="RecoverProgressWindow" type="ConfirmationDialog" parent="." unique_id=1068484919]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "RECOVER_PROGRESS_DIALOGUE_TITLE"
+initial_position = 2
+size = Vector2i(393, 100)
+ok_button_text = "CONFIRMATION_OK"
+dialog_text = "RECOVER_PROGRESS_DIALOGUE"
+cancel_button_text = "CONFIRMATION_CANCEL"
+script = ExtResource("17_km3he")

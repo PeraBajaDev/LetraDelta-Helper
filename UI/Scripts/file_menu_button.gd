@@ -8,6 +8,7 @@ class_name FileMenuButton
 @onready var error_window: AcceptDialog = %ErrorDialogWindow
 @onready var loading_window: Window = %LoadingWindow
 @onready var unsaved_changes_window: UnsavedChangesWindow = %UnsavedChangesWindow
+@onready var _recover_progress_window: RecoverProgressWindow = %RecoverProgressWindow
 const RECENT_FILES_SUBMENU: PackedScene = preload("uid://b57arje145ojq")
 enum ActionsIDs {
 	NEW_FILE = 2,
@@ -45,7 +46,7 @@ func _do_action(id: int):
 
 
 func _close_file():
-	_data_store.copy_from_resource(DataStore.new())
+	_data_store.replace_data(DataStore.new())
 	_data_store.notify_data_freed()
 
 
@@ -90,10 +91,36 @@ func create_data_store(path: StringName):
 		show_error.call_deferred(data_source_from_json.load_error, path)
 		return
 	RecentFilesHandler.add_to_recent_files(path)
-	_data_store.copy_from_resource(data_source_from_json)
-	# Calling
-	_close_waiting_window.call_deferred()
-	_data_store.notify_data_loaded.call_deferred()
+	load_data_store.call_deferred(data_source_from_json)
+
+
+func load_data_store(data_store_from_json: DataStore):
+	_close_waiting_window()
+	var tmp_path: String = data_store_from_json.path + ".tmp"
+	if not FileAccess.file_exists(tmp_path):
+		_data_store.replace_data(data_store_from_json)
+		_data_store.notify_data_loaded()
+		return
+
+	var tmp_modified_time: int = FileAccess.get_modified_time(tmp_path)
+	var data_store_modified_time: int = FileAccess.get_modified_time(data_store_from_json.path)
+	if data_store_modified_time >= tmp_modified_time:
+		_data_store.replace_data(data_store_from_json)
+		_data_store.notify_data_loaded()
+	else:
+		_recover_progress_window.show()
+		_recover_progress_window.confirmed.connect(
+			func():
+				var tmp_data_store = JSONHandler.get_data_store(tmp_path)
+				tmp_data_store.save_new_hash(JSONHandler.stringify_data_store(tmp_data_store))
+				_data_store.replace_data(tmp_data_store)
+				_data_store.notify_data_loaded(),
+		)
+		_recover_progress_window.canceled.connect(
+			func():
+				_data_store.replace_data(data_store_from_json)
+				_data_store.notify_data_loaded(),
+		)
 
 
 func show_error(error: Error, path):

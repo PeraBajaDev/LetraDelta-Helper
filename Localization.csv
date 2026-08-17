@@ -13,3 +13,7 @@ Si acepta, los diálogos traducidos hasta el momento no se guardaran."
 UNSAVED_CHANGES_DIALOGUE_TITLE;Do you really want to close the file?;¿Realmente quieres cerrar este archivo?
 UNSAVED_CHANGES_DIALOGUE_CONFIRM;Yes, I am aware of the consequences.;Sí, soy consiente de las consecuencias.
 UNSAVED_CHANGES_DIALOGUE_CANCEL;No, I want to go back.;No, quiero volver al programa.
+RECOVER_PROGRESS_DIALOGUE_TITLE;Recover unsaved work?;¿Recuperar el trabajo no guardado?
+RECOVER_PROGRESS_DIALOGUE;Unsaved changes has been detected from last sesion. Do you want to recover?;Se han detectado cambios sin guardar de la sesión anterior. ¿Quieres recuperarlos?
+CONFIRMATION_OK;Yes;Sí
+CONFIRMATION_CANCEL;No;No
