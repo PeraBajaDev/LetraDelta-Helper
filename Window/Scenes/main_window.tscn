@@ -608,7 +608,7 @@ script = ExtResource("15_b30n8")
 _data_store = ExtResource("2_4e30w")
 
 [node name="TmpAutoSaveTimer" type="Timer" parent="." unique_id=1079707070]
-wait_time = 3.0
+wait_time = 200.0
 autostart = true
 script = ExtResource("16_jvqyy")
 _data_store = ExtResource("2_4e30w")
