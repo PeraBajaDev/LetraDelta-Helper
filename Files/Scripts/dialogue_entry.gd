@@ -35,5 +35,12 @@ func _to_string() -> String:
 	return "ID: %s\n dialogues: %s" % [_id, _dialogues]
 
 
+func needs_any_review() -> bool:
+	return _dialogues.any(
+		func(d: Dialogue):
+			return d.needs_review,
+	)
+
+
 func set_current_dialogue_by_key(_key: String):
 	pass

@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://v068fb6wp2lg" path="res://Strings/Scripts/dialogue_selector.gd" id="6_nfxux"]
 [ext_resource type="Script" uid="uid://vdxnfnycj68s" path="res://Portraits/Scripts/portrait.gd" id="7_pwu08"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
+[ext_resource type="Script" uid="uid://cajrwjor0wxyq" path="res://UI/Scripts/needs_review_check.gd" id="13_ag71q"]
 [ext_resource type="Script" uid="uid://ck55q8e2yicgk" path="res://Window/Scenes/unsaved_changes_window.gd" id="15_b30n8"]
 [ext_resource type="Script" uid="uid://qjjarstyjd8y" path="res://Window/Scenes/tmp_auto_save_timer.gd" id="16_jvqyy"]
 [ext_resource type="Script" uid="uid://bv50tqvtefuu6" path="res://Window/Scenes/recover_progress_window.gd" id="17_km3he"]
@@ -515,7 +516,10 @@ tooltip_text = "Flag this string to come back to it later.
 Marked strings get a ★ prefix in the list
 and can be filtered with the dropdown."
 focus_mode = 0
+disabled = true
 text = "Mark for review"
+script = ExtResource("13_ag71q")
+_data_store = ExtResource("2_4e30w")
 
 [node name="SimilarEntries" type="Label" parent="VBoxContainer/MainContentContainer/VBoxContainer" unique_id=1857358571]
 custom_minimum_size = Vector2(0, 180)
