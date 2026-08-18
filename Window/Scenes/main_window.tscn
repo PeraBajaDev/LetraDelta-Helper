@@ -15,9 +15,15 @@
 [ext_resource type="Script" uid="uid://vdxnfnycj68s" path="res://Portraits/Scripts/portrait.gd" id="7_pwu08"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
 [ext_resource type="Script" uid="uid://cajrwjor0wxyq" path="res://UI/Scripts/needs_review_check.gd" id="13_ag71q"]
-[ext_resource type="Script" uid="uid://ck55q8e2yicgk" path="res://Window/Scenes/unsaved_changes_window.gd" id="15_b30n8"]
-[ext_resource type="Script" uid="uid://qjjarstyjd8y" path="res://Window/Scenes/tmp_auto_save_timer.gd" id="16_jvqyy"]
-[ext_resource type="Script" uid="uid://bv50tqvtefuu6" path="res://Window/Scenes/recover_progress_window.gd" id="17_km3he"]
+[ext_resource type="Texture2D" uid="uid://cndaxlohyb0lh" path="res://UI/Textures/info-02.svg" id="15_8tpn1"]
+[ext_resource type="Script" uid="uid://ck55q8e2yicgk" path="res://Window/Scripts/unsaved_changes_window.gd" id="15_b30n8"]
+[ext_resource type="Script" uid="uid://qjjarstyjd8y" path="res://Files/tmp_auto_save_timer.gd" id="16_jvqyy"]
+[ext_resource type="Script" uid="uid://bv50tqvtefuu6" path="res://Window/Scripts/recover_progress_window.gd" id="17_km3he"]
+[ext_resource type="Texture2D" uid="uid://c8xbfklyyek21" path="res://UI/Textures/exclamation-02.svg" id="17_u8ovq"]
+[ext_resource type="Texture2D" uid="uid://c0q870yiasneg" path="res://UI/Textures/settings-02.svg" id="18_ufk4e"]
+[ext_resource type="Texture2D" uid="uid://b7ww8jp5wu2vs" path="res://UI/Textures/tick.svg" id="19_6mq5k"]
+[ext_resource type="Texture2D" uid="uid://1p86bm7qrtiy" path="res://UI/Textures/circle-ring.svg" id="20_u8ovq"]
+[ext_resource type="Texture2D" uid="uid://dh7qgm6rv7lie" path="res://UI/Textures/question-mark.svg" id="20_xjqh5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qhrn"]
 bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
@@ -568,8 +574,20 @@ offset_bottom = 188.0
 grow_horizontal = 2
 grow_vertical = 2
 allow_reselect = true
+item_count = 1
+icon_scale = 0.7
+item_0/text = "HOla pisstola aaaaa"
+item_0/icon = ExtResource("15_8tpn1")
 script = ExtResource("6_nfxux")
 _data_store = ExtResource("2_4e30w")
+_state_icons = Dictionary[int, Texture2D]({
+0: ExtResource("17_u8ovq"),
+1: ExtResource("20_xjqh5"),
+3: ExtResource("15_8tpn1"),
+4: ExtResource("18_ufk4e"),
+5: ExtResource("19_6mq5k"),
+6: ExtResource("20_u8ovq")
+})
 
 [node name="ErrorDialogWindow" type="AcceptDialog" parent="." unique_id=1408692665]
 unique_name_in_owner = true

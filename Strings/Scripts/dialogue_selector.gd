@@ -2,6 +2,7 @@ class_name DialogueSelector
 extends ItemList
 
 @export var _data_store: DataStore
+@export var _state_icons: Dictionary[Dialogue.State, Texture2D]
 
 
 func _ready() -> void:
@@ -17,11 +18,22 @@ func update_list(entry: DialogueEntry):
 		var item_text: String = dialogue.content if not dialogue.content.is_empty() else dialogue.original_content
 		var item_index: int = add_item(item_text)
 		set_item_metadata(item_index, dialogue)
+		_set_item_icon_with_state(dialogue, item_index)
 		UIWatcher.watch(self, dialogue.content_changed, _update_item.bind(dialogue))
+		UIWatcher.watch(
+			self,
+			dialogue.needs_review_changed,
+			_set_item_icon_with_state.bind(item_index),
+		)
 
 
 func _on_data_loaded():
 	UIWatcher.watch(self, _data_store.entry_selected, update_list)
+
+
+func _set_item_icon_with_state(dialogue: Dialogue, index: int):
+	var dialogue_state: DialogueStateResult = dialogue.get_state_report()
+	set_item_icon(index, _state_icons[dialogue_state.state])
 
 
 func _update_item(dialogue: Dialogue):
@@ -29,6 +41,7 @@ func _update_item(dialogue: Dialogue):
 	if index <= -1:
 		return
 	var item_text: String = dialogue.content if not dialogue.content.is_empty() else dialogue.original_content
+	_set_item_icon_with_state(dialogue, index)
 	set_item_text(index, item_text)
 
 
