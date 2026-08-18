@@ -1,5 +1,6 @@
-extends ItemList
 class_name SimilarEntriesList
+extends ItemList
+
 @export var _data_store: DataStore
 
 

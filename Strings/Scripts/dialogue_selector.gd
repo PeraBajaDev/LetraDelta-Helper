@@ -1,5 +1,5 @@
-extends ItemList
 class_name DialogueSelector
+extends ItemList
 
 @export var _data_store: DataStore
 
@@ -10,10 +10,6 @@ func _ready() -> void:
 	_data_store.data_freed.connect(clear)
 
 
-func _on_data_loaded():
-	UIWatcher.watch(self, _data_store.entry_selected, update_list)
-
-
 func update_list(entry: DialogueEntry):
 	clear()
 	UIWatcher.watch(self, _data_store.dialogue_selected, _on_current_dialogue_changed)
@@ -22,6 +18,10 @@ func update_list(entry: DialogueEntry):
 		var item_index: int = add_item(item_text)
 		set_item_metadata(item_index, dialogue)
 		UIWatcher.watch(self, dialogue.content_changed, _update_item.bind(dialogue))
+
+
+func _on_data_loaded():
+	UIWatcher.watch(self, _data_store.entry_selected, update_list)
 
 
 func _update_item(dialogue: Dialogue):

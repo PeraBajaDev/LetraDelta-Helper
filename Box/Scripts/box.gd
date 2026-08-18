@@ -1,5 +1,5 @@
-extends RichTextLabel
 class_name DialogueLabel
+extends RichTextLabel
 
 @export var _data_store: DataStore
 

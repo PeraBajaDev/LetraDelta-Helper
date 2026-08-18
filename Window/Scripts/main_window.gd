@@ -1,8 +1,10 @@
 extends Control
 
 @export var _data_store: DataStore
-@onready var _unsaved_changes_window: UnsavedChangesWindow = %UnsavedChangesWindow
+
 var _opened_data_store_path
+
+@onready var _unsaved_changes_window: UnsavedChangesWindow = %UnsavedChangesWindow
 
 
 func _ready() -> void:

@@ -1,5 +1,6 @@
-extends TextEdit
 class_name OriginalDialogue
+extends TextEdit
+
 @export var _data_store: DataStore
 
 

@@ -1,15 +1,6 @@
-extends MenuButton
 class_name FileMenuButton
-@export var _data_store: DataStore
+extends MenuButton
 
-@onready var _open_file_dialogue: FileDialog = $OpenFileDialog
-@onready var _save_file_dialogue: FileDialog = $SaveFileDialog
-@onready var _popup: PopupMenu = get_popup()
-@onready var error_window: AcceptDialog = %ErrorDialogWindow
-@onready var loading_window: Window = %LoadingWindow
-@onready var unsaved_changes_window: UnsavedChangesWindow = %UnsavedChangesWindow
-@onready var _recover_progress_window: RecoverProgressWindow = %RecoverProgressWindow
-const RECENT_FILES_SUBMENU: PackedScene = preload("uid://b57arje145ojq")
 enum ActionsIDs {
 	NEW_FILE = 2,
 	SAVE_FILE = 3,
@@ -20,6 +11,18 @@ enum ActionsIDs {
 	CLOSE_FILE = 7,
 }
 
+const RECENT_FILES_SUBMENU: PackedScene = preload("uid://b57arje145ojq")
+
+@export var _data_store: DataStore
+
+@onready var error_window: AcceptDialog = %ErrorDialogWindow
+@onready var loading_window: Window = %LoadingWindow
+@onready var unsaved_changes_window: UnsavedChangesWindow = %UnsavedChangesWindow
+@onready var _open_file_dialogue: FileDialog = $OpenFileDialog
+@onready var _save_file_dialogue: FileDialog = $SaveFileDialog
+@onready var _popup: PopupMenu = get_popup()
+@onready var _recover_progress_window: RecoverProgressWindow = %RecoverProgressWindow
+
 
 func _ready() -> void:
 	_popup.id_pressed.connect(_do_action)
@@ -29,6 +32,52 @@ func _ready() -> void:
 	var save_file_index = _popup.get_item_index(ActionsIDs.SAVE_FILE)
 	_data_store.data_loaded.connect(_popup.set_item_disabled.bind(save_file_index, false))
 	_data_store.data_freed.connect(_popup.set_item_disabled.bind(save_file_index, true))
+
+
+func create_data_store(path: StringName):
+	var data_source_from_json := JSONHandler.get_data_store(path)
+	if data_source_from_json.load_error != OK:
+		show_error.call_deferred(data_source_from_json.load_error, path)
+		return
+	RecentFilesHandler.add_to_recent_files(path)
+	load_data_store.call_deferred(data_source_from_json)
+
+
+func load_data_store(data_store_from_json: DataStore):
+	_close_waiting_window()
+	var tmp_path: String = data_store_from_json.path + ".tmp"
+	if not FileAccess.file_exists(tmp_path):
+		_data_store.replace_data(data_store_from_json)
+		_data_store.notify_data_loaded()
+		return
+
+	var tmp_modified_time: int = FileAccess.get_modified_time(tmp_path)
+	var data_store_modified_time: int = FileAccess.get_modified_time(data_store_from_json.path)
+	if data_store_modified_time >= tmp_modified_time:
+		_data_store.replace_data(data_store_from_json)
+		_data_store.notify_data_loaded()
+	else:
+		_recover_progress_window.show()
+		_recover_progress_window.confirmed.connect(
+			func():
+				var tmp_data_store = JSONHandler.get_data_store(tmp_path)
+				# Save new hash with new tmp_content
+				tmp_data_store.save_new_hash(JSONHandler.stringify_data_store(tmp_data_store))
+				_data_store.replace_data(tmp_data_store)
+				_data_store.notify_data_loaded(),
+		)
+		_recover_progress_window.canceled.connect(
+			func():
+				_data_store.replace_data(data_store_from_json)
+				_data_store.notify_data_loaded(),
+		)
+
+
+func show_error(error: Error, path):
+	error_window.dialog_text = tr("DATA_STORE_FILE_ERROR%d" % int(error)).format(
+		{ "file_path": path, "dir": path.get_base_dir() }
+	)
+	error_window.show()
 
 
 func _do_action(id: int):
@@ -83,52 +132,6 @@ func _save_file_as():
 
 func _close_waiting_window() -> void:
 	loading_window.hide()
-
-
-func create_data_store(path: StringName):
-	var data_source_from_json := JSONHandler.get_data_store(path)
-	if data_source_from_json.load_error != OK:
-		show_error.call_deferred(data_source_from_json.load_error, path)
-		return
-	RecentFilesHandler.add_to_recent_files(path)
-	load_data_store.call_deferred(data_source_from_json)
-
-
-func load_data_store(data_store_from_json: DataStore):
-	_close_waiting_window()
-	var tmp_path: String = data_store_from_json.path + ".tmp"
-	if not FileAccess.file_exists(tmp_path):
-		_data_store.replace_data(data_store_from_json)
-		_data_store.notify_data_loaded()
-		return
-
-	var tmp_modified_time: int = FileAccess.get_modified_time(tmp_path)
-	var data_store_modified_time: int = FileAccess.get_modified_time(data_store_from_json.path)
-	if data_store_modified_time >= tmp_modified_time:
-		_data_store.replace_data(data_store_from_json)
-		_data_store.notify_data_loaded()
-	else:
-		_recover_progress_window.show()
-		_recover_progress_window.confirmed.connect(
-			func():
-				var tmp_data_store = JSONHandler.get_data_store(tmp_path)
-				# Save new hash with new tmp_content
-				tmp_data_store.save_new_hash(JSONHandler.stringify_data_store(tmp_data_store))
-				_data_store.replace_data(tmp_data_store)
-				_data_store.notify_data_loaded(),
-		)
-		_recover_progress_window.canceled.connect(
-			func():
-				_data_store.replace_data(data_store_from_json)
-				_data_store.notify_data_loaded(),
-		)
-
-
-func show_error(error: Error, path):
-	error_window.dialog_text = tr("DATA_STORE_FILE_ERROR%d" % int(error)).format(
-		{ "file_path": path, "dir": path.get_base_dir() }
-	)
-	error_window.show()
 
 
 func _export_to_game_format():

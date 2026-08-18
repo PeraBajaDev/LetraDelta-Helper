@@ -1,5 +1,5 @@
-extends RefCounted
 class_name JSONHandler
+extends RefCounted
 
 const STYLE_KEY = &"Style"
 const DIALOGUES_KEY = &"Dialogues"

@@ -1,8 +1,9 @@
 extends PopupMenu
 
-@onready var file_menu_button: FileMenuButton = $"../.."
 const RECENT_FILES_PATH := &"user://recent_files.dat"
 const CLEAR_LIST_ID = 0
+
+@onready var file_menu_button: FileMenuButton = $"../.."
 
 
 func _ready() -> void:

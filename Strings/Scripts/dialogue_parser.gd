@@ -1,5 +1,5 @@
-extends RefCounted
 class_name DialogueParser
+extends RefCounted
 
 
 static func parse(text: String) -> String:

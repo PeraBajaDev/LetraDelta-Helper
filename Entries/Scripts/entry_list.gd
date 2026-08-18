@@ -1,5 +1,5 @@
-extends ItemList
 class_name EntryList
+extends ItemList
 
 @export var _data_store: DataStore
 

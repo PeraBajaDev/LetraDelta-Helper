@@ -1,12 +1,12 @@
-extends Resource
 class_name Dialogue
+extends Resource
+
+signal content_changed()
 
 @export var _key: StringName
 @export var _content: String
 @export var _original_content: String
 @export var _last_edited_by: StringName
-
-signal content_changed()
 
 var key: String:
 	get:

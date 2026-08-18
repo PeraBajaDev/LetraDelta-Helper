@@ -1,6 +1,8 @@
-extends TextEdit
 class_name DialogueEdit
+extends TextEdit
+
 @export var _data_store: DataStore
+
 @onready var _replace_similar_entries_check: CheckBox = $ReplaceSimilar
 
 

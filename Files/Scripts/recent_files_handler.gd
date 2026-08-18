@@ -1,5 +1,5 @@
-extends Object
 class_name RecentFilesHandler
+extends Object
 
 const RECENT_FILES_PATH := &"user://recent_files.dat"
 

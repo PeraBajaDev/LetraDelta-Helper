@@ -1,2 +1,2 @@
-extends ConfirmationDialog
 class_name RecoverProgressWindow
+extends ConfirmationDialog

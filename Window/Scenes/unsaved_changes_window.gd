@@ -1,5 +1,5 @@
-extends ConfirmationDialog
 class_name UnsavedChangesWindow
+extends ConfirmationDialog
 
 @export var _data_store: DataStore
 
