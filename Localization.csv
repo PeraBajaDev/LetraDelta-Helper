@@ -17,3 +17,4 @@ RECOVER_PROGRESS_DIALOGUE_TITLE;Recover unsaved work?;¿Recuperar el trabajo no 
 RECOVER_PROGRESS_DIALOGUE;Unsaved changes has been detected from last sesion. Do you want to recover?;Se han detectado cambios sin guardar de la sesión anterior. ¿Quieres recuperarlos?
 CONFIRMATION_OK;Yes;Sí
 CONFIRMATION_CANCEL;No;No
+INVALID_SIGNS_LABEL;missing sing:;falta el signo:

@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c8u6145dklmip" path="res://UI/Scripts/progress_stats.gd" id="4_rgpx8"]
 [ext_resource type="Texture2D" uid="uid://rf056ebnh2vg" path="res://Box/Sprites/Box2.png" id="5_4e30w"]
 [ext_resource type="FontFile" uid="uid://cm8vhnbpgnrpm" path="res://Fonts/fnt_main.fnt" id="5_4iwp4"]
+[ext_resource type="Script" uid="uid://8e8cc3j1jjqr" path="res://UI/Scripts/closed_sign_validator_label.gd" id="5_6mq5k"]
 [ext_resource type="Script" uid="uid://dmnmncy4oo0n1" path="res://Strings/Scripts/dialogue_edit.gd" id="6_430op"]
 [ext_resource type="Script" uid="uid://dkkdlyvsfnvb7" path="res://Strings/Scripts/original_dialogue.gd" id="6_lp5ky"]
 [ext_resource type="Script" uid="uid://v068fb6wp2lg" path="res://Strings/Scripts/dialogue_selector.gd" id="6_nfxux"]
@@ -219,9 +220,11 @@ tooltip_text = "Tag validator.
 Compares the count of \\E[x], \\F[x], %, /,
 etc. against the original."
 mouse_filter = 1
-text = "hola"
+theme_override_colors/font_color = Color(1, 0.80784315, 0.19607843, 1)
 vertical_alignment = 1
 clip_text = true
+script = ExtResource("5_6mq5k")
+data_store = ExtResource("2_4e30w")
 
 [node name="FiltersContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=144929518]
 layout_mode = 2
