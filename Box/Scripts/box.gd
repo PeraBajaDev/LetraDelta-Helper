@@ -27,17 +27,15 @@ func _on_dialogue_changed(dialogue: Dialogue) -> void:
 		return
 
 	var lines: PackedStringArray = []
-	for line in parsed_text.split("\n"):
-		if not line.begins_with("*"):
-			lines.append(line)
-			continue
+	for line in parsed_text.split("\n*"):
 		if len(line) <= 1:
 			lines.append(line)
 			continue
-		var first_char = line.trim_prefix("*")[0]
+		line = line.trim_prefix("*")
+		var first_char = line[0]
 		var result = "[table=2][cell]*%s[/cell][cell]%s[/cell][/table]" % [
 			first_char,
-			line.trim_prefix("*%s" % first_char),
+			line.trim_prefix("%s" % first_char),
 		]
 		lines.append(result)
 	text = "\n".join(lines)
