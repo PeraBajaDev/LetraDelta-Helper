@@ -2,8 +2,6 @@ extends Control
 
 @export var _data_store: DataStore
 
-var _opened_data_store_path
-
 @onready var _unsaved_changes_window: UnsavedChangesWindow = %UnsavedChangesWindow
 
 
