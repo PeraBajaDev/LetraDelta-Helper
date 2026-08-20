@@ -7,13 +7,18 @@
 [ext_resource type="Script" uid="uid://djle6enhwtl1f" path="res://Box/Scripts/box.gd" id="3_gey0d"]
 [ext_resource type="Texture2D" uid="uid://do71hc70q1tln" path="res://Portraits/Sprites/spr_face_n8.png" id="4_4iwp4"]
 [ext_resource type="Script" uid="uid://c8u6145dklmip" path="res://UI/Scripts/progress_stats.gd" id="4_rgpx8"]
+[ext_resource type="Shortcut" uid="uid://d1fobh3jvod7c" path="res://UI/Shortcuts/save_file_shortcut.tres" id="4_xjqh5"]
+[ext_resource type="Shortcut" uid="uid://bp5rseyha1ose" path="res://UI/Shortcuts/save_file_as_shortcut.tres" id="5_0cfkf"]
 [ext_resource type="Texture2D" uid="uid://rf056ebnh2vg" path="res://Box/Sprites/Box2.png" id="5_4e30w"]
 [ext_resource type="FontFile" uid="uid://cm8vhnbpgnrpm" path="res://Fonts/fnt_main.fnt" id="5_4iwp4"]
 [ext_resource type="Script" uid="uid://8e8cc3j1jjqr" path="res://UI/Scripts/closed_sign_validator_label.gd" id="5_6mq5k"]
 [ext_resource type="Script" uid="uid://dmnmncy4oo0n1" path="res://Strings/Scripts/dialogue_edit.gd" id="6_430op"]
+[ext_resource type="Shortcut" uid="uid://bogdfie6ti7c5" path="res://UI/Shortcuts/open_file_shortcut.tres" id="6_d5q5l"]
 [ext_resource type="Script" uid="uid://dkkdlyvsfnvb7" path="res://Strings/Scripts/original_dialogue.gd" id="6_lp5ky"]
 [ext_resource type="Script" uid="uid://v068fb6wp2lg" path="res://Strings/Scripts/dialogue_selector.gd" id="6_nfxux"]
 [ext_resource type="Script" uid="uid://vdxnfnycj68s" path="res://Portraits/Scripts/portrait.gd" id="7_pwu08"]
+[ext_resource type="Shortcut" uid="uid://bxad6pg6w8mvn" path="res://UI/Shortcuts/export_file_shortcut.tres" id="7_trped"]
+[ext_resource type="Shortcut" uid="uid://l5vl0k1xa234" path="res://UI/Shortcuts/open_recent_shortcut.tres" id="8_d5q5l"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
 [ext_resource type="Script" uid="uid://cajrwjor0wxyq" path="res://UI/Scripts/needs_review_check.gd" id="13_ag71q"]
 [ext_resource type="Texture2D" uid="uid://cndaxlohyb0lh" path="res://UI/Textures/info-02.svg" id="15_8tpn1"]
@@ -117,6 +122,13 @@ popup/item_16/text = "Exit"
 popup/item_16/id = 5
 script = ExtResource("2_pwu08")
 _data_store = ExtResource("2_4e30w")
+_shortcuts = Dictionary[int, Shortcut]({
+1: ExtResource("6_d5q5l"),
+3: ExtResource("4_xjqh5"),
+8: ExtResource("5_0cfkf"),
+11: ExtResource("8_d5q5l"),
+12: ExtResource("7_trped")
+})
 
 [node name="OpenFileDialog" type="FileDialog" parent="VBoxContainer/TopPanel/MenuBar/Container/File" unique_id=986615352]
 title = "Open a File"

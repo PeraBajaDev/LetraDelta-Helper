@@ -14,6 +14,9 @@ enum ActionsIDs {
 const RECENT_FILES_SUBMENU: PackedScene = preload("uid://b57arje145ojq")
 
 @export var _data_store: DataStore
+@export var _shortcuts: Dictionary[ActionsIDs, Shortcut]
+
+var _actions_indexes: Dictionary[ActionsIDs, int]
 
 @onready var error_window: AcceptDialog = %ErrorDialogWindow
 @onready var loading_window: Window = %LoadingWindow
@@ -25,11 +28,19 @@ const RECENT_FILES_SUBMENU: PackedScene = preload("uid://b57arje145ojq")
 
 
 func _ready() -> void:
+	for key: String in ActionsIDs:
+		var key_int = ActionsIDs.get(key) as int
+		_actions_indexes[key_int] = _popup.get_item_index(ActionsIDs[key])
+		if _shortcuts.has(key_int):
+			_popup.set_item_shortcut(_actions_indexes[key_int], _shortcuts[key_int])
 	_popup.id_pressed.connect(_do_action)
-	var open_recent_item_index = _popup.get_item_index(ActionsIDs.OPEN_RECENT_FILES)
 	var recent_files_submenu = RECENT_FILES_SUBMENU.instantiate()
-	_popup.set_item_submenu_node(open_recent_item_index, recent_files_submenu)
-	var save_file_index = _popup.get_item_index(ActionsIDs.SAVE_FILE)
+	_popup.set_item_submenu_node(
+		_actions_indexes[ActionsIDs.OPEN_RECENT_FILES],
+		recent_files_submenu,
+	)
+
+	var save_file_index = _actions_indexes[ActionsIDs.OPEN_RECENT_FILES]
 	_data_store.data_loaded.connect(_popup.set_item_disabled.bind(save_file_index, false))
 	_data_store.data_freed.connect(_popup.set_item_disabled.bind(save_file_index, true))
 
@@ -92,6 +103,9 @@ func _do_action(id: int):
 			_export_to_game_format()
 		ActionsIDs.CLOSE_FILE:
 			unsaved_changes_window.handle_destructive_action(_close_file)
+		ActionsIDs.OPEN_RECENT_FILES:
+			_popup.show()
+			_popup.get_item_submenu_node(_actions_indexes[ActionsIDs.OPEN_RECENT_FILES]).show()
 
 
 func _close_file():
