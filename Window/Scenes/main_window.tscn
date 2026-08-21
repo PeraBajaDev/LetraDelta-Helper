@@ -20,6 +20,7 @@
 [ext_resource type="Shortcut" uid="uid://bxad6pg6w8mvn" path="res://UI/Shortcuts/export_file_shortcut.tres" id="7_trped"]
 [ext_resource type="Shortcut" uid="uid://l5vl0k1xa234" path="res://UI/Shortcuts/open_recent_shortcut.tres" id="8_d5q5l"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
+[ext_resource type="Script" uid="uid://bp7k1327ecvaw" path="res://UI/Scripts/tag_validator_label.gd" id="10_trped"]
 [ext_resource type="Script" uid="uid://cajrwjor0wxyq" path="res://UI/Scripts/needs_review_check.gd" id="13_ag71q"]
 [ext_resource type="Texture2D" uid="uid://cndaxlohyb0lh" path="res://UI/Textures/info-02.svg" id="15_8tpn1"]
 [ext_resource type="Script" uid="uid://ck55q8e2yicgk" path="res://Window/Scripts/unsaved_changes_window.gd" id="15_b30n8"]
@@ -214,6 +215,8 @@ text = "hola"
 horizontal_alignment = 2
 vertical_alignment = 1
 clip_text = true
+script = ExtResource("10_trped")
+data_store = ExtResource("2_4e30w")
 
 [node name="ClosedSignValidatorLabel" type="Label" parent="VBoxContainer/TopPanel" unique_id=1044623675]
 layout_mode = 1

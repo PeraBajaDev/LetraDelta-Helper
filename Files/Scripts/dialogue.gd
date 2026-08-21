@@ -100,13 +100,11 @@ func get_state_report() -> DialogueStateResult:
 	return null
 
 
-# --- Funciones de Validación con Feedback ---
 func _check_invalid_tags() -> DialogueStateResult:
-	var missing_tags: Array = []
-	var extra_tags: Array = []
+	var diff: DialogueParser.TagDiff = DialogueParser.validate_tags(original_content, content)
 
-	if not missing_tags.is_empty() or not extra_tags.is_empty():
-		var details = [missing_tags, extra_tags]
+	if not diff.missing.is_empty() or not diff.extra.is_empty():
+		var details = [diff.missing, diff.extra, diff.order_mismatch]
 		return DialogueStateResult.new(
 			State.INVALID_TAGS,
 			details,
