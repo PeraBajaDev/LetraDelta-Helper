@@ -81,7 +81,9 @@ static func validate_tags(original: String, translation: String) -> TagDiff:
 
 
 static func _count_tags(value: String) -> Dictionary:
-	var clean_string: String = value
+	var re_strip = RegEx.create_from_string(r"`.")
+	var clean_string: String = re_strip.sub(value, "", true)
+	print(clean_string)
 	var counts: Dictionary = { }
 
 	var work: String = clean_string
@@ -130,7 +132,8 @@ static func _get_sequence_regex() -> RegEx:
 
 
 static func _extract_tag_sequence(value: String) -> PackedStringArray:
-	var clean_string: String = value
+	var re_strip = RegEx.create_from_string(r"`.")
+	var clean_string: String = re_strip.sub(value, "", true)
 	var result: PackedStringArray = PackedStringArray()
 	var re: RegEx = _get_sequence_regex()
 	for _m: RegExMatch in re.search_all(clean_string):
