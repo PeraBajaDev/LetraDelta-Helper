@@ -32,12 +32,18 @@ const _STRICT_INLINE_PATTERNS: Array[String] = [
 	"~[0-9]+",
 ]
 
+const _NON_STRICT_INLINE_PATTERNS: Array[String] = [r"\^[0-9]+"]
+
 static var _strict_regexes_cache: Array[RegEx] = []
 static var _sequence_regex_cache: RegEx = null
 
 
 static func parse(text: String) -> String:
 	for pattern in _STRICT_TAGS:
+		var re := RegEx.create_from_string(pattern)
+		var replaced_text := re.sub(text, "", true)
+		text = replaced_text
+	for pattern in _NON_STRICT_INLINE_PATTERNS:
 		var re := RegEx.create_from_string(pattern)
 		var replaced_text := re.sub(text, "", true)
 		text = replaced_text
