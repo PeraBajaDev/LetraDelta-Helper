@@ -1,6 +1,7 @@
 class_name DialogueParser
 extends RefCounted
 
+const BACKTICK_IGNORE_PATTERN = r"(?!`)"
 # \E[x]  emoción         \F[x]  cambio de personaje
 # \M[x]  emoción special  \m[x]  mini face
 # \f[x]  mini text        \T[x]  voz/sonido
@@ -35,19 +36,23 @@ const _STRICT_INLINE_PATTERNS: Array[String] = [
 const _NON_STRICT_INLINE_PATTERNS: Array[String] = [r"\^[0-9]+"]
 
 static var _strict_regexes_cache: Array[RegEx] = []
+
 static var _sequence_regex_cache: RegEx = null
 
 
 static func parse(text: String) -> String:
 	for pattern in _STRICT_TAGS:
-		var re := RegEx.create_from_string(pattern)
+		var re := RegEx.create_from_string(BACKTICK_IGNORE_PATTERN + pattern)
 		var replaced_text := re.sub(text, "", true)
 		text = replaced_text
 	for pattern in _NON_STRICT_INLINE_PATTERNS:
-		var re := RegEx.create_from_string(pattern)
+		var re := RegEx.create_from_string(BACKTICK_IGNORE_PATTERN + pattern)
 		var replaced_text := re.sub(text, "", true)
 		text = replaced_text
-	text = text.replace("/", "")
+	for pattern in _STRICT_SYMBOLS:
+		var re := RegEx.create_from_string(BACKTICK_IGNORE_PATTERN + pattern)
+		var replaced_text := re.sub(text, "", true)
+		text = replaced_text
 	return text.replace("#", "\n").replace("&", "\n")
 
 
