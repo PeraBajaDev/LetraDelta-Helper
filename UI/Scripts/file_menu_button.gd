@@ -40,7 +40,7 @@ func _ready() -> void:
 		recent_files_submenu,
 	)
 
-	var save_file_index = _actions_indexes[ActionsIDs.OPEN_RECENT_FILES]
+	var save_file_index = _actions_indexes[ActionsIDs.SAVE_FILE]
 	_data_store.data_loaded.connect(_popup.set_item_disabled.bind(save_file_index, false))
 	_data_store.data_freed.connect(_popup.set_item_disabled.bind(save_file_index, true))
 
