@@ -85,12 +85,6 @@ func mark_for_review(value: bool = true):
 	needs_review_changed.emit(self)
 
 
-func set_content_without_signal_emission(value: String):
-	if value == null:
-		return
-	_content = value
-
-
 func get_state_report() -> DialogueStateResult:
 	for validator: Callable in _validators:
 		var result: DialogueStateResult = validator.call()
