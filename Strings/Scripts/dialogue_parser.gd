@@ -1,7 +1,7 @@
 class_name DialogueParser
 extends RefCounted
 
-const BACKTICK_IGNORE_PATTERN = r"(?!`)"
+const BACKTICK_IGNORE_PATTERN = r"(?<!`)"
 # \E[x]  emoción         \F[x]  cambio de personaje
 # \M[x]  emoción special  \m[x]  mini face
 # \f[x]  mini text        \T[x]  voz/sonido
@@ -53,6 +53,7 @@ static func parse(text: String) -> String:
 		var re := RegEx.create_from_string(BACKTICK_IGNORE_PATTERN + pattern)
 		var replaced_text := re.sub(text, "", true)
 		text = replaced_text
+	text = text.remove_char(ord("`"))
 	return text.replace("#", "\n").replace("&", "\n")
 
 
