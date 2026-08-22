@@ -36,3 +36,4 @@ func _on_item_selected(index: int):
 		return
 	var recent_file_path = get_item_metadata(index)
 	WorkerThreadPool.add_task(file_menu_button.create_data_store.bind(recent_file_path))
+	file_menu_button.loading_window.show()
