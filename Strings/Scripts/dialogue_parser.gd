@@ -95,7 +95,6 @@ static func validate_tags(original: String, translation: String) -> TagDiff:
 static func _count_tags(value: String) -> Dictionary:
 	var re_strip = RegEx.create_from_string(r"`.")
 	var clean_string: String = re_strip.sub(value, "", true)
-	print(clean_string)
 	var counts: Dictionary = { }
 
 	var work: String = clean_string

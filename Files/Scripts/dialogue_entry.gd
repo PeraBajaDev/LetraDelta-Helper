@@ -44,3 +44,18 @@ func needs_any_review() -> bool:
 
 func set_current_dialogue_by_key(_key: String):
 	pass
+
+
+func get_state() -> Dialogue.State:
+	var has_dialogue_with_state = func(dialogue: Dialogue, state: Dialogue.State):
+		return dialogue.get_state_report().state == state
+	for i in range(Dialogue.State.keys().size()):
+		var state := i as Dialogue.State
+		if state == Dialogue.State.TRANSLATED:
+			if dialogues.all(has_dialogue_with_state.bind(state)):
+				return state
+			else:
+				continue
+		if dialogues.any(has_dialogue_with_state.bind(state)):
+			return state
+	return Dialogue.State.NOT_TRANSLATED

@@ -3,6 +3,7 @@ extends Resource
 
 signal entry_selected(entry: DialogueEntry)
 signal dialogue_selected(dialogue: Dialogue)
+signal entries_filtered(entries: Array[DialogueEntry], state: Dialogue.State)
 signal data_loaded
 signal data_freed
 
@@ -78,6 +79,13 @@ func save_new_hash(value: StringName):
 	if value.is_empty():
 		return
 	_file_hash_sha256 = value
+
+
+## Emits entries_filtered signal with the state provided
+func filter_entries_by_state(state: Dialogue.State) -> void:
+	var by_state = func(entry: DialogueEntry):
+		return entry.get_state() == state
+	entries_filtered.emit(_dialogues_entries.filter(by_state), state)
 
 
 ## Copies the data from the data_store into this data_store. Removes tmp file in the process.

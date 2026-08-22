@@ -9,6 +9,7 @@ func _ready() -> void:
 	item_selected.connect(_on_item_selected)
 	_data_store.data_loaded.connect(_on_data_loaded)
 	_data_store.data_freed.connect(clear)
+	_data_store.entries_filtered.connect(_on_entries_filtered)
 
 
 func _on_data_loaded():
@@ -16,7 +17,7 @@ func _on_data_loaded():
 	UIWatcher.watch(self, _data_store.entry_selected, _on_current_entry_changed)
 	for entry in _data_store.dialogues_entries:
 		var item_index = add_item(entry.id)
-		var state := _get_entry_state(entry)
+		var state := entry.get_state()
 		set_item_icon(item_index, _state_icons[state])
 		set_item_metadata(item_index, entry)
 		for dialogue in entry.dialogues:
@@ -24,24 +25,29 @@ func _on_data_loaded():
 			dialogue.needs_review_changed.connect(_on_dialogue_content_changed.bind(entry))
 
 
+func _on_entries_filtered(entries: Array[DialogueEntry], state: Dialogue.State):
+	clear()
+	UIWatcher.watch(self, _data_store.entry_selected, _on_current_entry_changed)
+	for entry in entries:
+		var item_index = add_item(entry.id)
+		set_item_icon(item_index, _state_icons[state])
+		set_item_metadata(item_index, entry)
+		for dialogue in entry.dialogues:
+			UIWatcher.watch(
+				self,
+				dialogue.content_changed,
+				_on_dialogue_content_changed.bind(dialogue, entry),
+			)
+			UIWatcher.watch(
+				self,
+				dialogue.needs_review_changed,
+				_on_dialogue_content_changed.bind(entry),
+			)
+
+
 func _on_dialogue_content_changed(_dialogue: Dialogue, entry: DialogueEntry):
-	var state := _get_entry_state(entry)
+	var state := entry.get_state()
 	set_item_icon(_get_item_index_with_entry(entry), _state_icons[state])
-
-
-func _get_entry_state(entry: DialogueEntry) -> Dialogue.State:
-	var has_dialogue_with_state = func(dialogue: Dialogue, state: Dialogue.State):
-		return dialogue.get_state_report().state == state
-	for i in range(Dialogue.State.keys().size()):
-		var state := i as Dialogue.State
-		if state == Dialogue.State.TRANSLATED:
-			if entry.dialogues.all(has_dialogue_with_state.bind(state)):
-				return state
-			else:
-				continue
-		if entry.dialogues.any(has_dialogue_with_state.bind(state)):
-			return state
-	return Dialogue.State.NOT_TRANSLATED
 
 
 func _on_current_entry_changed(entry: DialogueEntry):
