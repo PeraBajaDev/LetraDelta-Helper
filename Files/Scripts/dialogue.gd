@@ -32,6 +32,9 @@ var content: String:
 			return
 		_content = value
 		content_changed.emit()
+		_last_edited_by = "{author};{timestamp}".format(
+			{ "author": AuthorInfo.get_user_name(), "timestamp": Time.get_unix_time_from_system() }
+		)
 
 var original_content: String:
 	get:

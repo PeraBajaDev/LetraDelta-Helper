@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c2rhhjqbphfsx"]
+
+[ext_resource type="Script" uid="uid://cmp6thirlnbk4" path="res://Window/Scripts/author_info.gd" id="1_j5oww"]
+
+[node name="AuthorInfo" type="ConfirmationDialog" unique_id=776297321]
+oversampling_override = 1.0
+title = "Set your Username."
+initial_position = 2
+size = Vector2i(400, 120)
+visible = true
+unresizable = true
+script = ExtResource("1_j5oww")
+
+[node name="Label" type="Label" parent="." unique_id=1122098380]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Username: "
+
+[node name="LineEdit" type="LineEdit" parent="Label" unique_id=711232584]
+layout_mode = 0
+offset_left = 100.0
+offset_top = -3.0
+offset_right = 350.0
+offset_bottom = 28.0
+placeholder_text = "Type here..."

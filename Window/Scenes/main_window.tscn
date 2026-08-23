@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://vdxnfnycj68s" path="res://Portraits/Scripts/portrait.gd" id="7_pwu08"]
 [ext_resource type="Shortcut" uid="uid://bxad6pg6w8mvn" path="res://UI/Shortcuts/export_file_shortcut.tres" id="7_trped"]
 [ext_resource type="Shortcut" uid="uid://l5vl0k1xa234" path="res://UI/Shortcuts/open_recent_shortcut.tres" id="8_d5q5l"]
+[ext_resource type="Script" uid="uid://comquqj32klc7" path="res://UI/Scripts/about_menu_button.gd" id="9_jjuwb"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
 [ext_resource type="Script" uid="uid://bp7k1327ecvaw" path="res://UI/Scripts/tag_validator_label.gd" id="10_trped"]
 [ext_resource type="Script" uid="uid://belq8jxoxee31" path="res://UI/Scripts/entry_filter.gd" id="12_qajg2"]
@@ -168,6 +169,7 @@ popup/item_2/id = 2
 popup/item_2/separator = true
 popup/item_3/text = "About DH..."
 popup/item_3/id = 3
+script = ExtResource("9_jjuwb")
 
 [node name="ReloadStyle" type="Button" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=188588084]
 layout_mode = 2
