@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://dieypvfp0q5bc"]
+
+[ext_resource type="Script" uid="uid://b87x1vremln1c" path="res://UI/reference_table.gd" id="1_u3bw2"]
+[ext_resource type="Resource" uid="uid://c4qiv66dtmsqu" path="res://Files/Resources/data_store.tres" id="2_aa5fi"]
+
+[node name="ReferenceTable" type="FoldableContainer" unique_id=1737865404]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u3bw2")
+_data_store = ExtResource("2_aa5fi")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1958957029]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=906375338]
+layout_mode = 2
+
+[node name="OpenCSVButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=757344097]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Open Reference CSV"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1525917970]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="NotesContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=908220179]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/NotesContainer" unique_id=1531786606]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Notas"
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/NotesContainer" unique_id=710619576]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Notes" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/NotesContainer/Panel2" unique_id=2127186178]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "hola"
+autowrap_mode = 3
+clip_text = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=181448830]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1228809815]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Target ⬅️ En"
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1736750543]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EnToTarget" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Panel2" unique_id=1361824794]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "hola"
+autowrap_mode = 3
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2120487895]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=1387210989]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Target ⬅️ Jp"
+horizontal_alignment = 1
+
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=389240735]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="JpToTarget" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3/Panel2" unique_id=286888906]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "hola"
+autowrap_mode = 3
+
+[node name="OpenFileDialog" type="FileDialog" parent="." unique_id=25477433]
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.csv")
+use_native_dialog = true

@@ -9,12 +9,14 @@ enum ActionsIDs {
 	OPEN_RECENT_FILES = 11,
 	OPEN_FILE = 1,
 	CLOSE_FILE = 7,
+	OPEN_REFERENCE_CSV = 13,
 }
 
 const RECENT_FILES_SUBMENU: PackedScene = preload("uid://b57arje145ojq")
 
 @export var _data_store: DataStore
 @export var _shortcuts: Dictionary[ActionsIDs, Shortcut]
+@export var _reference_table: ReferenceTable
 
 var _actions_indexes: Dictionary[ActionsIDs, int]
 
@@ -105,7 +107,9 @@ func _do_action(id: int):
 			unsaved_changes_window.handle_destructive_action(_close_file)
 		ActionsIDs.OPEN_RECENT_FILES:
 			_popup.show()
-			_popup.get_item_submenu_node(_actions_indexes[ActionsIDs.OPEN_RECENT_FILES]).show()
+			_popup.set_focused_item(_actions_indexes[ActionsIDs.OPEN_RECENT_FILES])
+		ActionsIDs.OPEN_REFERENCE_CSV:
+			_reference_table.load_csv_flow()
 
 
 func _close_file():

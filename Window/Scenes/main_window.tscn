@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://b7ww8jp5wu2vs" path="res://UI/Textures/tick.svg" id="19_6mq5k"]
 [ext_resource type="Texture2D" uid="uid://1p86bm7qrtiy" path="res://UI/Textures/circle-ring.svg" id="20_u8ovq"]
 [ext_resource type="Texture2D" uid="uid://dh7qgm6rv7lie" path="res://UI/Textures/question-mark.svg" id="20_xjqh5"]
+[ext_resource type="PackedScene" uid="uid://dieypvfp0q5bc" path="res://UI/ReferenceTable.tscn" id="26_d6fh8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8qhrn"]
 bg_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
@@ -83,7 +84,7 @@ offset_top = 4.0
 offset_right = 324.0
 offset_bottom = 36.0
 
-[node name="File" type="MenuButton" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=2039174747]
+[node name="File" type="MenuButton" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=2039174747 node_paths=PackedStringArray("_reference_table")]
 layout_mode = 2
 text = "File"
 flat = false
@@ -132,6 +133,7 @@ _shortcuts = Dictionary[int, Shortcut]({
 11: ExtResource("8_d5q5l"),
 12: ExtResource("7_trped")
 })
+_reference_table = NodePath("../../../../MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit/ReferenceTable")
 
 [node name="OpenFileDialog" type="FileDialog" parent="VBoxContainer/TopPanel/MenuBar/Container/File" unique_id=986615352]
 title = "Open a File"
@@ -304,7 +306,6 @@ size_flags_horizontal = 3
 [node name="DialogueBoxContainer" type="SubViewportContainer" parent="VBoxContainer/MainContentContainer/VBoxContainer2" unique_id=1712469755]
 propagate_maximum_size = false
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="SubViewport" type="SubViewport" parent="VBoxContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer" unique_id=109135706]
 handle_input_locally = false
@@ -358,9 +359,10 @@ _data_store = ExtResource("2_4e30w")
 
 [node name="TextEditContainer" type="VBoxContainer" parent="VBoxContainer/MainContentContainer/VBoxContainer2" unique_id=1721739519]
 layout_mode = 2
+size_flags_vertical = 10
 
 [node name="DialogueEdit" type="TextEdit" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer" unique_id=2074223561]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
@@ -407,8 +409,20 @@ offset_bottom = -41.0
 focus_mode = 0
 text = "Add new String"
 
+[node name="ReferenceTable" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit" unique_id=1737865404 instance=ExtResource("26_d6fh8")]
+custom_minimum_size = Vector2(200, 200)
+propagate_maximum_size = false
+layout_mode = 1
+offset_left = -2.0
+offset_top = -277.0
+offset_right = -2.0
+offset_bottom = -177.0
+size_flags_vertical = 0
+folded = true
+title = "References"
+
 [node name="OriginalDialogue" type="TextEdit" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer" unique_id=672609052]
-custom_minimum_size = Vector2(0, 150)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 8
 focus_mode = 1
