@@ -391,15 +391,6 @@ offset_bottom = -10.0
 focus_mode = 0
 text = "Replace all similar entries"
 
-[node name="AddEntry" type="Button" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit" unique_id=1800994321]
-layout_mode = 0
-offset_left = 5.0
-offset_top = -72.0
-offset_right = 126.0
-offset_bottom = -41.0
-focus_mode = 0
-text = "Add new Entry"
-
 [node name="AddString" type="Button" parent="VBoxContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit" unique_id=1260630976]
 layout_mode = 0
 offset_left = 757.0
