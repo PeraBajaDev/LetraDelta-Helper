@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+title = "REFERENCE_TABLE_TITLE"
 script = ExtResource("1_u3bw2")
 _data_store = ExtResource("2_aa5fi")
 
@@ -27,7 +28,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-text = "Open Reference CSV"
+text = "RT_OPEN_REFERENCE_CSV_BUTTON"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1525917970]
 layout_mode = 2
@@ -42,7 +43,7 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/NotesContainer" unique_id=1531786606]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Notas"
+text = "RT_NOTES_LABEL"
 horizontal_alignment = 1
 
 [node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/NotesContainer" unique_id=710619576]
@@ -69,7 +70,7 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1228809815]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Target ⬅️ En"
+text = "RT_EN_TO_TARGET_LABEL"
 horizontal_alignment = 1
 
 [node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1736750543]
@@ -95,7 +96,7 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=1387210989]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Target ⬅️ Jp"
+text = "RT_JP_TO_TARGET_LABEL"
 horizontal_alignment = 1
 
 [node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3" unique_id=389240735]

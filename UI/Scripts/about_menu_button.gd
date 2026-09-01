@@ -12,7 +12,7 @@ func _ready() -> void:
 
 func _on_item_selected(index: int):
 	match index:
-		0:
+		1:
 			if _author_info_window == null:
 				_author_info_window = _author_info.instantiate()
 				owner.add_child(_author_info_window)

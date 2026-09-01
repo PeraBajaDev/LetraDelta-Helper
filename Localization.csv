@@ -1,7 +1,58 @@
 clave;en;es
-DATA_STORE_FILE_ERROR7;File {file_path} was not found in {dir} directory;El archivo {file_path} no se encontró en el directorio {dir}
+ABOUT_MENU_BUTTON;About;Acerca de
+ADD_NEW_DIALOGUE_BUTTON;Add new dialogue;Añadir nuevo diálogo
+AMB_SHOW_DIALOGUE_INFO_ITEM;Show dialogue info;Mostrar información del diálogo
+AMB_SET_AUTHOR_DETAILS;Set author name;Cambiar nombre de autor
+AMB_ABOUT_LETRADELTA_HELPER_ITEM;About LetraDelta-Helper;Acerca de LetraDelta-Helper
+AUTHOR_INFO_TITLE;Set your username;Cambia tu nombre de usario
+AUTHOR_INFO_USERNAME_LABEL;Username:;Nombre:
+AUTHOR_INFO_APPLY;Apply;Aplicar
+AUTHOR_INFO_CANCEL;Cancel;Cancelar
+BOX_SELECTOR_LABEL;Box:;Caja:
+CONFIRMATION_CANCEL;No;No
+CONFIRMATION_OK;Yes;Sí
 DATA_STORE_FILE_ERROR16;File {file_path} cannot be read due to be an invalid json format;El archivo {file_path} no se pudo leer debido a tener un formato json invalido
+DATA_STORE_FILE_ERROR7;File {file_path} was not found in {dir} directory;El archivo {file_path} no se encontró en el directorio {dir}
+ENABLE_PORTRAIT_CHECK_BUTTON;Enable portrait;Mostrar retrarto
+ENTRY_FILTER_ALL;All;Todos
+ENTRY_FILTER_NEEDS_REVIEW;Needs review;Necesitan revisión
+ENTRY_FILTER_TAG_MISMATCH;Tag mismatch;Etiquetas faltantes
+ENTRY_FILTER_TRANSLATED;Unclosed signs;Traducidos
+ENTRY_FILTER_UNCLOSED_SIGNS;Unclosed signs;Signos sin cerrar
+ENTRY_FILTER_UNTRANSLATED;Unclosed signs;Sin traducir
+ENTRY_SEARCH_PLACEHOLDER;Search...;Buscar...
+FILE_MENU_BUTTON;File;Archivo
+FONT_SELECTOR_LABEL;Font:;Fuente:
+GO_TO_BUTTON;Go to;Ir a
+INVALID_SIGNS_LABEL;missing sing:;falta el signo:
 LOADING_FILE_DIALOGUE;Loading file…;Cargando archivo…
+MARK_FOR_REVIEW_CHECK_BOX;Mark for review; Marcar para revisión
+FMB_OPEN_FILE_ITEM;Open file;Abrir archivo
+FMB_SAVE_FILE_ITEM;Save file;Guardar archivo
+FMB_EXPORT_TO_GAME_FORMAT_ITEM;Export to game format;Exportar con el formato del juego
+FMB_EXIT_ITEM;Exit;Salir
+FMB_SAVE_FILE_AS_ITEM;Save file as;Guardar archivo como;
+FMB_SETTINGS_ITEM;Setting;Configuración
+FMB_OPEN_RECENT_ITEM;Open recent;Abrir reciente
+FMB_NEW_FILE_ITEM;New file;Nuevo archivo
+FMB_CLOSE_FILE_ITEM;Close file;Cerrar archivo
+FMB_CLEAR_CSV_ITEM;Clear csv;Remover CSV
+FMB_LOAD_REFERENCE_CSV_ITEM;Load reference csv;Cargar csv de referencias
+FMB_DELETE_SELECTED_DIALOGUE_ITEM;Delete selected dialogue;Borrar diálogo seleccionado
+FMB_DELETE_SELECTED_ENTRY_ITEM;Delete selected entry;Borrar entrada seleccionada
+RECOVER_PROGRESS_DIALOGUE;Unsaved changes has been detected from last sesion. Do you want to recover?;Se han detectado cambios sin guardar de la sesión anterior. ¿Quieres recuperarlos?
+RECOVER_PROGRESS_DIALOGUE_TITLE;Recover unsaved work?;¿Recuperar el trabajo no guardado?
+RECENT_FILES_SUBMENU_CLEAR;Clear list;Eliminar recientes
+REFERENCE_TABLE_TITLE;References;Referencias
+RT_OPEN_REFERENCE_CSV_BUTTON;Open reference csv;Abrir csv de referencias
+RT_NOTES_LABEL;Notes;Notas
+RT_EN_TO_TARGET_LABEL;EN ➡️ TARGET;ING ➡️ OBJETIVO
+RT_JP_TO_TARGET_LABEL;JP ➡️ TARGET;JAP ➡️ OBJETIVO
+RELOAD_STYLE_BUTTON;Reload Style;Recargar estilo
+REPLACE_ALL_SIMILAR_ENTRIES_CHECK_BOX;Replace all similar dialogues;Reemplazar diálogos similares
+SEARCH_BUTTON;Search;Buscar
+SELECT_A_DIALOGUE_LABEL;Select a dialogue;Selecciona un diálogo
+SIMILAR_DIALOGUES_LABEL;Similar dialogues;Diálogos similares
 UNSAVED_CHANGES_DIALOGUE;"Do you really want to close the file?
 This may lead to losing information
 made during the usage of LetraDelta Helper.
@@ -10,11 +61,6 @@ unfinished dialogues may occur.";"¿Realmente quieres cerrar este archivo?
 Esto puede provocar la perdida de su progreso
 hecho recientemente en DH.
 Si acepta, los diálogos traducidos hasta el momento no se guardaran."
-UNSAVED_CHANGES_DIALOGUE_TITLE;Do you really want to close the file?;¿Realmente quieres cerrar este archivo?
-UNSAVED_CHANGES_DIALOGUE_CONFIRM;Yes, I am aware of the consequences.;Sí, soy consiente de las consecuencias.
 UNSAVED_CHANGES_DIALOGUE_CANCEL;No, I want to go back.;No, quiero volver al programa.
-RECOVER_PROGRESS_DIALOGUE_TITLE;Recover unsaved work?;¿Recuperar el trabajo no guardado?
-RECOVER_PROGRESS_DIALOGUE;Unsaved changes has been detected from last sesion. Do you want to recover?;Se han detectado cambios sin guardar de la sesión anterior. ¿Quieres recuperarlos?
-CONFIRMATION_OK;Yes;Sí
-CONFIRMATION_CANCEL;No;No
-INVALID_SIGNS_LABEL;missing sing:;falta el signo:
+UNSAVED_CHANGES_DIALOGUE_CONFIRM;Yes, I am aware of the consequences.;Sí, soy consiente de las consecuencias.
+UNSAVED_CHANGES_DIALOGUE_TITLE;Do you really want to close the file?;¿Realmente quieres cerrar este archivo?

@@ -14,7 +14,7 @@ var regex := RegEx.new()
 var current_word: String = ""
 var _native_menu: PopupMenu
 
-@onready var _replace_similar_entries_check: CheckBox = $ReplaceSimilar
+@onready var _replace_similar_entries_check: CheckBox = %ReplaceSimilar
 
 @onready var _spell_checker: SpellChecker = SpellChecker.new()
 

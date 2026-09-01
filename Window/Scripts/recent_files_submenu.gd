@@ -26,7 +26,7 @@ func _on_submenu_showed():
 
 	#For visual porpuses
 	add_separator("", 100)
-	add_item("Clear list", 0)
+	add_item(tr("RECENT_FILES_SUBMENU_CLEAR"), 0)
 	pass
 
 
