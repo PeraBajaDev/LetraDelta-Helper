@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dveik57t2dlnn"]
+
+[ext_resource type="Script" uid="uid://dsjlqeehx7j5l" path="res://Window/Scripts/search_results.gd" id="1_sann1"]
+[ext_resource type="Resource" uid="uid://c4qiv66dtmsqu" path="res://Files/Resources/data_store.tres" id="2_mmc6l"]
+
+[node name="SearchResults" type="PopupMenu" unique_id=1268234043]
+transparent_bg = false
+oversampling_override = 1.0
+mode = 3
+title = "Anashe"
+position = Vector2i(200, 100)
+size = Vector2i(193, 124)
+visible = true
+transparent = false
+max_size = Vector2i(800, 500)
+allow_search = false
+search_bar_enabled = true
+search_bar_min_item_count = 5
+script = ExtResource("1_sann1")
+_data_store = ExtResource("2_mmc6l")

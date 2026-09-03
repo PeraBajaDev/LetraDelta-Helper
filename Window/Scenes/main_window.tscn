@@ -19,9 +19,11 @@
 [ext_resource type="Script" uid="uid://vdxnfnycj68s" path="res://Portraits/Scripts/portrait.gd" id="7_pwu08"]
 [ext_resource type="Shortcut" uid="uid://bxad6pg6w8mvn" path="res://UI/Shortcuts/export_file_shortcut.tres" id="7_trped"]
 [ext_resource type="Shortcut" uid="uid://l5vl0k1xa234" path="res://UI/Shortcuts/open_recent_shortcut.tres" id="8_d5q5l"]
+[ext_resource type="Script" uid="uid://hv00h4flge4d" path="res://UI/Scripts/search_button.gd" id="9_5hy5r"]
 [ext_resource type="Script" uid="uid://comquqj32klc7" path="res://UI/Scripts/about_menu_button.gd" id="9_jjuwb"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
 [ext_resource type="Script" uid="uid://bp7k1327ecvaw" path="res://UI/Scripts/tag_validator_label.gd" id="10_trped"]
+[ext_resource type="PackedScene" uid="uid://bgix3dmiyk2jv" path="res://Window/Scenes/Search.tscn" id="10_wlxsn"]
 [ext_resource type="Script" uid="uid://belq8jxoxee31" path="res://UI/Scripts/entry_filter.gd" id="12_qajg2"]
 [ext_resource type="Script" uid="uid://cajrwjor0wxyq" path="res://UI/Scripts/needs_review_check.gd" id="13_ag71q"]
 [ext_resource type="Texture2D" uid="uid://cndaxlohyb0lh" path="res://UI/Textures/info-02.svg" id="15_8tpn1"]
@@ -160,6 +162,10 @@ text = "GO_TO_BUTTON"
 layout_mode = 2
 focus_mode = 0
 text = "SEARCH_BUTTON"
+script = ExtResource("9_5hy5r")
+
+[node name="Search" parent="VBoxContainer/TopPanel/MenuBar/Container/Search" unique_id=1201175852 instance=ExtResource("10_wlxsn")]
+visible = false
 
 [node name="About" type="MenuButton" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=1954888689]
 layout_mode = 2
@@ -229,9 +235,10 @@ theme_override_constants/margin_left = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 20
 
-[node name="MainContentContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer" unique_id=47656161]
+[node name="MainContentContainer" type="HSplitContainer" parent="VBoxContainer/MarginContainer" unique_id=177740599]
 layout_mode = 2
 size_flags_vertical = 3
+split_offsets = PackedInt32Array(0, 0)
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/MarginContainer/MainContentContainer" unique_id=775563296]
 layout_mode = 2

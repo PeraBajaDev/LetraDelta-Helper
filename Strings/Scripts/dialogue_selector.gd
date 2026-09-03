@@ -9,11 +9,11 @@ func _ready() -> void:
 	item_selected.connect(_on_item_selected)
 	_data_store.data_loaded.connect(_on_data_loaded)
 	_data_store.data_freed.connect(clear)
+	_data_store.dialogue_selected.connect(_on_current_dialogue_changed)
 
 
 func update_list(entry: DialogueEntry):
 	clear()
-	UIWatcher.watch(self, _data_store.dialogue_selected, _on_current_dialogue_changed)
 	for dialogue in entry.dialogues:
 		var item_text: String = dialogue.content if not dialogue.content.is_empty() else dialogue.original_content
 		var item_index: int = add_item(item_text)

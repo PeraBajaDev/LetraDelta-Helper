@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bgix3dmiyk2jv"]
+
+[ext_resource type="Script" uid="uid://cewjjeptwqrwq" path="res://Window/Scripts/search_window.gd" id="1_p2fx1"]
+[ext_resource type="Resource" uid="uid://c4qiv66dtmsqu" path="res://Files/Resources/data_store.tres" id="2_n1u7w"]
+[ext_resource type="PackedScene" uid="uid://dveik57t2dlnn" path="res://Window/Scenes/search_results.tscn" id="3_jm6aj"]
+
+[node name="Search" type="ConfirmationDialog" unique_id=1201175852]
+oversampling_override = 1.0
+title = "Search..."
+initial_position = 1
+size = Vector2i(400, 280)
+visible = true
+unresizable = true
+script = ExtResource("1_p2fx1")
+_data_store = ExtResource("2_n1u7w")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=738308477]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 392.0
+offset_bottom = 231.0
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer" unique_id=1067884371]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="SearchTypeLabel" type="Label" parent="CenterContainer/GridContainer" unique_id=231472217]
+layout_mode = 2
+text = "Search type:"
+
+[node name="SearchType" type="OptionButton" parent="CenterContainer/GridContainer" unique_id=212829269]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+disabled = true
+selected = 0
+item_count = 2
+popup/item_0/text = "Dialogue"
+popup/item_0/id = 1
+popup/item_1/text = "Key"
+popup/item_1/id = 2
+
+[node name="SearchForLabel" type="Label" parent="CenterContainer/GridContainer" unique_id=1388991036]
+layout_mode = 2
+text = "Search for:"
+
+[node name="SearchFor" type="LineEdit" parent="CenterContainer/GridContainer" unique_id=1008133507]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+editable = false
+
+[node name="CaseSensitive" type="CheckBox" parent="CenterContainer/GridContainer" unique_id=128967607]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+disabled = true
+text = "Case sensitive?"
+
+[node name="SearchResults" parent="." unique_id=1268234043 instance=ExtResource("3_jm6aj")]
+visible = false
+_data_store = ExtResource("2_n1u7w")

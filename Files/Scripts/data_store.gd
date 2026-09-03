@@ -88,6 +88,26 @@ func filter_entries_by_state(state: Dialogue.State) -> void:
 	entries_filtered.emit(_dialogues_entries.filter(by_state), state)
 
 
+##	Gets all dialogues that contains the "key" parameter
+func filter_dialogues_by_key(key: String) -> Array[Dialogue]:
+	var all_dialogues: Array[Dialogue] = []
+	for entry in _dialogues_entries:
+		all_dialogues.append_array(entry.dialogues)
+	var by_key = func(dialogue: Dialogue):
+		return dialogue.key.contains(key)
+	return all_dialogues.filter(by_key)
+
+
+##	Gets all dialogues contents or original contents that contains the "content" parameter
+func filter_dialogues_by_content(content: String) -> Array[Dialogue]:
+	var all_dialogues: Array[Dialogue] = []
+	for entry in _dialogues_entries:
+		all_dialogues.append_array(entry.dialogues)
+	var by_content = func(dialogue: Dialogue):
+		return dialogue.content.contains(content) or dialogue.original_content.contains(content)
+	return all_dialogues.filter(by_content)
+
+
 ## Copies the data from the data_store into this data_store. Removes tmp file in the process.
 func replace_data(resource: DataStore) -> int:
 	if path:
