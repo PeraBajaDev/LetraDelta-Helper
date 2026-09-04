@@ -165,7 +165,6 @@ text = "SEARCH_BUTTON"
 script = ExtResource("9_5hy5r")
 
 [node name="Search" parent="VBoxContainer/TopPanel/MenuBar/Container/Search" unique_id=1201175852 instance=ExtResource("10_wlxsn")]
-visible = false
 
 [node name="About" type="MenuButton" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=1954888689]
 layout_mode = 2

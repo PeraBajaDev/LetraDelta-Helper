@@ -38,7 +38,13 @@ func _on_confirmed():
 	var result: Array[Dialogue]
 	match _search_type.selected:
 		SearchTypes.DIALOGUE:
-			result = _data_store.filter_dialogues_by_content(_search_for.text)
+			result = _data_store.filter_dialogues_by_content(
+				_search_for.text,
+				_case_sensitive.button_pressed,
+			)
 		SearchTypes.KEY:
-			result = _data_store.filter_dialogues_by_key(_search_for.text)
+			result = _data_store.filter_dialogues_by_key(
+				_search_for.text,
+				_case_sensitive.button_pressed,
+			)
 	_search_results_window.show_results(result)

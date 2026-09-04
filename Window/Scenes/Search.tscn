@@ -61,8 +61,8 @@ layout_mode = 2
 size_flags_vertical = 0
 focus_mode = 0
 disabled = true
+button_pressed = true
 text = "Case sensitive?"
 
 [node name="SearchResults" parent="." unique_id=1268234043 instance=ExtResource("3_jm6aj")]
 visible = false
-_data_store = ExtResource("2_n1u7w")

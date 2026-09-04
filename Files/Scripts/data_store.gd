@@ -89,21 +89,28 @@ func filter_entries_by_state(state: Dialogue.State) -> void:
 
 
 ##	Gets all dialogues that contains the "key" parameter
-func filter_dialogues_by_key(key: String) -> Array[Dialogue]:
+func filter_dialogues_by_key(key: String, case_sensitive: bool = true) -> Array[Dialogue]:
 	var all_dialogues: Array[Dialogue] = []
 	for entry in _dialogues_entries:
 		all_dialogues.append_array(entry.dialogues)
 	var by_key = func(dialogue: Dialogue):
+		if not case_sensitive:
+			return (dialogue.key.to_lower().contains(key.to_lower()))
 		return dialogue.key.contains(key)
 	return all_dialogues.filter(by_key)
 
 
 ##	Gets all dialogues contents or original contents that contains the "content" parameter
-func filter_dialogues_by_content(content: String) -> Array[Dialogue]:
+func filter_dialogues_by_content(content: String, case_sensitive: bool = true) -> Array[Dialogue]:
 	var all_dialogues: Array[Dialogue] = []
 	for entry in _dialogues_entries:
 		all_dialogues.append_array(entry.dialogues)
 	var by_content = func(dialogue: Dialogue):
+		if not case_sensitive:
+			return (
+				dialogue.content.to_lower().contains(content.to_lower())
+				or dialogue.original_content.to_lower().contains(content.to_lower())
+			)
 		return dialogue.content.contains(content) or dialogue.original_content.contains(content)
 	return all_dialogues.filter(by_content)
 
