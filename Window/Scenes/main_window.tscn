@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://bp7k1327ecvaw" path="res://UI/Scripts/tag_validator_label.gd" id="10_trped"]
 [ext_resource type="PackedScene" uid="uid://bgix3dmiyk2jv" path="res://Window/Scenes/Search.tscn" id="10_wlxsn"]
 [ext_resource type="Script" uid="uid://belq8jxoxee31" path="res://UI/Scripts/entry_filter.gd" id="12_qajg2"]
+[ext_resource type="Script" uid="uid://c4ni6jwsb8vw3" path="res://UI/Scripts/reload_style.gd" id="12_wlxsn"]
 [ext_resource type="Script" uid="uid://cajrwjor0wxyq" path="res://UI/Scripts/needs_review_check.gd" id="13_ag71q"]
 [ext_resource type="Texture2D" uid="uid://cndaxlohyb0lh" path="res://UI/Textures/info-02.svg" id="15_8tpn1"]
 [ext_resource type="Script" uid="uid://ck55q8e2yicgk" path="res://Window/Scripts/unsaved_changes_window.gd" id="15_b30n8"]
@@ -165,6 +166,7 @@ text = "SEARCH_BUTTON"
 script = ExtResource("9_5hy5r")
 
 [node name="Search" parent="VBoxContainer/TopPanel/MenuBar/Container/Search" unique_id=1201175852 instance=ExtResource("10_wlxsn")]
+visible = false
 
 [node name="About" type="MenuButton" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=1954888689]
 layout_mode = 2
@@ -184,7 +186,10 @@ script = ExtResource("9_jjuwb")
 [node name="ReloadStyle" type="Button" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=188588084]
 layout_mode = 2
 focus_mode = 0
+disabled = true
 text = "RELOAD_STYLE_BUTTON"
+script = ExtResource("12_wlxsn")
+_data_store = ExtResource("2_4e30w")
 
 [node name="AddString" type="Button" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=1260630976]
 layout_mode = 2
