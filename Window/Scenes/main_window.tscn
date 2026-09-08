@@ -344,6 +344,7 @@ layout_mode = 2
 texture = ExtResource("4_4iwp4")
 stretch_mode = 6
 script = ExtResource("7_pwu08")
+_data_store = ExtResource("2_4e30w")
 
 [node name="DialogueLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/BoxTexture/DialogueContainer" unique_id=664364993]
 clip_contents = false

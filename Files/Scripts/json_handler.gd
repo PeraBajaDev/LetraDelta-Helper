@@ -31,6 +31,7 @@ static func get_data_store(json_file_path: String) -> DataStore:
 					dialogue[&"OriginalContent"],
 					dialogue.get(&"LastEdited", ""),
 					dialogue.get(&"NeedsReview", false),
+					dialogue.get(&"Speaker", ""),
 				)
 			)
 		entries.append(DialogueEntry.new(id, dialogues))
@@ -63,6 +64,7 @@ static func stringify_data_store(data_store: DataStore) -> String:
 					&"OriginalContent": dialogue.original_content,
 					&"LastEdited": dialogue.last_edited_by,
 					&"NeedsReview": dialogue.needs_review,
+					&"Speaker": dialogue.speaker,
 				}
 			)
 	return JSON.stringify(serialized_dict)
@@ -93,3 +95,21 @@ static func write_data_store_tmp_file(data_store: DataStore) -> Error:
 		return error
 	tmp_save.store_string(stringify_data_store(data_store))
 	return OK
+
+
+static func get_style_metadata(style_name: String) -> Dictionary:
+	const STYLES_DIR_PATH = "user://Styles"
+	var style_data := FileAccess.open(
+		STYLES_DIR_PATH + "/" + style_name + "/metadata.json",
+		FileAccess.READ,
+	)
+	if style_data == null:
+		return { }
+
+	if style_data.get_error():
+		return { }
+	var data: Dictionary = JSON.parse_string(style_data.get_as_text())
+
+	if data is not Dictionary:
+		return { }
+	return data as Dictionary

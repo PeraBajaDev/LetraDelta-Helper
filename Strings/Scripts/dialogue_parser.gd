@@ -92,6 +92,15 @@ static func validate_tags(original: String, translation: String) -> TagDiff:
 	return diff
 
 
+static func get_emotion_tag(dialogue: String) -> String:
+	var re := RegEx.new()
+	re.compile(r"\\E[a-z-A-Z-0-9]")
+	var match := re.search(dialogue)
+	if match == null:
+		return ""
+	return match.get_string(0)
+
+
 static func _count_tags(value: String) -> Dictionary:
 	var re_strip = RegEx.create_from_string(r"`.")
 	var clean_string: String = re_strip.sub(value, "", true)
