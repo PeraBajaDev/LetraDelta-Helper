@@ -19,8 +19,6 @@ static func watch(node: Node, signal_to_connect: Signal, method: Callable) -> vo
 	cleanup = func():
 		if is_instance_valid(emitter) and signal_to_connect.is_connected(method):
 			signal_to_connect.disconnect(method)
-		if node.tree_exiting.is_connected(cleanup):
-			node.tree_exiting.disconnect(cleanup)
 
 	if not node.tree_exiting.is_connected(cleanup):
 		node.tree_exiting.connect(cleanup, CONNECT_ONE_SHOT)
