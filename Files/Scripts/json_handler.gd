@@ -32,6 +32,7 @@ static func get_data_store(json_file_path: String) -> DataStore:
 					dialogue.get(&"LastEdited", ""),
 					dialogue.get(&"NeedsReview", false),
 					dialogue.get(&"Speaker", ""),
+					dialogue.get(&"BoxType", ""),
 				)
 			)
 		entries.append(DialogueEntry.new(id, dialogues))
@@ -65,6 +66,7 @@ static func stringify_data_store(data_store: DataStore) -> String:
 					&"LastEdited": dialogue.last_edited_by,
 					&"NeedsReview": dialogue.needs_review,
 					&"Speaker": dialogue.speaker,
+					&"BoxType": dialogue.box_type,
 				}
 			)
 	return JSON.stringify(serialized_dict)

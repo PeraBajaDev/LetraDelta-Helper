@@ -4,12 +4,11 @@
 [ext_resource type="Resource" uid="uid://c4qiv66dtmsqu" path="res://Files/Resources/data_store.tres" id="2_4e30w"]
 [ext_resource type="Script" uid="uid://byt8sngikc4is" path="res://Entries/Scripts/entry_list.gd" id="2_fg8dk"]
 [ext_resource type="Script" uid="uid://ccle6cpidldhu" path="res://UI/Scripts/file_menu_button.gd" id="2_pwu08"]
-[ext_resource type="Script" uid="uid://djle6enhwtl1f" path="res://Box/Scripts/box.gd" id="3_gey0d"]
+[ext_resource type="Script" uid="uid://djle6enhwtl1f" path="res://Box/Scripts/dialogue_label.gd" id="3_gey0d"]
 [ext_resource type="Texture2D" uid="uid://do71hc70q1tln" path="res://Portraits/Sprites/spr_face_n8.png" id="4_4iwp4"]
 [ext_resource type="Script" uid="uid://c8u6145dklmip" path="res://UI/Scripts/progress_stats.gd" id="4_rgpx8"]
 [ext_resource type="Shortcut" uid="uid://d1fobh3jvod7c" path="res://UI/Shortcuts/save_file_shortcut.tres" id="4_xjqh5"]
 [ext_resource type="Shortcut" uid="uid://bp5rseyha1ose" path="res://UI/Shortcuts/save_file_as_shortcut.tres" id="5_0cfkf"]
-[ext_resource type="Texture2D" uid="uid://rf056ebnh2vg" path="res://Box/Sprites/Box2.png" id="5_4e30w"]
 [ext_resource type="FontFile" uid="uid://cm8vhnbpgnrpm" path="res://Fonts/fnt_main.fnt" id="5_4iwp4"]
 [ext_resource type="Script" uid="uid://8e8cc3j1jjqr" path="res://UI/Scripts/closed_sign_validator_label.gd" id="5_6mq5k"]
 [ext_resource type="Script" uid="uid://dmnmncy4oo0n1" path="res://Strings/Scripts/dialogue_edit.gd" id="6_430op"]
@@ -36,7 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://b7ww8jp5wu2vs" path="res://UI/Textures/tick.svg" id="19_6mq5k"]
 [ext_resource type="Texture2D" uid="uid://1p86bm7qrtiy" path="res://UI/Textures/circle-ring.svg" id="20_u8ovq"]
 [ext_resource type="Texture2D" uid="uid://dh7qgm6rv7lie" path="res://UI/Textures/question-mark.svg" id="20_xjqh5"]
+[ext_resource type="Texture2D" uid="uid://rf056ebnh2vg" path="res://Box/Sprites/Box2.png" id="25_iq5qe"]
 [ext_resource type="PackedScene" uid="uid://dieypvfp0q5bc" path="res://UI/ReferenceTable.tscn" id="26_d6fh8"]
+[ext_resource type="Script" uid="uid://dr6uquo62vefm" path="res://Window/Scenes/box.gd" id="26_dsnni"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2oyc"]
 content_margin_left = 15.0
@@ -308,45 +309,61 @@ size_flags_vertical = 0
 folded = true
 
 [node name="DialogueBoxContainer" type="SubViewportContainer" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2" unique_id=1712469755]
-custom_maximum_size = Vector2(700, 200)
 propagate_maximum_size = false
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_vertical = 3
 
 [node name="SubViewport" type="SubViewport" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer" unique_id=109135706]
+disable_3d = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(895, 333)
-size_2d_override = Vector2i(578, 152)
+size = Vector2i(800, 250)
+size_2d_override = Vector2i(600, 300)
 render_target_update_mode = 4
 
 [node name="BoxTexture" type="TextureRect" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport" unique_id=857174985]
-offset_left = 110.0
-offset_top = 7.0
-offset_right = 690.0
-offset_bottom = 247.0
-texture = ExtResource("5_4e30w")
+offset_right = 220.0
+offset_bottom = 170.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("25_iq5qe")
 stretch_mode = 2
+script = ExtResource("26_dsnni")
+_data_store = ExtResource("2_4e30w")
+metadata/_edit_use_anchors_ = true
 
 [node name="DialogueContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/BoxTexture" unique_id=1474365382]
 propagate_maximum_size = false
-layout_mode = 0
-offset_left = 20.0
-offset_top = 20.0
-offset_right = 558.0
-offset_bottom = 132.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Portrait" type="TextureRect" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/BoxTexture/DialogueContainer" unique_id=576463355]
+[node name="MarginPortrait" type="MarginContainer" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/BoxTexture/DialogueContainer" unique_id=1052293549]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="Portrait" type="TextureRect" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/BoxTexture/DialogueContainer/MarginPortrait" unique_id=576463355]
 custom_minimum_size = Vector2(100, 0)
 clip_contents = true
 layout_mode = 2
 texture = ExtResource("4_4iwp4")
-stretch_mode = 6
+stretch_mode = 4
 script = ExtResource("7_pwu08")
 _data_store = ExtResource("2_4e30w")
 
-[node name="DialogueLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/BoxTexture/DialogueContainer" unique_id=664364993]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/BoxTexture/DialogueContainer" unique_id=865433213]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+
+[node name="DialogueLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/BoxTexture/DialogueContainer/MarginContainer2" unique_id=664364993]
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -372,7 +389,6 @@ alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
-button_pressed = true
 text = "ENABLE_PORTRAIT_CHECK_BUTTON"
 
 [node name="ReplaceSimilar" type="CheckBox" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/HBoxContainer" unique_id=112251196]

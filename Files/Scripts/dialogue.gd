@@ -20,6 +20,7 @@ enum State {
 @export var _last_edited_by: StringName
 @export var _needs_review: bool
 @export var _speaker: String
+@export var _box_type: String
 
 var key: String:
 	get:
@@ -53,6 +54,10 @@ var speaker: String:
 	get:
 		return _speaker
 
+var box_type: String:
+	get:
+		return _box_type
+
 var _validators: Array[Callable] = [
 	_check_invalid_tags,
 	_check_invalid_signs,
@@ -70,6 +75,7 @@ func _init(
 	new_last_edited_by: String,
 	new_needs_review: bool,
 	new_speaker: String,
+	new_box_type: String,
 ) -> void:
 	_key = new_key
 	_content = new_content
@@ -77,14 +83,17 @@ func _init(
 	_last_edited_by = new_last_edited_by
 	_needs_review = new_needs_review
 	_speaker = new_speaker
+	_box_type = new_box_type
 
 
 func _to_string() -> String:
-	return "\t_key: %s\n_content: %s\n_original_content: %s\n_last_edited_by: %s" % [
+	return "\t_key: %s\n_content: %s\n_original_content: %s\n_last_edited_by: %s\n_speaker: %s\n_box_type: %s" % [
 		_key,
 		_content,
 		_original_content,
 		_last_edited_by,
+		_speaker,
+		_box_type,
 	]
 
 
