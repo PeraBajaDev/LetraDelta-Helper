@@ -85,10 +85,12 @@ size_flags_horizontal = 3
 
 [node name="Container" type="HBoxContainer" parent="VBoxContainer/TopPanel/MenuBar" unique_id=1770228923]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_right = 1110.0
+offset_bottom = 15.5
 grow_vertical = 2
 
 [node name="File" type="MenuButton" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=2039174747 node_paths=PackedStringArray("_reference_table")]
@@ -206,32 +208,6 @@ horizontal_alignment = 2
 vertical_alignment = 1
 script = ExtResource("4_rgpx8")
 _data_store = ExtResource("2_4e30w")
-
-[node name="TagValidatorLabel" type="Label" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=1432236261]
-layout_mode = 2
-size_flags_horizontal = 10
-tooltip_text = "Tag validator.
-Compares the count of \\E[x], \\F[x], %, /,
-etc. against the original."
-mouse_filter = 1
-horizontal_alignment = 2
-vertical_alignment = 1
-clip_text = true
-script = ExtResource("10_trped")
-data_store = ExtResource("2_4e30w")
-
-[node name="ClosedSignValidatorLabel" type="Label" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=1044623675]
-layout_mode = 2
-size_flags_horizontal = 10
-tooltip_text = "Tag validator.
-Compares the count of \\E[x], \\F[x], %, /,
-etc. against the original."
-mouse_filter = 1
-theme_override_colors/font_color = Color(1, 0.80784315, 0.19607843, 1)
-vertical_alignment = 1
-clip_text = true
-script = ExtResource("5_6mq5k")
-data_store = ExtResource("2_4e30w")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=804851244]
 layout_mode = 2
@@ -409,6 +385,41 @@ focus_mode = 1
 editable = false
 script = ExtResource("6_430op")
 _data_store = ExtResource("2_4e30w")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit" unique_id=1636043115]
+modulate = Color(1, 1, 1, 0.6117647)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.5
+offset_top = -28.0
+offset_right = -4.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_position = Vector2(0, -200)
+
+[node name="TagValidatorLabel" type="Label" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit/HBoxContainer" unique_id=1432236261]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true
+script = ExtResource("10_trped")
+data_store = ExtResource("2_4e30w")
+
+[node name="ClosedSignValidatorLabel" type="Label" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/TextEditContainer/DialogueEdit/HBoxContainer" unique_id=1044623675]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 0.80784315, 0.19607843, 1)
+vertical_alignment = 1
+clip_text = true
+script = ExtResource("5_6mq5k")
+data_store = ExtResource("2_4e30w")
 
 [node name="OriginalDialogue" type="TextEdit" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/TextEditContainer" unique_id=672609052]
 custom_minimum_size = Vector2(0, 100)
