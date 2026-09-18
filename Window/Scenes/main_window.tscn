@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://b7ww8jp5wu2vs" path="res://UI/Textures/tick.svg" id="19_6mq5k"]
 [ext_resource type="Texture2D" uid="uid://1p86bm7qrtiy" path="res://UI/Textures/circle-ring.svg" id="20_u8ovq"]
 [ext_resource type="Texture2D" uid="uid://dh7qgm6rv7lie" path="res://UI/Textures/question-mark.svg" id="20_xjqh5"]
-[ext_resource type="Texture2D" uid="uid://rf056ebnh2vg" path="res://Box/Sprites/Box2.png" id="25_iq5qe"]
+[ext_resource type="Texture2D" uid="uid://bdggvk6javu1" path="res://Box/Sprites/Box1.png" id="23_iq5qe"]
 [ext_resource type="PackedScene" uid="uid://dieypvfp0q5bc" path="res://UI/ReferenceTable.tscn" id="26_d6fh8"]
 [ext_resource type="Script" uid="uid://dr6uquo62vefm" path="res://Window/Scenes/box.gd" id="26_dsnni"]
 
@@ -303,7 +303,7 @@ offset_right = 220.0
 offset_bottom = 170.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = ExtResource("25_iq5qe")
+texture = ExtResource("23_iq5qe")
 stretch_mode = 2
 script = ExtResource("26_dsnni")
 _data_store = ExtResource("2_4e30w")
