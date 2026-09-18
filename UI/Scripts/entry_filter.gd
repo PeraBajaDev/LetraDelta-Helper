@@ -18,7 +18,7 @@ func _ready() -> void:
 func _on_item_selected(index):
 	match index:
 		0:
-			pass
+			_data_store.notify_data_loaded()
 		1:
 			_data_store.filter_entries_by_state(Dialogue.State.NOT_TRANSLATED)
 		2:
