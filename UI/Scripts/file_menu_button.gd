@@ -51,13 +51,14 @@ func create_data_store(path: StringName):
 	var data_source_from_json := JSONHandler.get_data_store(path)
 	if data_source_from_json.load_error != OK:
 		show_error.call_deferred(data_source_from_json.load_error, path)
+		loading_window.hide.call_deferred()
 		return
 	RecentFilesHandler.add_to_recent_files(path)
 	load_data_store.call_deferred(data_source_from_json)
 
 
 func load_data_store(data_store_from_json: DataStore):
-	_close_waiting_window()
+	loading_window.hide()
 	var tmp_path: String = data_store_from_json.path + ".tmp"
 	if not FileAccess.file_exists(tmp_path):
 		_data_store.replace_data(data_store_from_json)
@@ -130,7 +131,7 @@ func _save_file():
 			var error := JSONHandler.save_data_store(_data_store)
 			if error:
 				show_error.call_deferred(error, _data_store.path)
-			_close_waiting_window.call_deferred(),
+			loading_window.hide.call_deferred(),
 	)
 	loading_window.show()
 
@@ -143,13 +144,9 @@ func _save_file_as():
 			var error := JSONHandler.save_data_store(_data_store, save_as_path)
 			if error:
 				show_error.call_deferred(error, save_as_path)
-			_close_waiting_window.call_deferred(),
+			loading_window.hide.call_deferred(),
 	)
 	loading_window.show()
-
-
-func _close_waiting_window() -> void:
-	loading_window.hide()
 
 
 func _export_to_game_format():
@@ -160,6 +157,6 @@ func _export_to_game_format():
 			var error = JSONHandler.export_to_game_format(_data_store, save_as_path)
 			if error:
 				show_error.call_deferred(error, save_as_path)
-			_close_waiting_window.call_deferred(),
+			loading_window.hide.call_deferred(),
 	)
 	loading_window.show()
