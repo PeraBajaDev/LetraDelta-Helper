@@ -13,9 +13,10 @@ static func get_data_store(json_file_path: String) -> DataStore:
 	var hash_sha256 := text_data.sha256_text()
 	if FileAccess.get_open_error() != OK:
 		return DataStore.create_with_given_error(FileAccess.get_open_error())
-	var json_data: Dictionary = JSON.parse_string(text_data)
-	if json_data == null:
+	var json_data_variant = JSON.parse_string(text_data)
+	if json_data_variant == null or json_data_variant is not Dictionary:
 		return DataStore.create_with_given_error(Error.ERR_FILE_CORRUPT)
+	var json_data: Dictionary = json_data_variant
 	if not json_data.has_all([STYLE_KEY, DIALOGUES_KEY]):
 		return DataStore.create_with_given_error(Error.ERR_FILE_CORRUPT)
 
