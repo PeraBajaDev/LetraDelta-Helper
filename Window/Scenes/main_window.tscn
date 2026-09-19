@@ -19,6 +19,7 @@
 [ext_resource type="Shortcut" uid="uid://bxad6pg6w8mvn" path="res://UI/Shortcuts/export_file_shortcut.tres" id="7_trped"]
 [ext_resource type="Shortcut" uid="uid://l5vl0k1xa234" path="res://UI/Shortcuts/open_recent_shortcut.tres" id="8_d5q5l"]
 [ext_resource type="Script" uid="uid://hv00h4flge4d" path="res://UI/Scripts/search_button.gd" id="9_5hy5r"]
+[ext_resource type="Shortcut" uid="uid://c2qbdc2345ur8" path="res://UI/Shortcuts/close_file_shortcut.tres" id="9_dsnni"]
 [ext_resource type="Script" uid="uid://comquqj32klc7" path="res://UI/Scripts/about_menu_button.gd" id="9_jjuwb"]
 [ext_resource type="Script" uid="uid://e2i63hqvi1ev" path="res://Entries/Scripts/similar_entries_list.gd" id="9_mgc60"]
 [ext_resource type="Script" uid="uid://bp7k1327ecvaw" path="res://UI/Scripts/tag_validator_label.gd" id="10_trped"]
@@ -138,6 +139,7 @@ _data_store = ExtResource("2_4e30w")
 _shortcuts = Dictionary[int, Shortcut]({
 1: ExtResource("6_d5q5l"),
 3: ExtResource("4_xjqh5"),
+7: ExtResource("9_dsnni"),
 8: ExtResource("5_0cfkf"),
 11: ExtResource("8_d5q5l"),
 12: ExtResource("7_trped")
@@ -238,6 +240,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 tooltip_text = "Filter entries by translation state."
 focus_mode = 0
+disabled = true
 selected = 0
 fit_to_longest_item = false
 item_count = 6
