@@ -42,9 +42,8 @@ func _ready() -> void:
 		recent_files_submenu,
 	)
 
-	var save_file_index = _actions_indexes[ActionsIDs.SAVE_FILE]
-	_data_store.data_loaded.connect(_popup.set_item_disabled.bind(save_file_index, false))
-	_data_store.data_freed.connect(_popup.set_item_disabled.bind(save_file_index, true))
+	_data_store.data_loaded.connect(_on_data_loaded)
+	_data_store.data_freed.connect(_on_data_freed)
 
 
 func create_data_store(path: StringName):
@@ -92,6 +91,20 @@ func show_error(error: Error, path):
 		{ "file_path": path, "dir": path.get_base_dir() }
 	)
 	error_window.show()
+
+
+func _on_data_loaded():
+	_popup.set_item_disabled(_actions_indexes[ActionsIDs.SAVE_FILE], true)
+	_popup.set_item_disabled(_actions_indexes[ActionsIDs.SAVE_FILE_AS], true)
+	_popup.set_item_disabled(_actions_indexes[ActionsIDs.CLOSE_FILE], true)
+	_popup.set_item_disabled(_actions_indexes[ActionsIDs.EXPORT_TO_GAME_FORMAT], true)
+
+
+func _on_data_freed():
+	_popup.set_item_disabled(_actions_indexes[ActionsIDs.SAVE_FILE], false)
+	_popup.set_item_disabled(_actions_indexes[ActionsIDs.SAVE_FILE_AS], false)
+	_popup.set_item_disabled(_actions_indexes[ActionsIDs.CLOSE_FILE], false)
+	_popup.set_item_disabled(_actions_indexes[ActionsIDs.EXPORT_TO_GAME_FORMAT], false)
 
 
 func _do_action(id: int):
