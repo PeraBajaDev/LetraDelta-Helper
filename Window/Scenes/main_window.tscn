@@ -112,6 +112,7 @@ popup/item_4/text = "FMB_OPEN_RECENT_ITEM"
 popup/item_4/id = 11
 popup/item_5/text = "FMB_EXPORT_TO_GAME_FORMAT_ITEM"
 popup/item_5/id = 12
+popup/item_5/disabled = true
 popup/item_6/text = "FMB_SAVE_FILE_AS_ITEM"
 popup/item_6/id = 8
 popup/item_6/disabled = true
