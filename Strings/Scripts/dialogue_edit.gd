@@ -2,6 +2,7 @@ class_name DialogueEdit
 extends TextEdit
 
 enum SpellMenuOptions {
+	SHOW_DIALOGUE_INFO = 999,
 	SEPARATOR = 1000,
 	GIVE_SUGGESTIONS = 1001,
 	ADD_TO_DICTIONARY = 1002,
@@ -13,7 +14,10 @@ var regex := RegEx.new()
 
 var current_word: String = ""
 var _native_menu: PopupMenu
+var _about_dialogue_window: DialogueInfoWindow
+var _selected_dialogue: Dialogue
 
+@onready var _dialogue_info: PackedScene = preload("uid://dtlxqu8obb0q3")
 @onready var _replace_similar_entries_check: CheckBox = %ReplaceSimilar
 
 @onready var _spell_checker: SpellChecker = SpellChecker.new()
@@ -70,6 +74,7 @@ func _get_word_under_position(pos_local: Vector2) -> String:
 func _on_menu_about_to_popup() -> void:
 	_native_menu.item_count = _native_menu.get_item_index(MENU_REDO) + 1
 	_native_menu.position += Vector2i.UP * 150
+	_native_menu.add_item("Show dialogue info", SpellMenuOptions.SHOW_DIALOGUE_INFO)
 	if current_word.is_empty():
 		return
 	_native_menu.add_separator(
@@ -82,6 +87,11 @@ func _on_menu_about_to_popup() -> void:
 
 func _on_menu_option_selected(id: int) -> void:
 	match id:
+		SpellMenuOptions.SHOW_DIALOGUE_INFO:
+			if _about_dialogue_window == null:
+				_about_dialogue_window = _dialogue_info.instantiate()
+				owner.add_child(_about_dialogue_window)
+			_about_dialogue_window._show_dialogue_info(_selected_dialogue)
 		SpellMenuOptions.GIVE_SUGGESTIONS:
 			var suggestions_submenu = PopupMenu.new()
 
@@ -134,6 +144,7 @@ func _on_current_entry_changed(entry: DialogueEntry) -> void:
 func _on_dialogue_changed(dialogue: Dialogue) -> void:
 	if dialogue == null:
 		return
+	_selected_dialogue = dialogue
 	editable = true
 	var caret_column := get_caret_column()
 	var caret_line := get_caret_line()

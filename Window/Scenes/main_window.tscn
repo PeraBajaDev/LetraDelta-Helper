@@ -180,15 +180,13 @@ visible = false
 layout_mode = 2
 text = "ABOUT_MENU_BUTTON"
 flat = false
-item_count = 4
-popup/item_0/text = "AMB_SHOW_DIALOGUE_INFO_ITEM"
-popup/item_0/id = 0
-popup/item_1/text = "AMB_SET_AUTHOR_DETAILS"
-popup/item_1/id = 1
-popup/item_2/id = 2
-popup/item_2/separator = true
-popup/item_3/text = "AMB_ABOUT_LETRADELTA_HELPER_ITEM"
-popup/item_3/id = 3
+item_count = 3
+popup/item_0/text = "AMB_SET_AUTHOR_DETAILS"
+popup/item_0/id = 1
+popup/item_1/id = 2
+popup/item_1/separator = true
+popup/item_2/text = "AMB_ABOUT_LETRADELTA_HELPER_ITEM"
+popup/item_2/id = 3
 script = ExtResource("9_jjuwb")
 
 [node name="ReloadStyle" type="Button" parent="VBoxContainer/TopPanel/MenuBar/Container" unique_id=188588084]
@@ -331,6 +329,7 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 
 [node name="Portrait" type="TextureRect" parent="VBoxContainer/MarginContainer/MainContentContainer/VBoxContainer2/DialogueBoxContainer/SubViewport/BoxTexture/DialogueContainer/MarginPortrait" unique_id=576463355]
+visible = false
 custom_minimum_size = Vector2(100, 0)
 clip_contents = true
 layout_mode = 2

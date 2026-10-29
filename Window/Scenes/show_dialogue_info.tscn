@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dtlxqu8obb0q3"]
+
+[ext_resource type="Script" uid="uid://42bfe2l7i6km" path="res://Window/Scripts/dialogue_info_window.gd" id="1_w7a0g"]
+
+[node name="ShowInfo" type="AcceptDialog" unique_id=2005071108]
+oversampling_override = 1.0
+title = "String Information."
+initial_position = 2
+size = Vector2i(300, 200)
+visible = true
+unresizable = true
+always_on_top = true
+script = ExtResource("1_w7a0g")
+
+[node name="Label" type="Label" parent="." unique_id=374613312]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -92.0
+offset_right = 142.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "KEY:
+
+LAST_EDIT_DETAILS:
+>    AUTHOR:
+>    TIMESTAMP: "
+visible_characters_behavior = 1
